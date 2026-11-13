@@ -11,9 +11,15 @@
       const mac = platform.startsWith('mac'), ios = platform === 'ios';
       const label = ios ? t('Download unsigned IPA') : mac ? t('Download development build') : t(platform === 'windows' ? 'Download for Windows' : 'Download for Android');
       link.innerHTML = `${label} <span aria-hidden="true">↓</span>`;
-      if (status) status.textContent = ios || mac
-        ? `${t(ios ? 'Unsigned build' : 'Development build')}${releaseConfig.versions?.[platform] ? ` · ${t('Version')} ${releaseConfig.versions[platform]}` : ''}`
-        : releaseConfig.versions?.[platform] ? `${t('Version')} ${releaseConfig.versions[platform]}` : t('Latest release');
+      if (status) {
+        // This compound label is already translated here and refreshed on each
+        // locale change. Reprocessing it as English can reinterpret a French
+        // "Version non signée" as the "Version {version}" template.
+        status.setAttribute('data-i18n-ignore', '');
+        status.textContent = ios || mac
+          ? `${t(ios ? 'Unsigned build' : 'Development build')}${releaseConfig.versions?.[platform] ? ` · ${t('Version')} ${releaseConfig.versions[platform]}` : ''}`
+          : releaseConfig.versions?.[platform] ? `${t('Version')} ${releaseConfig.versions[platform]}` : t('Latest release');
+      }
     }
   };
   document.addEventListener('noteject:languagechange', refreshDownloadLabels);
@@ -42,7 +48,7 @@
     }
   });
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 600) setMenuOpen(false);
+    if (window.innerWidth > 1024) setMenuOpen(false);
   }, { passive: true });
 
   const magneticMode = window.matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');

@@ -41,7 +41,7 @@
 .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-3.25px) rotate(-45deg)}
 main section[id]{scroll-margin-top:100px}
 .site-header a:focus-visible,.menu-toggle:focus-visible{outline:2px solid var(--violet-2);outline-offset:3px}
-@media(max-width:760px){
+@media(max-width:1024px){
   .site-header{top:8px;width:calc(100% - 24px);height:58px;margin:8px auto 0;padding:0 10px;border-radius:15px}
   .site-header .brand{gap:7px;padding-inline:4px;font-size:16px}
   .site-header .brand img{width:25px;height:25px}
@@ -71,4 +71,4 @@ body>main,body>footer{position:relative;z-index:1}
 .site-language select{width:116px;min-height:38px;padding:0 28px 0 10px;border:1px solid #343640;border-radius:10px;appearance:none;background:#191a20;color:#e2e1e9;font:500 11px 'DM Sans',system-ui,sans-serif;cursor:pointer}
 .site-language::after{position:absolute;right:11px;color:#b9a8f4;font-size:13px;content:'⌄';pointer-events:none}
 .site-language select:focus-visible{outline:2px solid var(--violet-2);outline-offset:2px}
-@media(max-width:760px){.site-language{width:100%;padding:7px 10px 5px}.site-language select{width:100%;min-height:42px;font-size:13px}.site-language::after{right:22px}}
+@media(max-width:1024px){.site-language{width:100%;padding:7px 10px 5px}.site-language select{width:100%;min-height:42px;font-size:13px}.site-language::after{right:22px}}

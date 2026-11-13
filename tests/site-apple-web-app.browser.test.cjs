@@ -26,8 +26,9 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
   const url=new URL(req.url,'http://localhost');
   if(url.pathname==='/api/site-config'){res.writeHead(200,{'Content-Type':'application/json'});return res.end(JSON.stringify({downloads:{ios:iosURL},versions:{ios:'0.2.57'},iosBuild:{signedForInstallation:false,minimumIOS:'15.0',architectures:['arm64'],devices:['iPhone','iPad']}}));}
   let relative=decodeURIComponent(url.pathname.slice(1))||'index.html';if(relative.endsWith('/'))relative+='index.html';
-  const file=path.resolve(build,relative);
-  if(!file.startsWith(build+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile())return res.writeHead(404).end();
+  const assetRoot=['index.html','site.js','site.css'].includes(relative)?path.join(root,'site'):build;
+  const file=path.resolve(assetRoot,relative);
+  if(!file.startsWith(assetRoot+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile())return res.writeHead(404).end();
   const type=({'.html':'text/html','.css':'text/css','.js':'text/javascript','.png':'image/png','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.mp4':'video/mp4'})[path.extname(file)]||'application/octet-stream';
   res.writeHead(200,{'Content-Type':type});res.end(fs.readFileSync(file));
  });
@@ -36,14 +37,17 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
  t.after(async()=>{await browser.close();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));});
  const page=await browser.newPage({viewport:{width:390,height:844}}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.emulateMedia({reducedMotion:'reduce'});
- await page.route('https://**',route=>new URL(route.request().url()).hostname==='downloads.noteject.test'
-  ? route.fulfill({status:200,headers:{'Access-Control-Allow-Origin':'*','Content-Type':'application/octet-stream'},body:''})
-  : route.abort());
+ await page.route('**/*',route=>{
+  const url=new URL(route.request().url());
+  if(url.hostname==='downloads.noteject.test')return route.fulfill({status:200,headers:{'Access-Control-Allow-Origin':'*','Content-Type':'application/octet-stream'},body:''});
+  if(url.protocol==='https:')return route.abort();
+  return route.continue();
+ });
  const origin='http://127.0.0.1:'+server.address().port;
  const viewports=[{name:'small iPhone',width:320,height:640},{name:'iPhone',width:390,height:844},{name:'iPad portrait',width:768,height:1024},{name:'iPad landscape',width:1024,height:768},{name:'desktop',width:1440,height:900}];
  for(const language of ['en','uk'])for(const viewport of viewports){
   await page.setViewportSize({width:viewport.width,height:viewport.height});
-  await page.goto(origin+'/?lang='+language+'#downloads');
+  await page.goto(origin+'/?lang='+language+'&test-width='+viewport.width+'#downloads');
   await page.waitForFunction(()=>document.querySelector('[data-download="ios"]')?.dataset.releaseAvailable==='true');
   assert.equal(await page.locator('.apple-card').count(),1,viewport.name);
   const link=page.locator('[data-download="ios"]');
@@ -64,7 +68,8 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
   assert.equal(await page.locator('.apple-platform').first().isVisible(),true);
   const box=await page.locator('.apple-card').boundingBox();assert.ok(box&&box.x>=0&&box.x+box.width<=viewport.width,viewport.name+' Apple download card overflowed');
   assert.ok(await page.locator('.apple-card').evaluate(el=>el.scrollWidth<=el.clientWidth+1),language+' '+viewport.name+' Apple content overflowed');
-  assert.ok(await page.locator('html').evaluate(el=>el.scrollWidth<=document.documentElement.clientWidth+1),language+' '+viewport.name+' page overflowed horizontally');
+  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth<=document.documentElement.clientWidth+1?null:[...document.querySelectorAll('body *')].map(el=>({tag:el.tagName,cls:el.className,x:el.getBoundingClientRect().x,right:el.getBoundingClientRect().right})).filter(box=>box.x<0||box.right>document.documentElement.clientWidth+1).slice(0,15));
+  assert.equal(overflow,null,language+' '+viewport.name+' page overflowed horizontally: '+JSON.stringify(overflow));
   if(language!=='en')assert.notEqual(labels.download,downloadLabel,'The native download label must be translated');
  }
  assert.equal(await page.evaluate(async url=>(await fetch(url,{method:'HEAD'})).status,iosURL),200,'The configured IPA URL must resolve');
@@ -75,7 +80,8 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
   const labels=await page.evaluate(({downloadLabel,unsignedLabel,warning,webLabel,description})=>({download:NotejectI18n.t(downloadLabel),status:NotejectI18n.t(unsignedLabel),warning:NotejectI18n.t(warning),web:NotejectI18n.t(webLabel),description:NotejectI18n.t(description)}),{downloadLabel,unsignedLabel,warning,webLabel,description});
   assert((await page.locator('[data-download="ios"]').textContent()).trim().startsWith(labels.download),language+' stale download label');
-  assert((await page.locator('[data-download-status="ios"]').textContent()).includes(labels.status),language+' stale unsigned status');
+  const currentStatus=await page.locator('[data-download-status="ios"]').textContent();
+  assert(currentStatus.includes(labels.status),language+' stale unsigned status: '+JSON.stringify({actual:currentStatus,expected:labels.status}));
   assert.equal(await page.locator('#ios-signing-requirement').textContent(),labels.warning,language+' stale signing notice');
   assert.equal(await page.locator('.apple-download-copy>p').first().textContent(),labels.description,language+' stale build description');
   assert.equal(await page.locator('.apple-web-options>summary').textContent(),labels.web,language+' stale web option');
