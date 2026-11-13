@@ -270,5 +270,10 @@
   "{count} of {total} file": "Файлів: {count} із {total}",
   "{start}–{end} of {count} boards": "Дошки: {start}–{end} / {count}",
   "{start}–{end} of {count} notes": "Нотатки: {start}–{end} / {count}",
-  "{start}–{end} of {count} documents": "Документи: {start}–{end} / {count}"
+  "{start}–{end} of {count} documents": "Документи: {start}–{end} / {count}",
+  "Download unsigned IPA": "Завантажити IPA без підпису",
+  "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Тестова збірка без підпису для iPhone та iPad. Потрібна iOS чи iPadOS 15 або новіша версія.",
+  "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Перед установленням потрібні підпис Apple та профіль підготовки. Цей файл не можна встановити безпосередньо із Safari.",
+  "Unsigned build": "Збірка без підпису",
+  "Use the web app on iPhone or iPad": "Відкрити вебзастосунок на iPhone або iPad"
 }

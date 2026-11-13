@@ -2786,5 +2786,10 @@
   "{count} of {total} file": "파일 {total}개 중 {count}개",
   "{start}–{end} of {count} boards": "보드: {start}–{end} / {count}",
   "{start}–{end} of {count} notes": "노트: {start}–{end} / {count}",
-  "{start}–{end} of {count} documents": "문서: {start}–{end} / {count}"
+  "{start}–{end} of {count} documents": "문서: {start}–{end} / {count}",
+  "Download unsigned IPA": "서명되지 않은 IPA 다운로드",
+  "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone 및 iPad용 서명되지 않은 개발 빌드입니다. iOS 또는 iPadOS 15 이상이 필요합니다.",
+  "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "설치 전에 Apple 서명과 프로비저닝 프로파일이 필요합니다. 이 파일은 Safari에서 직접 설치할 수 없습니다.",
+  "Unsigned build": "서명되지 않은 빌드",
+  "Use the web app on iPhone or iPad": "iPhone 또는 iPad에서 웹 앱 사용"
 }

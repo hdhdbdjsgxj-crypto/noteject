@@ -2786,5 +2786,10 @@
   "{count} of {total} file": "{count} di {total} file",
   "{start}–{end} of {count} boards": "Bacheche: {start}–{end} / {count}",
   "{start}–{end} of {count} notes": "Note: {start}–{end} / {count}",
-  "{start}–{end} of {count} documents": "Documenti: {start}–{end} / {count}"
+  "{start}–{end} of {count} documents": "Documenti: {start}–{end} / {count}",
+  "Download unsigned IPA": "Scarica IPA non firmato",
+  "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versione di sviluppo non firmata per iPhone e iPad. Richiede iOS o iPadOS 15 o versioni successive.",
+  "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Prima dell’installazione sono necessari la firma Apple e un profilo di provisioning. Questo file non può essere installato direttamente da Safari.",
+  "Unsigned build": "Versione non firmata",
+  "Use the web app on iPhone or iPad": "Usa l’app web su iPhone o iPad"
 }

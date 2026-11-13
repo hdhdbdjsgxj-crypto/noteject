@@ -2786,5 +2786,10 @@
   "{count} of {total} file": "{count} 个文件，共 {total} 个",
   "{start}–{end} of {count} boards": "看板: {start}–{end} / {count}",
   "{start}–{end} of {count} notes": "笔记: {start}–{end} / {count}",
-  "{start}–{end} of {count} documents": "文档: {start}–{end} / {count}"
+  "{start}–{end} of {count} documents": "文档: {start}–{end} / {count}",
+  "Download unsigned IPA": "下载未签名的 IPA",
+  "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "适用于 iPhone 和 iPad 的未签名开发版本。需要 iOS 或 iPadOS 15 或更新版本。",
+  "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "安装前需要 Apple 签名和预置描述文件。无法直接通过 Safari 安装此文件。",
+  "Unsigned build": "未签名版本",
+  "Use the web app on iPhone or iPad": "在 iPhone 或 iPad 上使用网页应用"
 }

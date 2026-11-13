@@ -2,17 +2,17 @@
   'use strict';
   const t = source => window.NotejectI18n?.t?.(source) || source;
   let releaseConfig = null;
-  const downloadPlatforms = ['windows', 'android', 'macArm64', 'macX64'];
+  const downloadPlatforms = ['windows', 'android', 'macArm64', 'macX64', 'ios'];
   const refreshDownloadLabels = () => {
     if (!releaseConfig) return;
     for (const platform of downloadPlatforms) {
       const link = document.querySelector(`[data-download="${platform}"]`), status = document.querySelector(`[data-download-status="${platform}"]`);
       if (!link?.dataset.releaseAvailable) continue;
-      const mac = platform.startsWith('mac');
-      const label = mac ? t('Download development build') : t(platform === 'windows' ? 'Download for Windows' : 'Download for Android');
+      const mac = platform.startsWith('mac'), ios = platform === 'ios';
+      const label = ios ? t('Download unsigned IPA') : mac ? t('Download development build') : t(platform === 'windows' ? 'Download for Windows' : 'Download for Android');
       link.innerHTML = `${label} <span aria-hidden="true">↓</span>`;
-      if (status) status.textContent = mac
-        ? `${t('Development build')} · ${t('Version')} ${releaseConfig.versions?.[platform] || '0.2.54'}`
+      if (status) status.textContent = ios || mac
+        ? `${t(ios ? 'Unsigned build' : 'Development build')}${releaseConfig.versions?.[platform] ? ` · ${t('Version')} ${releaseConfig.versions[platform]}` : ''}`
         : releaseConfig.versions?.[platform] ? `${t('Version')} ${releaseConfig.versions[platform]}` : t('Latest release');
     }
   };
@@ -68,6 +68,7 @@
     releaseConfig = config;
     for (const platform of downloadPlatforms) {
       const link = document.querySelector(`[data-download="${platform}"]`), status = document.querySelector(`[data-download-status="${platform}"]`);
+      if (!link) continue;
       const url = config.downloads?.[platform];
       try {
         const safe = new URL(url);

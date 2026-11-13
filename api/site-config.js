@@ -12,7 +12,8 @@ module.exports = function handler(req, res) {
     windows: releases.windows?.url || process.env.WINDOWS_DOWNLOAD_URL || '',
     android: releases.android?.url || process.env.ANDROID_DOWNLOAD_URL || '',
     macArm64: releases.macArm64?.url || '',
-    macX64: releases.macX64?.url || ''
+    macX64: releases.macX64?.url || '',
+    ios: releases.ios?.signedForInstallation === false ? releases.ios.url || '' : ''
   };
   for (const key of Object.keys(downloads)) {
     try { if (downloads[key] && new URL(downloads[key]).protocol !== 'https:') downloads[key] = ''; }
@@ -31,7 +32,8 @@ module.exports = function handler(req, res) {
     windows: linkedVersion(downloads.windows, /^Noteject-Setup-(.+?)-x64\.exe$/i) || process.env.WINDOWS_VERSION || 'Latest release',
     android: linkedVersion(downloads.android, /^Noteject-Android-(.+?)\.apk$/i) || process.env.ANDROID_VERSION || 'Latest release',
     macArm64: linkedVersion(downloads.macArm64, /^Noteject-Mac-(.+?)-arm64-development\.dmg$/i),
-    macX64: linkedVersion(downloads.macX64, /^Noteject-Mac-(.+?)-x64-development\.dmg$/i)
+    macX64: linkedVersion(downloads.macX64, /^Noteject-Mac-(.+?)-x64-development\.dmg$/i),
+    ios: linkedVersion(downloads.ios, /^Noteject-iPhone-iPad-(.+?)-unsigned\.ipa$/i)
   };
   json(res, 200, {
     cloudEnabled: !!cloud,
@@ -41,6 +43,12 @@ module.exports = function handler(req, res) {
     checkoutPlans: cloud ? purchasablePlans() : [],
     downloads,
     versions,
+    iosBuild: downloads.ios ? {
+      signedForInstallation: false,
+      minimumIOS: releases.ios.minimumIOS,
+      architectures: releases.ios.architectures,
+      devices: releases.ios.devices
+    } : null,
     syncMaxBytes: syncStorageCeilingBytes(),
     backupQuotas: backupQuotas()
   });

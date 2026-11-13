@@ -2786,5 +2786,10 @@
   "{count} of {total} file": "{count} من {total} ملفًا",
   "{start}–{end} of {count} boards": "اللوحات: {start}–{end} / {count}",
   "{start}–{end} of {count} notes": "ملاحظات: {start}–{end} / {count}",
-  "{start}–{end} of {count} documents": "المستندات: {start}–{end} / {count}"
+  "{start}–{end} of {count} documents": "المستندات: {start}–{end} / {count}",
+  "Download unsigned IPA": "تنزيل ملف IPA غير موقّع",
+  "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "نسخة تطوير غير موقّعة لأجهزة iPhone وiPad. تتطلب iOS أو iPadOS 15 أو أحدث.",
+  "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "يلزم توقيع Apple وملف تعريف التزويد قبل التثبيت. لا يمكن تثبيت هذا الملف مباشرةً من Safari.",
+  "Unsigned build": "نسخة غير موقّعة",
+  "Use the web app on iPhone or iPad": "استخدام تطبيق الويب على iPhone أو iPad"
 }

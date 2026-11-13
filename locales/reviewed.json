@@ -100,7 +100,12 @@
     "{count} of {total} file": "Файлів: {count} із {total}",
     "{start}–{end} of {count} boards": "Дошки: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Нотатки: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Документи: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Документи: {start}–{end} / {count}",
+    "Download unsigned IPA": "Завантажити IPA без підпису",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Тестова збірка без підпису для iPhone та iPad. Потрібна iOS чи iPadOS 15 або новіша версія.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Перед установленням потрібні підпис Apple та профіль підготовки. Цей файл не можна встановити безпосередньо із Safari.",
+    "Unsigned build": "Збірка без підпису",
+    "Use the web app on iPhone or iPad": "Відкрити вебзастосунок на iPhone або iPad"
   },
   "es": {
     "Return to Home": "Volver al inicio",
@@ -143,7 +148,12 @@
     "{count} of {total} file": "{count} de {total} archivos",
     "{start}–{end} of {count} boards": "Tableros: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Notas: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Documentos: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Documentos: {start}–{end} / {count}",
+    "Download unsigned IPA": "Descargar IPA sin firmar",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versión de desarrollo sin firmar para iPhone y iPad. Requiere iOS o iPadOS 15 o posterior.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Antes de instalar, se requieren la firma de Apple y un perfil de aprovisionamiento. Este archivo no se puede instalar directamente desde Safari.",
+    "Unsigned build": "Versión sin firmar",
+    "Use the web app on iPhone or iPad": "Usar la aplicación web en iPhone o iPad"
   },
   "fr": {
     "Return to Home": "Retour à l’accueil",
@@ -186,7 +196,12 @@
     "{count} of {total} file": "{count} fichiers sur {total}",
     "{start}–{end} of {count} boards": "Tableaux: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Notes: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Documents: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Documents: {start}–{end} / {count}",
+    "Download unsigned IPA": "Télécharger l’IPA non signé",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Version de développement non signée pour iPhone et iPad. Nécessite iOS ou iPadOS 15 ou une version ultérieure.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Une signature Apple et un profil de provisionnement sont nécessaires avant l’installation. Ce fichier ne peut pas être installé directement depuis Safari.",
+    "Unsigned build": "Version non signée",
+    "Use the web app on iPhone or iPad": "Utiliser l’application web sur iPhone ou iPad"
   },
   "de": {
     "Return to Home": "Zur Startseite",
@@ -229,7 +244,12 @@
     "{count} of {total} file": "{count} von {total} Dateien",
     "{start}–{end} of {count} boards": "Boards: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Notizen: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Dokumente: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Dokumente: {start}–{end} / {count}",
+    "Download unsigned IPA": "Unsignierte IPA-Datei herunterladen",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Unsignierte Entwicklungsversion für iPhone und iPad. Erfordert iOS oder iPadOS 15 oder neuer.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Vor der Installation sind eine Apple-Signierung und ein Bereitstellungsprofil erforderlich. Diese Datei kann nicht direkt über Safari installiert werden.",
+    "Unsigned build": "Unsignierte Version",
+    "Use the web app on iPhone or iPad": "Web-App auf dem iPhone oder iPad nutzen"
   },
   "it": {
     "Return to Home": "Torna alla home",
@@ -272,7 +292,12 @@
     "{count} of {total} file": "{count} di {total} file",
     "{start}–{end} of {count} boards": "Bacheche: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Note: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Documenti: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Documenti: {start}–{end} / {count}",
+    "Download unsigned IPA": "Scarica IPA non firmato",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versione di sviluppo non firmata per iPhone e iPad. Richiede iOS o iPadOS 15 o versioni successive.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Prima dell’installazione sono necessari la firma Apple e un profilo di provisioning. Questo file non può essere installato direttamente da Safari.",
+    "Unsigned build": "Versione non firmata",
+    "Use the web app on iPhone or iPad": "Usa l’app web su iPhone o iPad"
   },
   "pt": {
     "Return to Home": "Voltar ao início",
@@ -315,7 +340,12 @@
     "{count} of {total} file": "{count} de {total} arquivos",
     "{start}–{end} of {count} boards": "Quadros: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Notas: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Documentos: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Documentos: {start}–{end} / {count}",
+    "Download unsigned IPA": "Baixar IPA não assinado",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versão de desenvolvimento não assinada para iPhone e iPad. Requer iOS ou iPadOS 15 ou posterior.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Antes da instalação, são necessários assinatura Apple e um perfil de provisionamento. Este arquivo não pode ser instalado diretamente pelo Safari.",
+    "Unsigned build": "Versão não assinada",
+    "Use the web app on iPhone or iPad": "Usar o aplicativo web no iPhone ou iPad"
   },
   "ru": {
     "The": "Этот",
@@ -359,7 +389,12 @@
     "{count} of {total} file": "Файлов: {count} из {total}",
     "{start}–{end} of {count} boards": "Доски: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Заметки: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Документы: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Документы: {start}–{end} / {count}",
+    "Download unsigned IPA": "Скачать IPA без подписи",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Тестовая сборка без подписи для iPhone и iPad. Требуется iOS или iPadOS 15 или новее.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Перед установкой нужны подпись Apple и профиль подготовки. Этот файл нельзя установить напрямую из Safari.",
+    "Unsigned build": "Сборка без подписи",
+    "Use the web app on iPhone or iPad": "Открыть веб-приложение на iPhone или iPad"
   },
   "zh": {
     "Return to Home": "返回首页",
@@ -411,7 +446,12 @@
     "{count} of {total} file": "{count} 个文件，共 {total} 个",
     "{start}–{end} of {count} boards": "看板: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "笔记: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "文档: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "文档: {start}–{end} / {count}",
+    "Download unsigned IPA": "下载未签名的 IPA",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "适用于 iPhone 和 iPad 的未签名开发版本。需要 iOS 或 iPadOS 15 或更新版本。",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "安装前需要 Apple 签名和预置描述文件。无法直接通过 Safari 安装此文件。",
+    "Unsigned build": "未签名版本",
+    "Use the web app on iPhone or iPad": "在 iPhone 或 iPad 上使用网页应用"
   },
   "ja": {
     "Return to Home": "ホームに戻る",
@@ -506,7 +546,12 @@
     "{count} of {total} file": "{total} ファイル中 {count}",
     "{start}–{end} of {count} boards": "ボード: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "ノート: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "ドキュメント: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "ドキュメント: {start}–{end} / {count}",
+    "Download unsigned IPA": "未署名のIPAをダウンロード",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhoneとiPad向けの未署名の開発ビルドです。iOSまたはiPadOS 15以降が必要です。",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "インストール前にAppleの署名とプロビジョニングプロファイルが必要です。このファイルをSafariから直接インストールすることはできません。",
+    "Unsigned build": "未署名ビルド",
+    "Use the web app on iPhone or iPad": "iPhoneまたはiPadでWebアプリを使う"
   },
   "ko": {
     "Return to Home": "홈으로 돌아가기",
@@ -549,7 +594,12 @@
     "{count} of {total} file": "파일 {total}개 중 {count}개",
     "{start}–{end} of {count} boards": "보드: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "노트: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "문서: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "문서: {start}–{end} / {count}",
+    "Download unsigned IPA": "서명되지 않은 IPA 다운로드",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone 및 iPad용 서명되지 않은 개발 빌드입니다. iOS 또는 iPadOS 15 이상이 필요합니다.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "설치 전에 Apple 서명과 프로비저닝 프로파일이 필요합니다. 이 파일은 Safari에서 직접 설치할 수 없습니다.",
+    "Unsigned build": "서명되지 않은 빌드",
+    "Use the web app on iPhone or iPad": "iPhone 또는 iPad에서 웹 앱 사용"
   },
   "ar": {
     "Return to Home": "العودة إلى الصفحة الرئيسية",
@@ -601,7 +651,12 @@
     "{count} of {total} file": "{count} من {total} ملفًا",
     "{start}–{end} of {count} boards": "اللوحات: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "ملاحظات: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "المستندات: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "المستندات: {start}–{end} / {count}",
+    "Download unsigned IPA": "تنزيل ملف IPA غير موقّع",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "نسخة تطوير غير موقّعة لأجهزة iPhone وiPad. تتطلب iOS أو iPadOS 15 أو أحدث.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "يلزم توقيع Apple وملف تعريف التزويد قبل التثبيت. لا يمكن تثبيت هذا الملف مباشرةً من Safari.",
+    "Unsigned build": "نسخة غير موقّعة",
+    "Use the web app on iPhone or iPad": "استخدام تطبيق الويب على iPhone أو iPad"
   },
   "hi": {
     "Return to Home": "होम पर वापस जाएँ",
@@ -644,7 +699,12 @@
     "{count} of {total} file": "{total} फ़ाइलों में से {count}",
     "{start}–{end} of {count} boards": "बोर्ड: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "नोट्स: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "दस्तावेज़: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "दस्तावेज़: {start}–{end} / {count}",
+    "Download unsigned IPA": "बिना हस्ताक्षर वाला IPA डाउनलोड करें",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone और iPad के लिए बिना हस्ताक्षर वाला डेवलपमेंट बिल्ड। iOS या iPadOS 15 या बाद का संस्करण आवश्यक है।",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "इंस्टॉल करने से पहले Apple के हस्ताक्षर और प्रोविज़निंग प्रोफ़ाइल आवश्यक हैं। इस फ़ाइल को Safari से सीधे इंस्टॉल नहीं किया जा सकता।",
+    "Unsigned build": "बिना हस्ताक्षर वाला बिल्ड",
+    "Use the web app on iPhone or iPad": "iPhone या iPad पर वेब ऐप इस्तेमाल करें"
   },
   "tr": {
     "The": "Bu",
@@ -689,6 +749,11 @@
     "{count} of {total} file": "{total} dosyadan {count}",
     "{start}–{end} of {count} boards": "Panolar: {start}–{end} / {count}",
     "{start}–{end} of {count} notes": "Notlar: {start}–{end} / {count}",
-    "{start}–{end} of {count} documents": "Belgeler: {start}–{end} / {count}"
+    "{start}–{end} of {count} documents": "Belgeler: {start}–{end} / {count}",
+    "Download unsigned IPA": "İmzalanmamış IPA indir",
+    "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone ve iPad için imzalanmamış geliştirme sürümü. iOS veya iPadOS 15 ya da daha yenisi gerekir.",
+    "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Kurulumdan önce Apple imzası ve sağlama profili gerekir. Bu dosya Safari üzerinden doğrudan yüklenemez.",
+    "Unsigned build": "İmzalanmamış sürüm",
+    "Use the web app on iPhone or iPad": "iPhone veya iPad’de web uygulamasını kullan"
   }
 }
