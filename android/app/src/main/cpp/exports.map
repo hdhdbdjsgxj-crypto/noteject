@@ -1,0 +1,4 @@
+{
+    global: Java_com_noteject_app_DjVuNative_*;
+    local: *;
+};

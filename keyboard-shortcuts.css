@@ -1,0 +1,27 @@
+.settings-menu-content .shortcut-groups {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 18px;
+  padding-top: 10px;
+}
+
+.settings-menu-content .shortcut-group {
+  display: grid;
+  gap: 7px;
+}
+
+.settings-menu-content .shortcut-group h3 {
+  margin: 0;
+  color: #d3c9e6;
+  font: 600 11px Manrope, sans-serif;
+}
+
+.settings-menu-content .shortcut-group .shortcut-list {
+  padding-top: 0;
+  gap: 8px 12px;
+}
+
+@media (max-width: 560px) {
+  .settings-menu-content .shortcut-list { grid-template-columns: minmax(0, 1fr) auto; }
+  .settings-menu-content .shortcut-list kbd { white-space: nowrap; }
+}

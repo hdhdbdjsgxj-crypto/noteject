@@ -1,0 +1,66 @@
+.reader-assistant { min-width: 0; margin-top: 22px; padding-top: 18px; border-top: 1px solid #37333f; color: #e4dfec; font: 12px/1.6 'DM Sans', sans-serif; }
+.reader-assistant *, .reader-assistant *::before, .reader-assistant *::after { box-sizing: border-box; }
+.reader-assistant .ra-heading { display: flex; align-items: center; gap: 9px; margin-bottom: 13px; }
+.reader-assistant .ra-heading h3 { margin: 0; color: #ece7f5; font-size: 15px; font-weight: 650; }
+.reader-assistant .ra-mark { display: grid; width: 29px; height: 29px; place-items: center; border: 1px solid #594568; border-radius: 9px; background: #30253d; color: #d4b9fa; font-size: 20px; }
+.reader-assistant button { cursor: pointer; font-family: inherit; }
+.reader-assistant button:disabled { cursor: wait; opacity: .6; }
+.reader-assistant button:focus-visible, .reader-assistant select:focus-visible, .reader-assistant textarea:focus-visible { outline: 2px solid #c5a4f4; outline-offset: 2px; }
+.reader-assistant .ra-modes { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 6px; margin-bottom: 12px; }
+.reader-assistant .ra-modes button { display: flex; min-height: 59px; flex-direction: column; justify-content: center; gap: 3px; padding: 8px; border: 1px solid #403748; border-radius: 9px; background: #211d28; color: #bdb1cb; text-align: left; }
+.reader-assistant .ra-modes b { font-size: 12px; font-weight: 650; }
+.reader-assistant .ra-modes small { color: #9f91ae; font-size: 11px; line-height: 1.35; }
+.reader-assistant .ra-modes button.active { border-color: #9a76bd; background: #382843; color: #f1e4ff; }
+.reader-assistant .ra-modes button.active small { color: #ceb8e3; }
+.reader-assistant .ra-tools { display: flex; flex-wrap: wrap; gap: 3px; margin: 0 0 9px; }
+.reader-assistant .ra-tools button { flex: 1 0 auto; min-height: 32px; padding: 5px 7px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #b8a7c8; font-size: 11px; }
+.reader-assistant .ra-tools button.active { border-color: #6c4f80; background: #35263f; color: #e6cafa; }
+.reader-assistant .ra-tools button:hover, .reader-assistant .ra-modes button:hover { border-color: #9472af; color: #f2e6ff; }
+.reader-assistant .ra-help { margin: 9px 0 12px; color: #ab9ab9; font-size: 11px; line-height: 1.6; }
+.reader-assistant .ra-label { display: block; margin: 10px 0 6px; color: #d3c3df; font-size: 11px; font-weight: 600; }
+.reader-assistant select { display: block; width: 100%; min-height: 36px; padding: 7px 9px; border: 1px solid #54415e; border-radius: 7px; background: #19151f; color: #e6d9ef; font: inherit; font-size: 12px; }
+.reader-assistant .ra-model { display: flex; min-width: 0; align-items: center; justify-content: space-between; gap: 7px; margin: 9px 0 0; color: #a991bd; font-size: 11px; }
+.reader-assistant .ra-model > span { min-width: 0; overflow-wrap: anywhere; }
+.reader-assistant .ra-model b { font-weight: 500; }
+.reader-assistant .ra-model button { flex: 0 0 auto; padding: 4px 7px; border: 1px solid #5d436e; border-radius: 6px; background: #32203d; color: #d1afe9; font-size: 11px; }
+.reader-assistant .ra-conversation { max-height: min(430px,48vh); min-height: 110px; overflow: auto; padding: 2px 2px 0; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #64516f transparent; }
+.reader-assistant .ra-welcome { margin: 7px 0 14px; padding: 13px 11px; border: 1px solid #42334d; border-radius: 9px; background: #231b2b; }
+.reader-assistant .ra-welcome b { color: #dcc7ed; font-size: 12px; }
+.reader-assistant .ra-welcome p { margin: 5px 0 0; color: #b29ac4; font-size: 11px; }
+.reader-assistant .ra-message { margin: 3px 0 17px; padding-bottom: 14px; border-bottom: 1px solid #413348; }
+.reader-assistant .ra-message-label { margin-bottom: 7px; overflow-wrap: anywhere; color: #c9a6e0; font-size: 11px; font-weight: 650; letter-spacing: .25px; }
+.reader-assistant .ra-question-copy { margin: 0 0 9px; padding: 8px 9px; border: 1px solid #493451; border-radius: 7px; background: #2b1e33; color: #e0cee9; font-size: 12px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.reader-assistant .ra-answer { color: #e0d3e9; font-size: 12px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.reader-assistant .ra-inline-citation { display: inline; margin: 0 1px; padding: 0 4px; border: 1px solid #765691; border-radius: 4px; background: #392849; color: #e2c5fa; font: 600 10px/1.45 'DM Sans', sans-serif; vertical-align: baseline; }
+.reader-assistant .ra-inline-citation:hover { border-color: #c095e8; background: #513765; color: #fff; }
+.reader-assistant .ra-invalid-citation { padding: 0 3px; border-bottom: 1px dashed #c48c78; color: #f1b99f; }
+.reader-assistant .ra-topics { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+.reader-assistant .ra-topics span { padding: 4px 7px; border: 1px solid #5a3e6a; border-radius: 6px; background: #33213f; color: #dec1f0; font-size: 11px; }
+.reader-assistant .ra-sources { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+.reader-assistant .ra-sources > small { flex-basis: 100%; color: #a68cb7; font-size: 11px; }
+.reader-assistant .ra-sources button { display: inline-flex; min-width: min(100%,180px); max-width: 100%; align-items: flex-start; gap: 5px; overflow: hidden; padding: 6px 7px; border: 1px solid #5a4067; border-radius: 6px; background: #281b31; color: #cbaedf; font-size: 11px; text-align: left; }
+.reader-assistant .ra-sources button b { font-weight: 600; }
+.reader-assistant .ra-source-detail { display: grid; min-width: 0; gap: 3px; }
+.reader-assistant .ra-source-detail > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.reader-assistant .ra-source-detail small { display: -webkit-box; overflow: hidden; color: #aa9ab5; font-size: 10px; font-weight: 400; line-height: 1.4; white-space: normal; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.reader-assistant .ra-sources button:hover { border-color: #ae7bc9; background: #3b2547; color: #f4e1ff; }
+.reader-assistant .ra-sources-unverified button { border-color: #6c5741; background: #30271f; }
+.reader-assistant .ra-citation-warning { margin: 7px 0 0; padding: 7px 8px; border-left: 2px solid #d2a76f; background: #30271f; color: #e4c59a; font-size: 10px; line-height: 1.55; }
+.reader-assistant .ra-result-note { margin: 9px 0 0; color: #a78bb8; font-size: 11px; line-height: 1.5; }
+.reader-assistant .ra-save { margin-top: 10px; padding: 5px 7px; border: 1px solid #644773; border-radius: 6px; background: transparent; color: #d2ade8; font-size: 11px; }
+.reader-assistant .ra-save:hover { background: #372341; color: #f0d9ff; }
+.reader-assistant .ra-pending { display: flex; align-items: center; gap: 8px; padding: 10px 0 14px; color: #bfa2d0; font-size: 11px; }
+.reader-assistant .ra-pending span { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: #c199e0; animation: reader-assistant-pulse 1s ease-in-out infinite alternate; }
+@keyframes reader-assistant-pulse { to { opacity: .35; } }
+.reader-assistant .ra-error { margin: 8px 0 12px; padding: 9px 10px; border: 1px solid #8a515c; border-radius: 7px; background: #38212b; color: #f7c2ca; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.reader-assistant .ra-composer { padding-top: 4px; border-top: 1px solid #46344f; }
+.reader-assistant textarea { display: block; width: 100%; min-height: 85px; max-height: 210px; resize: vertical; padding: 10px; border: 1px solid #614970; border-radius: 8px; outline: none; background: #18121e; color: #f1e4fa; font: 12px/1.65 'DM Sans', sans-serif; }
+.reader-assistant textarea::placeholder { color: #9a80ac; }
+.reader-assistant textarea:focus { border-color: #b18bd0; box-shadow: 0 0 0 3px #ad79cc16; }
+.reader-assistant .ra-composer-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 9px; margin: 9px 0 0; }
+.reader-assistant .ra-composer-actions small { flex: 1 1 90px; color: #a68ab7; font-size: 11px; line-height: 1.5; }
+.reader-assistant .ra-submit { min-height: 36px; padding: 7px 11px; border: 1px solid #c8a1eb; border-radius: 7px; background: #ba94e6; color: #21142d; font-size: 12px; font-weight: 700; }
+.reader-assistant .ra-submit:hover { background: #d0aff3; }
+.reader-assistant .ra-stop { min-height: 36px; padding: 7px 12px; border: 1px solid #9d748e; border-radius: 7px; background: #402737; color: #f3d3e6; font-size: 12px; }
+@media (max-width: 720px) { .reader-assistant .ra-conversation { max-height: 340px; } }
+@media (prefers-reduced-motion: reduce) { .reader-assistant .ra-pending span { animation: none; } }

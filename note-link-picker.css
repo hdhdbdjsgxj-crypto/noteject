@@ -1,0 +1,63 @@
+/* Shared note-link picker uses the workspace palette on every platform. */
+dialog.note-picker {
+  box-sizing:border-box; width:min(620px,calc(100vw - 32px)); max-width:none;
+  max-height:calc(100dvh - 32px); margin:auto; padding:0; overflow:hidden;
+  border:1px solid var(--nx-line,#303137); border-radius:20px;
+  background:var(--nx-panel,#1b1c20); color:var(--nx-ink,#e9e9ec);
+  font:14px/1.5 var(--font-ui,'Segoe UI',system-ui,sans-serif); box-shadow:0 24px 90px #0008;
+}
+dialog.note-picker::backdrop { background:#08090dbb; backdrop-filter:blur(3px); }
+.note-picker form { display:flex; flex-direction:column; max-height:min(720px,calc(100dvh - 34px)); min-height:0; margin:0; }
+.note-picker header { display:flex; align-items:flex-start; gap:16px; padding:22px 22px 12px; }
+.note-picker header > div { flex:1; min-width:0; }
+.note-picker h2 { margin:0; font-size:21px; font-weight:650; letter-spacing:-.3px; }
+.note-picker header p { margin:4px 0 0; color:var(--nx-muted); font-size:13px; }
+.note-picker-close { display:grid; flex:0 0 40px; place-items:center; min-width:40px; min-height:40px; padding:0; border:0; border-radius:10px; background:transparent; color:var(--nx-muted); font-family:inherit; font-size:24px; line-height:1; cursor:pointer; }
+.note-picker-filters { display:flex; align-items:flex-end; gap:10px; padding:0 22px; }
+.note-picker-search { display:flex; flex:1; align-items:center; gap:8px; min-width:0; min-height:46px; padding:0 12px; border:1px solid var(--nx-line); border-radius:10px; background:var(--nx-bg); }
+.note-picker-search:focus-within { border-color:var(--nx-accent); box-shadow:0 0 0 2px var(--nx-accent-soft); }
+.note-picker-search > span { font-size:23px; color:var(--nx-accent); }
+dialog.note-picker .note-picker-search input { width:100%; min-width:0; min-height:44px; margin:0; padding:8px 0; border:0!important; outline:0; background:transparent!important; box-shadow:none!important; color:inherit; font:inherit; }
+.note-picker-project { display:grid; flex:0 1 170px; gap:3px; min-width:110px; color:var(--nx-muted); font-size:11px; }
+.note-picker-project select { box-sizing:border-box; min-width:0; width:100%; min-height:46px; padding:8px; border:1px solid var(--nx-line); border-radius:10px; background:var(--nx-bg); color:var(--nx-ink); font-family:inherit; font-size:13px; line-height:1.4; }
+.note-picker-count { flex:none; margin:10px 22px 7px; color:var(--nx-muted); font-size:12px; }
+.note-picker-results { flex:1 1 auto; min-height:90px; overflow:auto; overscroll-behavior:contain; padding:0 12px 10px; scrollbar-width:thin; }
+.note-picker-result { display:flex; align-items:flex-start; gap:12px; box-sizing:border-box; width:100%; min-height:86px; padding:12px 10px; border:1px solid transparent; border-radius:12px; background:transparent; color:inherit; text-align:start; font:inherit; cursor:pointer; }
+.note-picker-result:hover { background:var(--nx-raised); }
+.note-picker-result[aria-pressed=true] { border-color:var(--nx-accent-border); background:var(--nx-accent-soft); }
+.note-picker-icon { display:grid; flex:0 0 34px; place-items:center; width:34px; height:38px; border-radius:9px; background:var(--nx-raised); color:var(--note-picker-color); font-size:24px; }
+.note-picker-copy { display:grid; flex:1; gap:3px; min-width:0; }
+.note-picker-copy strong { display:block; font-family:inherit; font-weight:600; overflow-wrap:anywhere; }
+.note-picker-copy small { color:var(--nx-accent); font-size:11px; overflow-wrap:anywhere; }
+.note-picker-copy > span { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:var(--nx-muted); font-size:12px; }
+.note-picker-empty { padding:30px 14px; text-align:center; color:var(--nx-muted); }
+.note-picker-empty strong { color:var(--nx-ink); font-size:15px; }
+.note-picker-empty p { margin:6px 0; }
+.note-picker footer { display:flex; flex:none; align-items:center; gap:12px; padding:14px 22px 18px; border-top:1px solid var(--nx-line); }
+.note-picker-selection { flex:1; min-width:0; margin:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:12px; color:var(--nx-muted); }
+.note-picker footer > div { display:flex; flex:none; gap:8px; }
+.note-picker footer button { min-height:44px; height:auto; padding:10px 14px; font:600 13px/1.4 var(--font-ui,'Segoe UI',system-ui,sans-serif); cursor:pointer; }
+.note-picker footer .primary { background:var(--nx-accent); color:var(--nx-accent-ink); border:1px solid var(--nx-accent); }
+.note-picker footer button:disabled { opacity:.4; cursor:default; }
+.note-picker :is(button,select):focus-visible { outline:2px solid var(--nx-accent); outline-offset:-2px; }
+@media(max-width:600px) {
+  dialog.note-picker { width:calc(100vw - 16px); margin:auto auto max(8px,env(safe-area-inset-bottom)); border-radius:20px; }
+  .note-picker form { max-height:calc(100dvh - 32px - env(safe-area-inset-bottom,0px)); }
+  .note-picker header { padding:18px 16px 12px; }
+  .note-picker-filters { flex-wrap:wrap; padding:0 16px; gap:8px; }
+  .note-picker-search { flex-basis:100%; }
+  .note-picker-search input { font-size:16px; }
+  .note-picker-project { display:flex; flex:1; align-items:center; gap:10px; }
+  .note-picker-project select { flex:1; min-height:40px; }
+  .note-picker-count { margin-inline:16px; }
+  .note-picker footer { flex-wrap:wrap; gap:8px; padding:12px 16px 16px; }
+  .note-picker-selection { flex-basis:100%; }
+  .note-picker footer > div { width:100%; }
+  .note-picker footer button { flex:1; min-height:46px; }
+}
+@media(max-height:520px) {
+  .note-picker header { padding-block:10px 6px; }
+  .note-picker header p,.note-picker-selection { display:none; }
+  .note-picker footer { padding-block:8px; justify-content:flex-end; }
+  .note-picker-results { min-height:60px; }
+}

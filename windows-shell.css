@@ -1,0 +1,216 @@
+/* Windows desktop shell: native OS frame and menu above a persistent workspace. */
+html.nw-desktop-pending body { visibility:hidden; }
+body.windows-app { --nw-sidebar-width:248px; --nw-toolbar-height:56px; --nw-status-height:26px; --font-ui:"Segoe UI Variable","Segoe UI",system-ui,sans-serif; --accent:#c8afff; --surface:#1b2531; --surface-raised:#202d3b; --line:#334052; --muted:#9baabd; background:#111820; color:#e4eaf3; min-width:760px; height:100dvh; min-height:0; overflow:hidden; font:13px/1.45 var(--font-ui); color-scheme:dark; }
+body.windows-app :is(button,input,select,textarea,summary,h1,h2,h3,h4,strong,b) { font-family:var(--font-ui); }
+body.windows-app [hidden] { display:none !important; }
+body.windows-app :is(button,summary) { cursor:default; }
+body.windows-app :is(button,input,select,textarea,a,summary,[tabindex]):focus-visible { outline:2px solid #91b5ff; outline-offset:2px; }
+body.windows-app .app { position:relative;display:grid;grid-template-columns:var(--nw-sidebar-width) minmax(0,1fr);grid-template-rows:minmax(0,1fr);width:100%;height:calc(100dvh - var(--nw-status-height));min-height:0;overflow:hidden; }
+body.windows-app .app>.sidebar { position:relative;inset:auto;grid-column:1;grid-row:1;width:100%;height:100%;min-height:0;padding:0 12px 8px;display:flex;flex-direction:column;border-right:1px solid #36445b;background:#1b2535;z-index:12;overflow:hidden;border-radius:0; }
+body.windows-app .sidebar .brand { flex:0 0 68px;display:flex;align-items:center;gap:7px;padding:10px 2px 8px;margin:0;font-size:18px; }
+body.windows-app .brand-home { min-width:0;display:flex;align-items:center;gap:9px;background:transparent;border:0;padding:0;color:#edf2fa; }
+body.windows-app .brand-icon { width:28px;height:28px;flex:0 0 28px;background:transparent;border-radius:6px; }
+body.windows-app .brand-icon img { width:100%;height:100%;display:block; }
+body.windows-app .brand .gear { display:inline-flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;padding:0;margin:0;border-radius:8px;background:transparent;border:0;color:#a6b4c9;font-size:16px;line-height:1; }
+body.windows-app .brand #backup { margin-left:auto; }
+body.windows-app .brand #open-settings { display:inline-flex; }
+body.windows-app .sidebar .workspace-nav-scroll { flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:0 1px 10px;scrollbar-gutter:stable; }
+body.windows-app .sidebar .nav-item { width:100%;height:42px;min-height:42px;padding:0 12px;margin:2px 0;border:0;border-radius:12px;display:flex;align-items:center;gap:10px;font-size:13px;color:#b1bfd6;background:transparent;text-align:left; }
+body.windows-app .sidebar .nav-item:hover { background:#273349;color:#eef0f7; }
+body.windows-app .sidebar .nav-item.active { position:relative;background:#362b49;color:#f0e7ff; }
+body.windows-app .sidebar .nav-item.active::before { display:none; }
+body.windows-app .sidebar .nav-item>span:first-child { width:18px;flex:0 0 18px;color:#9cb4d7; }
+body.windows-app .sidebar .nav-item svg { display:block;width:18px;height:18px;fill:none;stroke:currentColor; }
+body.windows-app .sidebar .nav-item small { margin-left:auto;font-size:11px;color:#a4b5ce; }
+body.windows-app .sidebar .board-link { height:30px;min-height:30px;font-size:12px;padding-left:10px; }
+body.windows-app #boards { margin:0 0 0 13px;padding-left:9px;border-left:1px solid #37475c; }
+body.windows-app .board-nav-row { display:flex;align-items:center;min-width:0; }
+body.windows-app .board-nav-row .board-link { flex:1;min-width:0; }
+body.windows-app .board-title { overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0; }
+body.windows-app .board-delete { flex:0 0 24px;width:24px;height:26px;min-width:0;min-height:0;opacity:0;border:0;background:transparent;color:#e9a7b6;border-radius:3px; }
+body.windows-app .board-nav-row:hover .board-delete,body.windows-app .board-delete:focus-visible { opacity:1; }
+body.windows-app .nw-new-board,body.windows-app .nw-project-new { margin:0 0 6px 24px;padding:5px 8px;min-height:26px;background:transparent;border:0;color:#a7c4fa;font-size:12px;text-align:left; }
+body.windows-app .nw-sidebar-new { display:flex;align-items:center;gap:10px;flex:0 0 35px;width:100%;height:35px;min-height:35px;margin:0 0 16px;padding:0 11px; }
+body.windows-app .nw-sidebar-new svg { width:16px;height:16px; }
+body.windows-app .nw-sidebar-new kbd { margin-left:auto;color:#203558;font-size:11px;font-weight:400; }
+body.windows-app .nw-nav-section { margin:16px 9px 8px;font-size:10px;letter-spacing:1.25px;color:#8297b5; }
+body.windows-app .nw-project-list { margin-left:13px;border-left:1px solid #37475c;padding-left:9px; }
+body.windows-app .nw-project-row { display:flex;align-items:center;gap:2px;min-width:0; }
+body.windows-app .nw-project-open { display:flex;align-items:center;gap:8px;flex:1;min-width:0;width:100%;min-height:29px;padding:4px 8px;border:0;border-radius:4px;background:transparent;color:#afc1da;text-align:left;font-size:12px; }
+body.windows-app .nw-project-open:hover { background:#27364a;color:#edf3ff; }
+body.windows-app .nw-project-open>span { overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+body.windows-app .nw-project-open i { flex:0 0 7px;width:7px;height:7px;border-radius:2px;background:#b4a1ef; }
+body.windows-app .nw-project-row[data-color=blue] i { background:#8bb8ff; } body.windows-app .nw-project-row[data-color=teal] i { background:#71ccbd; } body.windows-app .nw-project-row[data-color=amber] i { background:#e4be77; } body.windows-app .nw-project-row[data-color=rose] i { background:#e49bb5; } body.windows-app .nw-project-row[data-color=gray] i { background:#a9b5c8; }
+body.windows-app .nw-project-manage { opacity:0;flex:0 0 25px;width:25px;height:26px;min-height:0;border:0;background:transparent;color:#bdcfea;font-size:20px;padding:0; }
+body.windows-app .nw-project-row:hover .nw-project-manage,body.windows-app .nw-project-row:focus-within .nw-project-manage { opacity:1; }
+body.windows-app .nw-project-new { margin:2px 0; }
+body.windows-app .sidebar-bottom { flex:0 0 auto;margin:0;border-top:1px solid #304055; }
+body.windows-app .sidebar .saved { padding:8px 9px;font-size:11px;border:0;color:#95a9c3; }
+body.windows-app .sidebar-settings,body.windows-app .nw-sidebar-settings { margin-top:7px; }
+body.windows-app .nw-sidebar-settings>svg { width:18px;height:18px; }
+body.windows-app .nw-sidebar-settings kbd { margin-left:auto;color:#8fa3bf;font-size:10px; }
+body.windows-app .app>.main { grid-column:2;grid-row:1;position:relative;display:flex;flex-direction:column;min-width:0;min-height:0;width:100%;height:100%;margin:0;padding:0;background:#111820;overflow:hidden; }
+body.windows-app .topbar { display:flex;align-items:center;gap:14px;flex:0 0 var(--nw-toolbar-height);height:var(--nw-toolbar-height);min-height:0;padding:0 20px;background:#17212d;border-bottom:1px solid #2d3b4d;color:#93a6c0;font-size:12px; }
+body.windows-app .topbar>div:not(.nw-location-controls):not(.top-right) { min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+body.windows-app .topbar b { color:#e3ebf9;font-size:13px;font-weight:500; }
+body.windows-app .topbar .slash { padding:0 7px;color:#5e7495; }
+body.windows-app .top-right { gap:9px;flex:0 1 auto;min-width:0; }
+body.windows-app .nw-location-controls { display:flex;align-items:center;gap:2px;flex:0 0 auto; }
+body.windows-app .nw-icon-button { display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;min-width:30px;min-height:30px;padding:4px;border:1px solid transparent;border-radius:4px;background:transparent;color:#a9bedb;font-size:19px; }
+body.windows-app .nw-icon-button:hover { background:#26364b;border-color:#3f526c;color:#eef4ff; }
+body.windows-app .nw-icon-button:disabled { opacity:.35; }
+body.windows-app .nw-icon-button svg { width:18px;height:18px; }
+body.windows-app .topbar .search { display:flex;align-items:center;gap:8px;width:clamp(190px,25vw,390px);height:32px;min-height:0;padding:0 10px;border:1px solid #3b4c64;border-radius:5px;background:#111b28;color:#8ba4c7; }
+body.windows-app .search input { width:100%;min-width:0;font-size:12px;color:#e1eafa; }
+body.windows-app .search:focus-within { border-color:#8fb4f9;box-shadow:0 0 0 1px #8fb4f9; }
+body.windows-app .search kbd { white-space:nowrap;font-size:10px;color:#8da6c9;border-color:#3a4e6c; }
+body.windows-app .nw-toolbar-new { height:31px;min-height:0;padding:0 13px;border:1px solid #536f95;border-radius:4px;background:#2c466a;color:#e4edfd;font-size:12px;white-space:nowrap; }
+body.windows-app .topbar .nw-toolbar-new { display:inline-flex;align-items:center;justify-content:center;min-height:36px;height:36px;padding:0 13px;line-height:1; }
+body.windows-app #workspace-commands { width:32px;height:31px;min-height:0;overflow:hidden;font-size:0;padding:0;background:#202e42;border:1px solid #405370;border-radius:4px; }
+body.windows-app #workspace-commands::before { content:"⌘";font-size:17px;color:#b4c8e6; }
+body.windows-app #view { position:relative;flex:1 1 0;min-width:0;min-height:0;width:100%;padding:24px 28px 30px;overflow:auto;scrollbar-gutter:stable; }
+body.windows-app .page-head { min-height:86px;padding:0 0 20px;gap:16px; }
+body.windows-app .page-head h1 { margin:4px 0 5px;font-size:27px;font-weight:600;letter-spacing:-.6px; }
+body.windows-app .eyebrow,body.windows-app .workspace-eyebrow { font-size:10px;color:#91a9cb;letter-spacing:1.2px; }
+body.windows-app .page-head p { font-size:13px;color:#9eb0c8; }
+body.windows-app :is(.primary,.secondary,.workspace-small-button) { height:32px;min-height:32px;padding:0 12px;border-radius:5px;font-size:12px;line-height:1.4; }
+body.windows-app .primary { color:#142238;border:1px solid #adcaff;background:#91b5ff; }
+body.windows-app .primary:hover { background:#a9c8ff; }
+body.windows-app .secondary { color:#cfddf4;border:1px solid #41546e;background:#25354a; }
+body.windows-app .secondary:hover { background:#30445e; }
+body.windows-app :is(input,select,textarea) { border-color:#3d526f;border-radius:4px;background:#131f2f;color:#e4edfa; }
+body.windows-app :is(input,select) { min-height:30px;font-size:13px; }
+body.windows-app textarea { font-size:14px;line-height:1.65; }
+body.windows-app kbd { font-family:var(--font-ui); }
+body.windows-app .nw-statusbar { position:fixed;display:flex;align-items:center;justify-content:space-between;gap:16px;inset:auto 0 0;height:var(--nw-status-height);padding:0 14px;border-top:1px solid #34465e;background:#172638;color:#98aecb;font-size:11px;z-index:20;user-select:none; }
+body.windows-app .nw-status-left,body.windows-app .nw-status-right { display:flex;align-items:center;gap:9px;min-width:0; }
+body.windows-app .nw-ready-dot { flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:#78c7ae; }
+body.windows-app .nw-statusbar button { border:0;background:transparent;color:#b3c6e3;font-size:11px;padding:0 4px; }
+body.windows-app .nw-sidebar-resizer { position:absolute;top:0;bottom:0;left:calc(var(--nw-sidebar-width) - 3px);width:6px;cursor:col-resize;z-index:18; }
+body.windows-app .nw-sidebar-resizer:hover,body.windows-app .nw-sidebar-resizer:focus-visible { background:#8fb4ff88; }
+body.windows-app.nw-resizing { cursor:col-resize;user-select:none; }
+body.windows-app.nw-sidebar-hidden .app { grid-template-columns:0 minmax(0,1fr); }
+body.windows-app.nw-sidebar-hidden .sidebar,body.windows-app.nw-sidebar-hidden .nw-sidebar-resizer { display:none; }
+body.windows-app.nw-compact { --nw-toolbar-height:46px; }
+body.windows-app.nw-compact .sidebar .nav-item { height:29px;min-height:29px;margin:0; }
+body.windows-app.nw-compact #view { padding:18px 22px 24px; }
+body.windows-app.nw-compact .page-head { min-height:70px;padding-bottom:14px; }
+body.windows-app[data-nw-page=home] #view>:not(.home-hero):not(.stats-row):not(.home-lower):not(.detail-panel) { display:none; }
+body.windows-app .nw-home { max-width:1500px;margin:0 auto; }
+body.windows-app .nw-home-hero { padding:12px 0 27px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:26px;align-items:center;border-bottom:1px solid #2d4059; }
+body.windows-app .nw-eyebrow { color:#9fb9dd;font-size:10px;letter-spacing:1.6px; }
+body.windows-app .nw-home h1 { max-width:650px;margin:9px 0 12px;font-size:clamp(28px,2.7vw,40px);font-weight:600;letter-spacing:-1.1px;line-height:1.2; }
+body.windows-app .nw-home-hero p { margin:0;color:#9cb0cc;font-size:14px;line-height:1.6; }
+body.windows-app .nw-home-actions { display:grid;gap:8px;min-width:215px; }
+body.windows-app .nw-home-actions>button { display:flex;align-items:center;gap:12px;min-height:58px;padding:9px 15px;border:1px solid #3c5678;border-radius:7px;background:#1d3049;color:#e2edff;text-align:left; }
+body.windows-app .nw-home-actions>button:first-child { background:#2b476e;border-color:#739bd3; }
+body.windows-app .nw-home-actions button:hover { background:#304d73; }
+body.windows-app .nw-home-actions svg { width:22px;height:22px;flex:0 0 22px;color:#9fbeef; }
+body.windows-app .nw-home-actions strong { display:block;font-size:14px;font-weight:600; }
+body.windows-app .nw-home-actions small { display:block;margin-top:2px;font-size:11px;color:#aec3e2; }
+body.windows-app .nw-home-stats { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));padding:20px 0 28px;gap:12px; }
+body.windows-app .nw-home-stats button { display:flex;align-items:baseline;gap:10px;padding:13px 18px;border:1px solid #31445e;border-radius:6px;background:#192739;color:#b2c7e3;text-align:left; }
+body.windows-app .nw-home-stats strong { font-size:24px;font-weight:500;color:#dbe9ff; }
+body.windows-app .nw-home-columns { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px; }
+body.windows-app .nw-home-column { min-width:0; }
+body.windows-app .nw-home-item small { overflow-wrap:anywhere; }
+body.windows-app .nw-home-section { margin:0 0 28px;min-width:0; }
+body.windows-app .nw-home-section>header { display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:12px; }
+body.windows-app .nw-home-section h2 { margin:0;font-size:18px;font-weight:600; }
+body.windows-app .nw-home-section>header button { font-size:12px;padding:4px 0;border:0;background:transparent;color:#a7c6f7; }
+body.windows-app .nw-home-items { min-height:140px;border:1px solid #30435e;border-radius:7px;overflow:hidden;background:#182436; }
+body.windows-app .nw-home-item { display:flex;align-items:center;gap:12px;min-width:0;width:100%;padding:13px 15px;border:0;border-bottom:1px solid #2b3d55;background:transparent;color:#e0eafb;text-align:left; }
+body.windows-app .nw-home-item:last-child { border-bottom:0; }
+body.windows-app .nw-home-item:hover { background:#263b57; }
+body.windows-app .nw-item-glyph { display:grid;place-items:center;flex:0 0 32px;width:32px;height:36px;color:#a0bff1;border:1px solid #3e577b;border-radius:5px;background:#223853; }
+body.windows-app .nw-item-glyph svg { width:19px;height:19px; }
+body.windows-app .nw-home-item-copy { flex:1;min-width:0; }
+body.windows-app .nw-home-item strong { display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px;font-weight:500; }
+body.windows-app .nw-home-item small { display:block;margin-top:4px;color:#8fa8cb;font-size:11px; }
+body.windows-app .nw-item-arrow { color:#92afd8; }
+body.windows-app .nw-home-boards { display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px; }
+body.windows-app .nw-home-boards>button { min-width:0;min-height:120px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;padding:17px;border:1px solid #38516e;border-radius:7px;background:#192a3f;color:#d9e7ff;text-align:left; }
+body.windows-app .nw-home-boards>button:hover { background:#263d5b; }
+body.windows-app .nw-home-boards svg { width:25px;height:25px;color:#99baf0; }
+body.windows-app .nw-home-boards strong { max-width:100%;font-size:14px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+body.windows-app .nw-home-boards small { font-size:11px;color:#94acce; }
+body.windows-app .nw-home-boards>.nw-home-new-board { border-style:dashed;align-items:center;color:#a2bce1; }
+body.windows-app .nw-empty-copy { padding:17px 19px;line-height:1.7;color:#96adcf;font-size:13px; }
+body.windows-app .nw-text-dialog { width:430px;max-width:calc(100vw - 60px);padding:24px;border:1px solid #566c8c;border-radius:8px;background:#1c293b;color:#e5edfb;box-shadow:0 14px 60px #0008; }
+body.windows-app .nw-text-dialog::backdrop { background:#050a1380; }
+body.windows-app .nw-text-dialog h2 { margin:0 0 14px;font-size:21px;font-weight:600; }
+body.windows-app .nw-dialog-description { margin:0 0 20px;color:#a5b9d7;line-height:1.6;font-size:13px; }
+body.windows-app .nw-dialog-field { display:grid;gap:8px;font-size:12px;color:#b5c9e7; }
+body.windows-app .nw-dialog-field input { width:100%;height:35px;padding:7px 10px;font-size:14px;border:1px solid #627fa6;background:#111e30;color:#e7effa; }
+body.windows-app .nw-text-dialog footer { display:flex;justify-content:flex-end;gap:9px;margin-top:22px; }
+body.windows-app .nw-dialog-error { color:#ffc3cf;font-size:12px; }
+body.windows-app .nw-note-draft { display:flex;align-items:center;gap:10px;padding:8px 0;color:#a9bfdc;font-size:11px; }
+body.windows-app .nw-note-draft button { min-height:25px;padding:3px 7px;background:#253b57;border:1px solid #4e6789;border-radius:4px;color:#d9e8ff;font-size:11px; }
+body.windows-app .toast { bottom:42px;border-radius:6px;background:#243d5d;color:#e3eeff;border:1px solid #6383ae;font-size:13px;padding:11px 17px; }
+body.windows-app .command-menu-overlay { background:#070d158c; }
+body.windows-app .command-menu { width:600px;max-width:90vw;max-height:74dvh;border:1px solid #536f98;border-radius:8px;background:#1a293d; }
+body.windows-app .command-menu-option { min-height:52px;border-radius:4px; }
+body.windows-app .command-menu-option.is-active { background:#2c466d; }
+body.windows-app .command-menu-option-label { font-size:14px; }
+body.windows-app .command-menu-option-description { font-size:12px;color:#9fb4d2; }
+@media(max-width:1100px) { body.windows-app .nw-home-hero { grid-template-columns:minmax(0,1fr);gap:20px; } body.windows-app .nw-home-actions { grid-template-columns:repeat(3,minmax(0,1fr)); } body.windows-app .nw-home-actions>button { padding:10px; } body.windows-app .nw-home-actions small { font-size:10px; } body.windows-app .nw-home-columns { gap:16px; } body.windows-app .nw-home-stats button { padding:10px;gap:7px; } body.windows-app .topbar { gap:7px;padding:0 13px; } body.windows-app .topbar .search { width:220px; } body.windows-app .nw-density-toggle { display:none; } }
+@media(max-width:900px) { body.windows-app #view { padding:20px; } body.windows-app .nw-home-columns { grid-template-columns:minmax(0,1fr); } body.windows-app .topbar>div:not(.nw-location-controls):not(.top-right) { font-size:0; } body.windows-app .topbar .search { width:210px; } body.windows-app .nw-home-stats { gap:6px; } body.windows-app .nw-home-stats strong { font-size:21px; } body.windows-app .nw-home-stats span { font-size:11px; } }
+@media(prefers-reduced-motion:reduce) { body.windows-app * { scroll-behavior:auto!important;transition:none!important; } }
+
+/* Shared workspace menu styling: web and Windows follow the Android menu order and lavender active state. */
+html.noteject-web {
+  --web-menu-surface: #1d1b24;
+  --web-menu-raised: #26232e;
+  --web-menu-hover: #332b40;
+  --web-menu-border: #494153;
+  --web-menu-ink: #ebe7f3;
+  --web-menu-muted: #aaa2b8;
+  --web-menu-accent: #c1a9ff;
+}
+html.noteject-web .app>.sidebar { background:#19181f;border-right-color:#302d38; }
+html.noteject-web .sidebar .workspace-nav-scroll { padding:0 1px 10px; }
+html.noteject-web .sidebar .nav-item { height:42px;min-height:42px;margin:2px 0;padding:0 12px;border-radius:12px;color:#bbb4c8; }
+html.noteject-web .sidebar .nav-item:hover { background:#28252f;color:#f0ecf7; }
+html.noteject-web .sidebar .nav-item.active { background:#332940;color:#f2eaff; }
+html.noteject-web .sidebar .nav-item>span:first-child { color:#c1a9ff; }
+html.noteject-web .sidebar .nav-label { color:#9d95aa; }
+html.noteject-web .sidebar .board-link { min-height:38px;height:38px;border-radius:10px; }
+html.noteject-web .sidebar .saved { border-top:1px solid #302d38;color:#b4adbf; }
+body.windows-app .sidebar .nav-item>span:first-child { color:#c1a9ff; }
+body.windows-app .sidebar .board-link { height:38px;min-height:38px;border-radius:10px; }
+body.windows-app .brand #open-settings:hover,body.windows-app .brand #backup:hover { border-radius:10px;background:#28252f;color:#f1eaff; }
+body.windows-app :is(button,input,select,textarea,a,summary,[tabindex]):focus-visible { outline-color:#c8afff; }
+html.noteject-web .sidebar .brand #backup { margin-left:auto; }
+html.noteject-web .sidebar .brand #open-settings { margin-left:0; }
+html.noteject-web .sidebar .brand .gear { display:inline-flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;padding:0;border-radius:8px;line-height:1; }
+:is(body.windows-app,html.noteject-web) .sidebar .brand .gear svg { display:block;flex:none;width:18px;height:18px;pointer-events:none; }
+html.noteject-web .sidebar .nav-label.row { color:#9d95aa; }
+html.noteject-web .sidebar .nav-label:not(.row),
+html.noteject-web .sidebar .nav-label.row,
+html.noteject-web .sidebar #boards,
+html.noteject-web .sidebar #new-board,
+body.windows-app .sidebar #nw-project-list,
+body.windows-app .sidebar #boards,
+body.windows-app .sidebar #new-board { display:none !important; }
+
+/* Keep web pop-up menus on the same charcoal and lavender palette as navigation. */
+html.noteject-web :is(.note-folder-menu > div,.board-view-options-menu,.reader-reading-popover,.reader-document-options,.note-more-tools,.reader-workspace .reader-popover > :not(summary)) {
+  border-color: var(--web-menu-border);
+  background: var(--web-menu-surface);
+  color: var(--web-menu-ink);
+  box-shadow: 0 14px 36px #0009;
+}
+html.noteject-web :is(.note-folder-menu > div button,.board-view-options-menu label,.reader-document-options button,.note-more-tools button) { color: var(--web-menu-ink); }
+html.noteject-web :is(.note-folder-menu > div button:hover,.board-view-options-menu label:hover,.reader-document-options button:hover,.note-more-tools button:hover) { background: var(--web-menu-hover); }
+html.noteject-web .note-folder-menu > div button:last-child { color: #e6a1aa; }
+html.noteject-web .board-view-options-menu input { accent-color: var(--web-menu-accent); }
+html.noteject-web .board-view-menu,
+html.noteject-web .note-more-menu > summary { border-color: var(--web-menu-border);background:var(--web-menu-raised);color:var(--web-menu-ink); }
+html.noteject-web .reader-workspace .reader-popover select { border-color:var(--web-menu-border);background:var(--web-menu-raised);color:var(--web-menu-ink); }
+html.noteject-web .reader-workspace .reader-document-options .reader-menu-glyph { color:var(--web-menu-accent); }
+html.noteject-web .reader-reading-menu > summary { border-color:var(--web-menu-border);background:var(--web-menu-raised);color:var(--web-menu-accent); }
+html.noteject-web .reader-reading-popover > b { color:var(--web-menu-ink); }
+html.noteject-web .command-menu { border-color:var(--web-menu-border);background:var(--web-menu-surface); }
+html.noteject-web .command-menu-option.is-active { border-color:#695783;background:var(--web-menu-hover); }
+html.noteject-web .command-menu-option-label { color:var(--web-menu-ink); }
+html.noteject-web .command-menu-option-description { color:var(--web-menu-muted); }

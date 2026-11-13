@@ -1,0 +1,26 @@
+{
+  "android": {
+    "version": "1.10.53",
+    "url": "https://xqbceyeepmyjr76p.public.blob.vercel-storage.com/Noteject-Android-1.10.53.apk",
+    "bytes": 284395806,
+    "sha256": "59d56aacae45aebf36c198f7ab5658e78b8ebcd303b232d23af1b130473081ac"
+  },
+  "windows": {
+    "version": "0.2.57",
+    "url": "https://xqbceyeepmyjr76p.public.blob.vercel-storage.com/Noteject-Setup-0.2.57-x64.exe",
+    "bytes": 149659270,
+    "sha256": "7266d34c3bf17c5c5d97afa837ce56fced104391ea546e06761a12010c5bb5f3"
+  },
+  "macArm64": {
+    "version": "0.2.56",
+    "url": "https://xqbceyeepmyjr76p.public.blob.vercel-storage.com/Noteject-Mac-0.2.56-arm64-development.dmg",
+    "bytes": 146900849,
+    "sha256": "7cb902ce45c2607888900b399ef1c3126e4a6365ab8716583b46379ac2af6af8"
+  },
+  "macX64": {
+    "version": "0.2.56",
+    "url": "https://xqbceyeepmyjr76p.public.blob.vercel-storage.com/Noteject-Mac-0.2.56-x64-development.dmg",
+    "bytes": 149460712,
+    "sha256": "b8101e2b2ea813c1344fa92fe01fe95b114ab277105bcd4d767fd1255f89008a"
+  }
+}

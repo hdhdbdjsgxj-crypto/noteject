@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shortcut_new_note_short">Нова нотатка</string>
+    <string name="shortcut_new_note_long">Створити нову нотатку</string>
+    <string name="shortcut_new_recording_short">Новий запис</string>
+    <string name="shortcut_new_recording_long">Відкрити диктофон</string>
+    <string name="widget_new_note_name">noteject · Нова нотатка</string>
+    <string name="widget_new_recording_name">noteject · Новий запис</string>
+    <string name="widget_new_note_description">Відкриває нову нотатку в Noteject одним дотиком.</string>
+    <string name="widget_new_recording_description">Відкриває диктофон Noteject одним дотиком.</string>
+    <string name="widget_new_note_hint">Зберегти ідею</string>
+    <string name="widget_new_recording_hint">Записати думки</string>
+</resources>

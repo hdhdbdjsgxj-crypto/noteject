@@ -1,0 +1,26 @@
+noteject offline speech components
+
+Vosk API 0.3.75, Alpha Cephei Inc. and Vosk contributors
+https://github.com/alphacep/vosk-api
+Licensed under Apache License 2.0. Full text: AUDIO-APACHE-2.0.txt.
+
+English speech model: vosk-model-small-en-us-0.15
+https://alphacephei.com/vosk/models
+https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip
+Licensed under Apache License 2.0, as listed in the official model catalog.
+Original archive is bundled unchanged. SHA-256:
+30F26242C4EB449F948E42CB302DD7A686CB29A3423A8367F99FF41780942498
+
+English speech model (Better accuracy): vosk-model-en-us-0.22-lgraph
+https://alphacephei.com/vosk/models
+https://alphacephei.com/vosk/models/vosk-model-en-us-0.22-lgraph.zip
+Licensed under Apache License 2.0, as listed in the official model catalog.
+Original archive is bundled unchanged. SHA-256:
+D9838B4AAA82A75C4A17F5ACA300EACA129AAAB2A7CBF951BAFBB500EB9C4334
+
+Java Native Access (JNA) 5.18.1, JNA contributors
+https://github.com/java-native-access/jna
+JNA is dual licensed under Apache-2.0 OR LGPL-2.1-or-later.
+This distribution uses Apache License 2.0.
+Original license statement: AUDIO-JNA-LICENSE.txt.
+Full Apache license: AUDIO-APACHE-2.0.txt.

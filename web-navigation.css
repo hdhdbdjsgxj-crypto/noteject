@@ -1,0 +1,40 @@
+html.noteject-web .topbar > .web-history {
+  display: flex; flex: 0 0 auto; align-items: center; gap: 4px; width: auto;
+  min-width: 0; overflow: visible;
+}
+.noteject-web .web-history-button {
+  display: grid; place-items: center; flex: 0 0 32px; width: 32px; min-width: 32px;
+  height: 32px; min-height: 32px; padding: 0; border: 1px solid var(--nx-line);
+  border-radius: 8px; background: var(--nx-raised); color: var(--nx-ink);
+  font: 20px/1 system-ui,sans-serif; cursor: pointer;
+}
+.noteject-web .web-history-button:hover:not(:disabled) { background: var(--nx-accent-soft); border-color: var(--nx-accent-border); }
+.noteject-web .web-history-button:disabled { opacity: .35; cursor: default; }
+.noteject-web .web-history-button:focus-visible { outline: 2px solid var(--nx-accent); outline-offset: 2px; }
+.noteject-web .topbar > .web-location { flex: 1 1 120px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (min-width:960px) and (max-width:1200px) {
+  .noteject-web .topbar { flex-wrap: wrap; height: auto; min-height: 60px; padding-block: 8px; gap: 8px; }
+  .noteject-web .topbar .top-right { flex: 1 1 380px; min-width: 0; justify-content: flex-end; gap: 8px; }
+  .noteject-web .topbar .search { flex: 1 1 225px; min-width: 140px; }
+}
+@media (max-width:959px) {
+  .noteject-web .web-history-button { flex-basis: 44px; width: 44px; min-width: 44px; height: 44px; min-height: 44px; border-radius: 12px; }
+  html.noteject-web .topbar > .web-location { display: none; }
+  .noteject-web .reader-workspace .reader-commandbar > .web-history {
+    display: flex; flex: 0 0 auto; align-items: center; gap: 4px; width: auto; min-width: 0;
+    overflow: visible; padding-right: 6px; border-right: 1px solid var(--reader-line);
+  }
+  .noteject-web .reader-workspace .reader-commandbar > .web-history .web-history-button {
+    flex: 0 0 44px; width: 44px; min-width: 44px; height: 44px; min-height: 44px;
+    border-color: #3c4350; background: #232933; color: #e7ebf3;
+  }
+  .noteject-web .reader-workspace .reader-shell > .web-history-reader-row {
+    display: flex; flex: 0 0 52px; align-items: center; gap: 4px; width: 100%; min-width: 0;
+    min-height: 52px; padding: 4px 9px; overflow: visible; border-bottom: 1px solid var(--reader-line);
+    background: var(--reader-chrome, #191c23);
+  }
+  .noteject-web .reader-workspace .reader-shell > .web-history-reader-row .web-history-button {
+    flex: 0 0 44px; width: 44px; min-width: 44px; height: 44px; min-height: 44px;
+    border-color: #3c4350; background: #232933; color: #e7ebf3;
+  }
+}

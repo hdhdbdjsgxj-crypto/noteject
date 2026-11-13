@@ -1,0 +1,90 @@
+{
+  "name": "noteject",
+  "version": "0.2.57",
+  "private": true,
+  "description": "Local-first visual notes and document reader",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "powershell -ExecutionPolicy Bypass -File .\\Start-Noteject.ps1",
+    "sync:dist": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Sync-Distribution-Assets.ps1",
+    "sync:android": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\android\\Sync-Android-Assets.ps1",
+    "build:web": "node scripts/build-vercel.mjs",
+    "build:apple-web": "npm run build:web && node scripts/build-apple-web.mjs",
+    "apple:add-ios": "npm run build:apple-web && cap add ios",
+    "apple:sync-ios": "npm run build:apple-web && cap sync ios && node scripts/prepare-ios-project.mjs",
+    "apple:ipa:unsigned": "node scripts/build-ios.mjs",
+    "apple:open-ios": "cap open ios",
+    "apple:build-mac": "node scripts/build-mac.mjs",
+    "apple:install-windows-tools": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-apple-windows-tools.ps1",
+    "apple:build-mac-windows": "node scripts/build-mac-windows.mjs",
+    "source:agpl": "node scripts/build-agpl-source.mjs",
+    "test:cloud": "npm run build:web && node --test tests/cloud-billing.api.test.cjs tests/cloud-billing.database.test.cjs tests/cloud-billing.browser.test.cjs",
+    "test:web-storage": "npm run build:web && node --test tests/web-files-cloud.browser.test.cjs",
+    "test:web-management": "npm run build:web && node --test tests/web-management.browser.test.cjs",
+    "build:android": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\android\\Build-Android.ps1",
+    "desktop:dev": "electron .",
+    "desktop:installer": "powershell -NoProfile -ExecutionPolicy Bypass -File .\\Build-Windows-Installer.ps1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.6.0",
+    "@capacitor/core": "^8.6.0",
+    "@capacitor/ios": "^8.6.0",
+    "@electric-sql/pglite": "^0.5.13",
+    "@electron/asar": "3.4.1",
+    "@electron/get": "5.1.0",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "playwright": "^1.64.1",
+    "plist": "3.1.0",
+    "yauzl": "3.4.0"
+  },
+  "build": {
+    "appId": "com.noteject.desktop",
+    "productName": "noteject",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": ".desktop-build/app",
+        "to": "app",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "dist/runtime/node.exe",
+        "to": "runtime/node.exe"
+      },
+      {
+        "from": ".desktop-build/legacy-projects-location.json",
+        "to": "legacy-projects-location.json"
+      }
+    ],
+    "win": {
+      "icon": "desktop/noteject.ico",
+      "target": [
+        "nsis"
+      ],
+      "artifactName": "Noteject-Setup-${version}-${arch}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "noteject",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "stripe": "^23.1.0"
+  }
+}

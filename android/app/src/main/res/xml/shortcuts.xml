@@ -1,0 +1,8 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:shortcutId="new-note" android:enabled="true" android:icon="@drawable/ic_quick_note" android:shortcutShortLabel="@string/shortcut_new_note_short" android:shortcutLongLabel="@string/shortcut_new_note_long">
+        <intent android:action="com.noteject.app.action.NEW_NOTE" android:targetPackage="com.noteject.app" android:targetClass="com.noteject.app.MainActivity" />
+    </shortcut>
+    <shortcut android:shortcutId="new-recording" android:enabled="true" android:icon="@drawable/ic_quick_recording" android:shortcutShortLabel="@string/shortcut_new_recording_short" android:shortcutLongLabel="@string/shortcut_new_recording_long">
+        <intent android:action="com.noteject.app.action.NEW_RECORDING" android:targetPackage="com.noteject.app" android:targetClass="com.noteject.app.MainActivity" />
+    </shortcut>
+</shortcuts>

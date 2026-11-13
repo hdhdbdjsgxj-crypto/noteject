@@ -1,0 +1,193 @@
+/* Windows-first visual system: persistent workspace navigation and broad work surfaces. */
+body.windows-app {
+  --nw-bg: #10131b;
+  --nw-sidebar: #151a24;
+  --nw-panel: #191f2b;
+  --nw-panel-raised: #202838;
+  --nw-line: #303b4f;
+  --nw-line-soft: #252e3e;
+  --nw-ink: #edf0f7;
+  --nw-muted: #a8b3c7;
+  --nw-subtle: #7f8ca3;
+  --nw-accent: #c8afff;
+  --nw-accent-ink: #281c3b;
+  --nw-toolbar-height: 60px;
+  background: var(--nw-bg);
+  color: var(--nw-ink);
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+}
+body.windows-app .app { background: var(--nw-bg); }
+body.windows-app .app > .sidebar { background: var(--nw-sidebar); border-color: #293345; }
+body.windows-app .sidebar .brand { flex-basis: 72px; padding-inline: 8px; border-bottom: 1px solid var(--nw-line-soft); }
+body.windows-app .sidebar .brand-home { color: var(--nw-ink); font-size: 18px; gap: 10px; }
+body.windows-app .sidebar .brand-icon { display: block; flex: 0 0 34px; width: 34px; height: 34px; overflow: hidden; border-radius: 9px; background: transparent; }
+body.windows-app .sidebar .brand-icon img { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: inherit; }
+body.windows-app .sidebar .gear { width: 34px; height: 34px; min-width: 34px; min-height: 34px; border-radius: 9px; color: #aebbd0; }
+body.windows-app .sidebar .gear:hover { background: #242d3c; color: #f0e8ff; }
+body.windows-app .sidebar .workspace-nav-scroll { padding: 10px 3px 14px; }
+body.windows-app .sidebar .nav-label { padding: 18px 10px 8px; color: #8f9bb0; font-size: 10px; font-weight: 650; letter-spacing: 1.15px; }
+body.windows-app .sidebar .nav-item { position: relative; height: 39px; min-height: 39px; margin: 2px 0; padding: 0 11px; gap: 11px; border-radius: 9px; color: #b5bfd0; font-size: 12.5px; }
+body.windows-app .sidebar .nav-item:hover { background: #202837; color: #eef1f8; }
+body.windows-app .sidebar .nav-item.active { background: #2b2638; color: #eadfff; }
+body.windows-app .sidebar .nav-item.active::before { left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 0 4px 4px 0; background: var(--nw-accent); }
+body.windows-app .sidebar .nav-item > span:first-child { color: #a899ca; }
+body.windows-app .sidebar .nav-item small { color: #99a7bd; }
+body.windows-app .sidebar .board-link { height: 34px; min-height: 34px; }
+body.windows-app .nw-new-board { min-height: 34px; color: #cdbaff; }
+body.windows-app .nw-sidebar-new { display: flex; align-items: center; justify-content: flex-start; width: calc(100% - 8px); margin: 10px 4px 4px; padding-inline: 11px; border-radius: 9px; background: #3b3150; border-color: #665482; color: #efe7ff; }
+body.windows-app .nw-sidebar-new:hover { background: #493c60; }
+body.windows-app .nw-sidebar-new svg { width: 17px; height: 17px; }
+body.windows-app .sidebar .nw-project-open { min-height: 33px; border-radius: 8px; }
+body.windows-app .sidebar .nw-project-open:hover,
+body.windows-app .sidebar .nw-project-manage:hover { background: #202837; }
+body.windows-app .sidebar .nw-project-open span { font-size: 12px; }
+body.windows-app .sidebar .nw-project-manage { width: 30px; height: 30px; min-height: 30px; border-radius: 8px; }
+body.windows-app .sidebar .sidebar-bottom { padding-top: 6px; border-color: var(--nw-line); }
+body.windows-app .sidebar .saved { color: #96a4bb; }
+body.windows-app .sidebar .nw-sidebar-settings { border-top: 1px solid var(--nw-line-soft); margin-top: 6px; padding-top: 8px; }
+
+body.windows-app .main { background: var(--nw-bg); }
+body.windows-app .main > .topbar { flex-direction: row; align-content: center; height: var(--nw-toolbar-height); min-height: var(--nw-toolbar-height); padding: 0 16px; gap: 10px; border-bottom: 1px solid #293345; background: #141923; color: #aab6ca; }
+body.windows-app .topbar > div:not(.nw-location-controls):not(.top-right) { flex: 0 1 180px; max-width: 180px; }
+body.windows-app .topbar .top-right { flex: 1 1 380px; justify-content: flex-end; }
+body.windows-app .top-right > button { flex: 0 0 auto; }
+body.windows-app .topbar .nw-location-controls { gap: 5px; }
+body.windows-app .topbar .nw-icon-button { width: 34px; height: 34px; min-width: 34px; min-height: 34px; border: 1px solid transparent; border-radius: 8px; color: #aebbd1; }
+body.windows-app .topbar .nw-icon-button:hover { border-color: #3b4659; background: #222b3a; color: #eee7ff; }
+body.windows-app .nw-location-controls > span,
+body.windows-app .nw-location-controls .slash { color: #6f7d92; }
+body.windows-app .nw-location-controls b { color: #e8eaf1; font-size: 12px; font-weight: 600; }
+body.windows-app .topbar .nw-global-search { display: flex; flex: 1 1 260px; width: auto; min-width: 220px; max-width: 440px; height: 36px; padding: 0 10px; gap: 8px; border-color: var(--nx-line); border-radius: 9px; background: var(--nx-input); color: var(--nx-muted); }
+body.windows-app .topbar .nw-global-search > #search { flex: 1 1 0; width: 0; min-width: 0; height: 32px; min-height: 0; padding: 0; border: 0; border-radius: 0; background-color: transparent !important; box-shadow: none; outline: 0; color: var(--nx-ink); font-size: 12.5px; line-height: normal; }
+body.windows-app .nw-global-search > #search::placeholder { color: var(--nx-muted); opacity: 1; }
+body.windows-app .nw-global-search .search-icon { flex: 0 0 18px; width: 18px; height: 18px; line-height: 0; }
+body.windows-app .nw-global-search .search-icon svg { width: 18px; height: 18px; }
+body.windows-app .nw-global-search:focus-within { border-color: var(--nx-accent); box-shadow: 0 0 0 2px color-mix(in srgb,var(--nx-accent) 24%,transparent); }
+body.windows-app .topbar .search kbd { flex: 0 0 auto; padding: 2px 5px; border-radius: 4px; background: var(--nx-raised); color: var(--nx-muted); }
+body.windows-app .sidebar .saved { display: none; }
+body.windows-app .nw-sidebar-language { display: grid; gap: 6px; margin: 10px 8px; color: var(--nx-muted); font-size: 11px; }
+body.windows-app .nw-sidebar-language select { width: 100%; max-width: none; min-width: 0; padding: 6px 8px; font-size: 12px; }
+body.windows-app .nw-toolbar-new { height: 36px; min-height: 36px; padding: 0 13px; border: 1px solid #705b91; border-radius: 9px; background: #342a46; color: #ebdfff; font-size: 12px; font-weight: 600; }
+body.windows-app .nw-toolbar-new:hover { background: #47385e; }
+body.windows-app #workspace-commands { flex: 0 0 36px; width: 36px; min-width: 36px; height: 36px; min-height: 36px; border-color: #354154; border-radius: 9px; background: #202836; }
+body.windows-app #view { padding: 30px clamp(24px,3vw,48px) 42px; }
+body.windows-app .page-head { min-height: 94px; padding-bottom: 22px; }
+body.windows-app .page-head h1 { margin-top: 4px; color: #f0f2f8; font-size: 29px; letter-spacing: -.7px; }
+body.windows-app .page-head p { color: #a0acc0; font-size: 13px; }
+body.windows-app .eyebrow,
+body.windows-app .workspace-eyebrow { color: #aa98d0; font-size: 10px; font-weight: 650; letter-spacing: 1.15px; }
+body.windows-app :is(.primary,.secondary,.workspace-small-button) { min-height: 36px; height: auto; padding: 7px 13px; border-radius: 9px; font-size: 12.5px; }
+body.windows-app .primary { border-color: #d8c4ff; background: #c8afff; color: #271e36; font-weight: 650; }
+body.windows-app .primary:hover { background: #d8c5ff; }
+body.windows-app .secondary { border-color: #3c485c; background: #202a39; color: #d2dcec; }
+body.windows-app .secondary:hover { background: #29364a; border-color: #53627b; }
+body.windows-app :is(input,select,textarea) { border-color: #39465a; border-radius: 8px; background: #171e29; color: #edf0f7; }
+body.windows-app :is(input,select) { min-height: 36px; font-size: 13px; }
+body.windows-app textarea { font-size: 14px; line-height: 1.7; }
+body.windows-app :is(button,a,input,select,textarea,summary,[tabindex]):focus-visible { outline: 2px solid #c8afff; outline-offset: 2px; }
+
+/* Home is a desktop dashboard with clear priorities and two useful columns. */
+body.windows-app .nw-home { max-width: 1540px; }
+body.windows-app .nw-home-hero { min-height: 230px; padding: 30px 32px; gap: 34px; border: 1px solid #37425a; border-radius: 18px; background: radial-gradient(ellipse at 83% 10%,#423657 0,transparent 37%),linear-gradient(130deg,#1d2636 0%,#1b2230 58%,#1d1a2a 100%); box-shadow: 0 14px 38px #0002; }
+body.windows-app .nw-home-hero > div:first-child { max-width: 650px; }
+body.windows-app .nw-eyebrow { color: #c1a9f1; font-size: 10px; font-weight: 700; letter-spacing: 1.45px; }
+body.windows-app .nw-home h1 { max-width: 600px; margin: 12px 0 12px; color: #f1edf8; font-size: clamp(34px,3vw,46px); font-weight: 640; line-height: 1.12; letter-spacing: -1.4px; }
+body.windows-app .nw-home-hero p { max-width: 520px; color: #b0bdd0; font-size: 14px; line-height: 1.7; }
+body.windows-app .nw-home-actions { display: grid; grid-template-columns: repeat(3,minmax(160px,1fr)); min-width: 0; gap: 10px; }
+body.windows-app .nw-home-actions > button { min-height: 112px; align-items: flex-start; flex-direction: column; justify-content: center; gap: 10px; padding: 15px 17px; border-color: #40516b; border-radius: 13px; background: #202c3c; }
+body.windows-app .nw-home-actions > button:first-child { border-color: #9476bc; background: #3b3050; }
+body.windows-app .nw-home-actions > button:hover { transform: translateY(-1px); background: #2b3a50; }
+body.windows-app .nw-home-actions > button:first-child:hover { background: #4a3b63; }
+body.windows-app .nw-home-actions svg { color: #d4c0fa; }
+body.windows-app .nw-home-actions strong { font-size: 13px; }
+body.windows-app .nw-home-actions small { color: #b6c2d4; font-size: 10.5px; }
+body.windows-app .nw-home-stats { grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; padding: 20px 0 30px; }
+body.windows-app .nw-home-stats button { min-height: 78px; align-items: center; gap: 12px; padding: 14px 18px; border: 1px solid #2f3a4d; border-radius: 12px; background: #171e29; transition: background .15s,border-color .15s,transform .15s; }
+body.windows-app .nw-home-stats button:hover { transform: translateY(-1px); border-color: #62527d; background: #1e2432; }
+body.windows-app .nw-home-stats strong { color: #d9c6ff; font-size: 26px; font-weight: 650; }
+body.windows-app .nw-home-stats span { color: #aebbd0; font-size: 12px; }
+body.windows-app .nw-home-columns { grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(18px,2vw,30px); }
+body.windows-app .nw-home-section { margin-bottom: 26px; }
+body.windows-app .nw-home-section > header { margin-bottom: 11px; }
+body.windows-app .nw-home-section h2 { color: #e9edf5; font-size: 16px; font-weight: 650; }
+body.windows-app .nw-home-section > header button { min-height: 32px; color: #c4abef; font-size: 11.5px; }
+body.windows-app .nw-home-items { min-height: 100px; border-color: #303b4f; border-radius: 13px; background: #171e29; }
+body.windows-app .nw-home-item { min-height: 68px; padding: 12px 14px; border-color: #273244; color: #e5eaf3; }
+body.windows-app .nw-home-item:hover { background: #222b3b; }
+body.windows-app .nw-item-glyph { width: 38px; height: 40px; flex-basis: 38px; border-color: #49415d; border-radius: 10px; background: #30283f; color: #d1bdff; }
+body.windows-app .nw-home-item strong { font-size: 12.5px; font-weight: 600; }
+body.windows-app .nw-home-item small { color: #94a3b9; font-size: 10.5px; }
+body.windows-app .nw-item-arrow { color: #a994d5; }
+body.windows-app .nw-home-boards { grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 12px; }
+body.windows-app .nw-home-boards > button { min-height: 112px; padding: 16px 18px; border-color: #35435b; border-radius: 13px; background: linear-gradient(145deg,#1e293a,#191f2b); }
+body.windows-app .nw-home-boards > button:hover { border-color: #62527d; background: #252b3b; }
+body.windows-app .nw-home-boards svg { color: #c1a9f1; }
+body.windows-app .nw-home-boards strong { color: #e8eaf2; font-size: 13px; font-weight: 600; }
+body.windows-app .nw-home-boards small { color: #9ba9be; font-size: 10.5px; }
+body.windows-app .nw-home-boards > .nw-home-new-board { color: #cbb7f3; }
+body.windows-app .nw-empty-copy { padding: 18px; color: #9eacc1; font-size: 12px; }
+
+/* Keep shared Web Home actions at the same scale and colors in Windows. */
+body.windows-app[data-nw-page="home"] #view { container: windows-home / inline-size; }
+@container windows-home (max-width: 650px) {
+  body.windows-app .home-hero { padding: 28px; }
+  body.windows-app .home-hero .hero-copy { width: 100%; max-width: 100%; }
+  body.windows-app .home-hero .hero-visual { display: none; }
+  body.windows-app .stats-row { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  body.windows-app .stats-row > article { min-width: 0; padding-inline: 10px; gap: 8px; }
+  body.windows-app .stats-row > .tip-card { grid-column: 1 / -1; }
+}
+body.windows-app[data-nw-page="home"] #view .home-hero .buttons :is(.primary,.secondary),
+body.windows-app[data-nw-page="home"] #view .home-empty .secondary {
+  height: 34px;
+  min-height: 34px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: normal;
+}
+body.windows-app[data-nw-page="home"] #view .home-hero .buttons .secondary,
+body.windows-app[data-nw-page="home"] #view .home-empty .secondary {
+  border-color: #38393f;
+  background: #24252a;
+  color: #d2d2d7;
+}
+body.windows-app[data-nw-page="home"] #view .home-hero .buttons .secondary:hover,
+body.windows-app[data-nw-page="home"] #view .home-empty .secondary:hover { background: #2d2e34; }
+
+body.windows-app .nw-statusbar { height: var(--nw-status-height); border-color: #293345; background: #151a24; color: #9daac0; }
+body.windows-app .nw-statusbar button { color: #c0a9eb; }
+body.windows-app .nw-ready-dot { background: #8bd4b5; box-shadow: 0 0 8px #8bd4b555; }
+body.windows-app .toast { bottom: 42px; border: 1px solid #5e4f7c; border-radius: 10px; background: #282338; color: #eee7fb; }
+body.windows-app .nw-text-dialog { border-color: #4b4660; border-radius: 15px; background: #1b202c; }
+body.windows-app .nw-dialog-field input { border-color: #4a5266; border-radius: 8px; background: #131923; }
+body.windows-app .command-menu { border-color: #54496d; border-radius: 15px; background: #1a202c; }
+body.windows-app .command-menu-option { border-radius: 8px; }
+body.windows-app .command-menu-option.is-active { background: #352b47; }
+
+@media (max-width: 1180px) {
+  body.windows-app .nw-home-hero { grid-template-columns: minmax(0,1fr); }
+  body.windows-app .nw-home-actions { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  body.windows-app .nw-home-actions > button { min-height: 94px; }
+}
+@media (max-width: 940px) {
+  body.windows-app #view { padding: 22px 18px 34px; }
+  body.windows-app .nw-home-columns { grid-template-columns: minmax(0,1fr); gap: 0; }
+  body.windows-app .nw-home-hero { padding: 24px; }
+  body.windows-app .nw-home h1 { font-size: 34px; }
+}
+@media (max-width: 1100px) {
+  body.windows-app .topbar > div:not(.nw-location-controls):not(.top-right) { display: none; }
+  body.windows-app .main > .topbar { flex-wrap: wrap; flex-basis: auto; height: auto; padding-block: 10px; }
+  body.windows-app .topbar .top-right { min-width: min(100%,440px); flex-basis: 440px; }
+}
+@media (max-width: 900px) {
+  body.windows-app .main > .topbar { flex-wrap: wrap; flex-basis: auto; height: auto; padding: 10px 12px; }
+}
+@media (max-width: 700px) {
+  body.windows-app .nw-home-stats { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  body.windows-app .nw-home-actions { grid-template-columns: 1fr; }
+  body.windows-app .nw-home-actions > button { min-height: 64px; flex-direction: row; align-items: center; }
+  body.windows-app .main > .topbar { padding-inline: 10px; }
+}
+@media (prefers-reduced-motion: reduce) { body.windows-app * { scroll-behavior: auto !important; transition: none !important; } }

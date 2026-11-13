@@ -1,0 +1,43 @@
+/* Touch selection stays separate from the document reader and text editor. */
+.android-app :is(.canvas-card,.note-list-card,[data-library-doc],.inbox-item,.board-gallery-open) {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.android-app .ats-hint { margin: 8px 0 12px; color: #aebbd0; font-size: 12px; line-height: 1.45; }
+.android-app :is(.inbox-item,.board-gallery-card).ats-selected { outline: 2px solid #c4a9ff; outline-offset: -2px; background: #302a43; }
+.android-app .ats-selection-bar {
+  position: fixed; z-index: 108; left: 50%; bottom: calc(var(--am-nav-height, 76px) + env(safe-area-inset-bottom, 0px) + 10px);
+  transform: translateX(-50%); display: flex; align-items: center; gap: 10px;
+  width: min(580px, calc(100% - 24px)); box-sizing: border-box; padding: 10px 12px;
+  border: 1px solid #9a82bd; border-radius: 16px; background: #2b2540; color: #f8f4ff; box-shadow: 0 5px 24px #0006;
+}
+.android-app .ats-selection-bar[hidden], .android-app .ats-selection-bar button[hidden] { display: none; }
+.android-app .ats-selection-bar > div { flex: 1; min-width: 0; }
+.android-app .ats-count { display: block; font-size: 14px; }
+.android-app .ats-help { display: block; margin-top: 3px; color: #d4c9e3; font-size: 11px; line-height: 1.35; }
+.android-app .ats-selection-bar button { flex: 0 0 auto; min-width: 56px; min-height: 44px; padding: 9px 12px; border: 1px solid #a88acc; border-radius: 11px; background: #4c3b66; color: #fff; font: inherit; font-size: 13px; font-weight: 600; }
+.android-app .ats-selection-bar .ats-done { background: #c4a9ff; color: #241a34; }
+.android-app.ats-selecting .am-fab { visibility: hidden; }
+.android-app[data-am-page=board] .ats-selection-bar {
+  top: calc(var(--am-canvas-top, 0px) + var(--am-canvas-toolbar, 54px) + 4px); bottom: auto;
+  left: max(10px, env(safe-area-inset-left, 0px)); transform: none; width: min(520px, calc(100% - 20px)); padding: 6px 10px;
+  display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 6px;
+}
+.android-app[data-am-page=board] .ats-selection-bar[hidden] { display: none; }
+.android-app[data-am-page=board] .ats-selection-bar > div { grid-column: 1 / 4; grid-row: 1; }
+.android-app[data-am-page=board] .ats-selection-bar .ats-done { grid-column: 4; grid-row: 1; }
+.android-app[data-am-page=board] .ats-selection-bar button { min-width: 0; padding-inline: 6px; }
+.android-app[data-am-page=board] .ats-card-actions { background: #6b508c; }
+.android-app[data-am-page=board] .ats-selection-bar button[aria-pressed=true] { background: #c4a9ff; color: #241a34; border-color: #e3d3ff; box-shadow: inset 0 0 0 1px #e3d3ff; }
+.android-app .ats-selection-bar button:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+@media (orientation: landscape) and (max-height: 600px) {
+  .android-app .ats-selection-bar { padding: 6px 10px; border-radius: 12px; gap: 8px; }
+  .android-app .ats-selection-bar .ats-help { display: none; }
+  .android-app .ats-selection-bar button { min-height: 40px; padding: 7px 10px; }
+}
+@media (orientation: landscape) and (max-height:600px) and (min-width:560px) {
+  .android-app[data-am-page=board] .ats-selection-bar { width: min(720px,calc(100% - 20px)); grid-template-columns: minmax(100px,1fr) repeat(5,auto); }
+  .android-app[data-am-page=board] .ats-selection-bar > div,
+  .android-app[data-am-page=board] .ats-selection-bar .ats-done { grid-column: auto; grid-row: auto; }
+}

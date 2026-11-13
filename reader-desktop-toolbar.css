@@ -1,0 +1,66 @@
+/* Desktop Reader has a single command surface across Web and Windows. */
+.reader-desktop-action-caption { display: none; }
+body.reader-desktop-active .main > .topbar { display: none !important; }
+body.reader-desktop-active .main { display: flex; flex-direction: column; min-height: 0; padding: 0; overflow: hidden; }
+html.noteject-web body.reader-desktop-active .main { height: 100dvh; }
+body.reader-desktop-active #view.reader-workspace { display: flex; flex: 1 1 0; min-height: 0; height: 100%; padding: 0; overflow: hidden; }
+body.reader-desktop-active #view.reader-workspace .reader-shell { flex: 1 1 0; height: 100%; min-height: 0; container: desktop-reader / inline-size; }
+body.reader-desktop-active #view.reader-workspace .reader-header {
+  display: grid; grid-template-columns: auto minmax(60px,1fr) auto auto auto;
+  align-items: center; flex: 0 0 60px; height: 60px; min-height: 60px;
+  gap: 10px; padding: 8px 12px; box-sizing: border-box; background: var(--reader-chrome);
+}
+body.reader-desktop-active #view.reader-workspace .reader-header.reader-desktop-has-history > .reader-back { display: none; }
+body.reader-desktop-active #view.reader-workspace .reader-header > :is(.web-history,.nw-location-controls,.reader-back) { grid-column: 1; grid-row: 1; display: flex; align-items: center; gap: 3px; margin: 0; }
+body.reader-desktop-active #view.reader-workspace .reader-document-identity { grid-column: 2; grid-row: 1; min-width: 0; }
+body.reader-desktop-active #view.reader-workspace .reader-document-identity h1 { font: 600 14px/1.4 var(--font-ui,"Segoe UI",sans-serif); letter-spacing: 0; }
+body.reader-desktop-active #view.reader-workspace .reader-document-identity > small { margin-bottom: 1px; font-size: 9px; letter-spacing: .4px; }
+body.reader-desktop-active #view.reader-workspace .reader-nav-controls { grid-column: 3; grid-row: 1; flex-wrap: nowrap; gap: 4px; max-width: none; }
+body.reader-desktop-active #view.reader-workspace .reader-view-controls { grid-column: 4; grid-row: 1; flex-wrap: nowrap; gap: 4px; margin: 0; }
+body.reader-desktop-active #view.reader-workspace .reader-header-actions { grid-column: 5; grid-row: 1; gap: 4px; margin: 0; }
+body.reader-desktop-active #view.reader-workspace .reader-commandbar { display: none; }
+body.reader-desktop-active #view.reader-workspace .reader-header :is(button,input,select,summary) {
+  box-sizing: border-box; height: 36px; min-height: 36px; min-width: 32px; width: auto;
+  padding: 6px 8px; border: 1px solid var(--reader-line); border-radius: 7px;
+  background: var(--nx-raised,#24232b); color: var(--reader-ink); font: 500 12px/1.2 var(--font-ui,"Segoe UI",sans-serif);
+}
+body.reader-desktop-active #view.reader-workspace .reader-header button:hover { background: var(--nx-hover,#35303e); }
+body.reader-desktop-active #view.reader-workspace .reader-header :is(.web-history-button,.nw-icon-button,.reader-back) { width: 34px; min-width: 34px; padding: 0; justify-content: center; font-size: 18px; }
+body.reader-desktop-active #view.reader-workspace .reader-header .nw-icon-button svg { width: 18px; height: 18px; }
+body.reader-desktop-active #view.reader-workspace .reader-header-actions > button[data-reader-command=bookmark] { width: auto; min-width: 0; gap: 4px; }
+body.reader-desktop-active #view.reader-workspace .reader-bookmark-icon { display: block; flex: 0 0 18px; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.reader-desktop-active #view.reader-workspace .reader-header-actions > button[data-reader-command=bookmark][aria-pressed=true] .reader-bookmark-icon { fill: currentColor; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-action-caption { display: inline; font-size: 12px; white-space: nowrap; }
+body.reader-desktop-active #view.reader-workspace .reader-header-actions > :is([data-reader-command=assistant],[data-reader-command=focus]) { display: none; }
+body.reader-desktop-active #view.reader-workspace .reader-view-controls > .reader-save-selection { display: none; }
+body.reader-desktop-active #view.reader-workspace :is(.nw-reader-control-caption,.nw-reader-page-caption) { display: none; }
+body.reader-desktop-active #view.reader-workspace .reader-page-input-label { gap: 5px; font-size: 11px; }
+body.reader-desktop-active #view.reader-workspace .reader-page-input-label > span { padding: 0; }
+body.reader-desktop-active #view.reader-workspace #pdf-page-input { width: 46px; min-width: 46px; text-align: center; padding: 4px; appearance: textfield; }
+body.reader-desktop-active #view.reader-workspace #epub-toc { width: clamp(100px,14cqw,190px); min-width: 80px; }
+body.reader-desktop-active #view.reader-workspace .reader-header .reader-nav-controls > button[data-reader-command=navigation] { width: 34px; font-size: 0; }
+body.reader-desktop-active #view.reader-workspace .reader-header .reader-nav-controls > button[data-reader-command=navigation]::before { content: '☷'; font-size: 19px; }
+body.reader-desktop-active #view.reader-workspace .reader-header .reader-zoom { height: 36px; gap: 0; padding: 0; border-radius: 7px; }
+body.reader-desktop-active #view.reader-workspace .reader-zoom button { height: 34px; min-height: 34px; min-width: 28px; padding: 4px 5px; border: 0; background: transparent; }
+body.reader-desktop-active #view.reader-workspace .reader-zoom [data-reader-command=zoom-reset] { min-width: 45px; }
+body.reader-desktop-active #view.reader-workspace .reader-document-options { width: 290px; max-height: calc(100dvh - 90px); overflow-y: auto; }
+body.reader-desktop-active #view.reader-workspace .reader-document-options button { width: 100%; min-height: 38px; height: auto; border: 0; background: transparent; text-align: left; justify-content: flex-start; }
+body.reader-desktop-active #view.reader-workspace .reader-document-options [data-reader-menu-id=view] { display: none; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-view-settings { border-bottom: 1px solid var(--reader-line); padding-bottom: 5px; margin-bottom: 5px; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-view-settings > summary { display: list-item; border: 0; background: transparent; padding: 10px; cursor: pointer; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-view-body { display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 10px; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-view-body .reader-control-label { display: flex; justify-content: space-between; align-items: center; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-view-body .reader-popover > div { position: static; width: 100%; box-shadow: none; padding: 8px; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-view-body .reader-popover > summary { width: 100%; }
+body.reader-desktop-active #view.reader-workspace .reader-desktop-workspace-actions { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--reader-line); }
+body.reader-desktop-active #view.reader-workspace .reader-shell.is-focused > .reader-header { display: none; }
+@container desktop-reader (max-width: 1100px) {
+  body.reader-desktop-active #view.reader-workspace .reader-header { gap: 6px; padding-inline: 8px; }
+  body.reader-desktop-active #view.reader-workspace .reader-header-actions > button .reader-desktop-action-caption { display: none; }
+  body.reader-desktop-active #view.reader-workspace .reader-header-actions > button { width: 34px; min-width: 34px; gap: 0; padding: 0; font-size: 16px; }
+}
+@container desktop-reader (max-width: 600px) {
+  body.reader-desktop-active #view.reader-workspace .reader-header { gap: 4px; grid-template-columns: auto minmax(30px,1fr) auto auto auto; }
+  body.reader-desktop-active #view.reader-workspace .reader-header-actions > [data-reader-command=saved] { display: none; }
+  body.reader-desktop-active #view.reader-workspace .reader-document-identity > small { display: none; }
+}

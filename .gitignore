@@ -1,0 +1,17 @@
+node_modules/
+release/
+.desktop-build/
+site-build/
+.apple-build/
+apple/www/
+*.p8
+*.p12
+*.mobileprovision
+*.provisionprofile
+.desktop-build/
+.vercel/
+.env*
+site/source.tar.gz
+
+.vercel
+.env*

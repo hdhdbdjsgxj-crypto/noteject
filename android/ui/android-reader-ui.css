@@ -1,0 +1,283 @@
+/* One Noteject Reader: shared header, bottom navigation, actions and menu sheets. */
+.native-reader-opening { position: fixed; inset: 0; z-index: 10000; display: grid; place-items: center; padding: 20px; box-sizing: border-box; background: #080d16cc; color: var(--am-ink, #e9e9ec); font-family: var(--font-ui, Roboto, system-ui, sans-serif); }
+.native-reader-opening > section { box-sizing: border-box; width: min(100%, 390px); max-height: 100%; overflow: auto; padding: 24px; border: 1px solid var(--am-line, #36445b); border-radius: 18px; background: var(--am-panel, #1b2535); box-shadow: 0 18px 70px #0007; }
+.native-reader-opening h2 { margin: 0 0 12px; font-size: 20px; }
+.native-reader-opening p { overflow-wrap: anywhere; color: var(--am-muted, #b1bfd6); line-height: 1.5; }
+.native-reader-opening progress { display: block; width: 100%; margin: 20px 0; accent-color: var(--am-accent, #c8afff); }
+.native-reader-opening button { min-height: 48px; width: 100%; margin-top: 10px; padding: 10px; border: 1px solid var(--am-line, #36445b); border-radius: 13px; background: var(--am-raised, #273349); color: var(--am-ink, #e9e9ec); font-size: 16px; }
+.android-app.am-reading :is(.am-header, .am-bottom-nav, .am-fab, .sidebar, .topbar) { display: none; }
+.android-app.am-reading .main { width: 100%; height: 100dvh; min-height: 0; margin: 0; padding: 0; overflow: hidden; }
+.android-app.am-reading #view { height: 100%; min-height: 0; }
+.android-app .reader-workspace .ar-reader,
+.android-app .reader-workspace .ar-reader.is-focused {
+  --ar-ink: var(--am-ink, #e9e9ec);
+  --ar-muted: var(--am-muted, #b1bfd6);
+  --ar-accent: var(--am-accent, #c8afff);
+  --ar-line: var(--am-line, #36445b);
+  --ar-panel: var(--am-panel, #1b2535);
+  --reader-chrome: var(--ar-panel);
+  --reader-panel: var(--ar-panel);
+  --reader-line: var(--ar-line);
+  --reader-ink: var(--ar-ink);
+  --reader-muted: var(--ar-muted);
+  --reader-accent: var(--ar-accent);
+  position: relative; inset: auto; display: flex; flex-direction: column;
+  width: 100%; height: 100dvh; min-height: 0; overflow: hidden;
+  font-family: var(--font-ui, Roboto, system-ui, sans-serif);
+  background: var(--am-bg, #111722); color: var(--ar-ink);
+}
+.android-app .reader-workspace .ar-reader [hidden] { display: none !important; }
+.android-app .reader-workspace .ar-reader.is-focused > :is(.reader-header,.reader-commandbar,.reader-findbar,.reader-statusbar,.ar-reader-dock,.ar-display-panel) { display: none; }
+.android-app .reader-workspace .ar-reader.is-focused .reader-workspace-body { grid-template-columns: minmax(0,1fr); flex: 1; min-height: 0; }
+.android-app .reader-workspace .ar-reader.is-focused .reader-content { grid-column: 1; min-height: 0; width: 100%; height: 100%; padding: 8px; }
+.android-app .reader-workspace .ar-reader.is-focused :is(#epub-text,#txt-content) { padding-bottom: 96px; }
+.android-app .reader-workspace .ar-reader.is-focused :is(.reader-navigation,.reader-side,.ar-panel-scrim) { display: none; }
+.android-app .ar-reader :is(button, summary, select, input:not([type=checkbox]):not([type=radio])) { box-sizing: border-box; min-height: 44px; font-family: inherit; }
+.android-app .ar-reader :is(button, summary) { touch-action: manipulation; }
+.android-app .ar-reader button { border-radius: 10px; }
+.android-app .ar-reader svg { flex: 0 0 auto; pointer-events: none; }
+.android-app .ar-reader :is(input, select, textarea) { max-width: 100%; font-size: 16px; }
+.android-app .ar-reader .reader-header {
+  display: flex; flex: 0 0 auto; align-items: center; flex-wrap: nowrap;
+  gap: 8px; min-height: 62px; margin: 0; padding: 8px 12px;
+  border-bottom: 1px solid var(--ar-line); background: var(--ar-panel);
+}
+.android-app .ar-reader .reader-back { width: 44px; min-width: 44px; height: 44px; border-radius: 12px; font-size: 24px; }
+.android-app .ar-reader .reader-document-identity { flex: 1; min-width: 0; }
+.android-app .ar-reader .reader-document-identity > small { margin: 0 0 3px; font-size: 9px; line-height: 1.3; letter-spacing: 1px; }
+.android-app .ar-reader .reader-document-identity h1 { max-width: none; font: 600 15px/1.35 var(--font-ui, Roboto, system-ui, sans-serif); letter-spacing: 0; }
+.android-app .ar-reader #reader-author { display: none; }
+.android-app .ar-reader .ar-bookmark { display: flex; align-items: center; justify-content: center; gap: 0; flex: 0 0 44px; min-width: 44px; width: 44px; height: 48px; padding: 0; border: 0; background: transparent; color: var(--ar-accent); }
+.android-app .ar-reader .ar-bookmark svg { width: 25px; height: 25px; }
+.android-app .ar-reader .reader-header-actions:empty { display: none; }
+.android-app .ar-reader .reader-document-menu { position: static; margin: 0; }
+.android-app .ar-reader .reader-document-menu > summary { display: grid; place-items: center; width: 44px; height: 44px; min-height: 44px; padding: 0; border: 0; border-radius: 10px; background: transparent; font-size: 27px; }
+.android-app .ar-reader .reader-document-menu > summary span { font-size: 27px; }
+.android-app .ar-reader .reader-document-options { position: static; width: 100%; max-height: none; margin: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.android-app .ar-reader .reader-document-options button { min-height: 48px; height: auto; padding: 12px; font-size: 14px; }
+.android-app .ar-reader .ar-reader-menu-shortcuts { padding-bottom: 6px; margin-bottom: 6px; border-bottom: 1px solid var(--ar-line); }
+.android-app .ar-reader .reader-commandbar { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; min-height: 54px; gap: 0; margin: 0; padding: 5px 12px; background: var(--ar-panel); border-bottom: 1px solid var(--ar-line); }
+.android-app .ar-reader .reader-nav-controls { display: flex; width: min(100%, 700px); min-width: 0; gap: 8px; }
+.android-app .ar-reader .reader-nav-controls > button { flex: 0 0 44px; min-width: 44px; height: 44px; font-size: 25px; padding: 0; }
+.android-app .ar-reader #epub-toc { flex: 1; width: 0; max-width: none; min-width: 0; height: 44px; padding: 8px 10px; font-size: 14px; }
+.android-app .ar-reader .reader-page-input-label { flex: 1; min-width: 0; justify-content: center; gap: 10px; color: var(--ar-muted); font-size: 14px; }
+.android-app .ar-reader .reader-page-input-label input { width: 68px; height: 44px; padding: 8px; font-size: 16px; }
+.android-app .ar-reader .reader-page-input-label > span { font-size: 14px; }
+.android-app .ar-reader .reader-nav-controls > span { flex: 1; text-align: center; color: var(--ar-muted); font-size: 12px; }
+.android-app .ar-reader .reader-workspace-body { position: relative; display: grid; flex: 1 1 0; grid-template-columns: 0 minmax(0, 1fr) 0; min-width: 0; min-height: 0; overflow: hidden; }
+.android-app .ar-reader .reader-content { grid-column: 2; grid-row: 1; width: 100%; height: 100%; min-width: 0; min-height: 0; padding: 12px; overflow: auto; overscroll-behavior: contain; scrollbar-gutter: auto; scroll-padding: 16px; -webkit-overflow-scrolling: touch; }
+.android-app .ar-reader[data-ar-kind="pdf"] .reader-content { touch-action: pan-x pan-y; }
+.android-app .ar-reader .reader-content:has(#epub-text) { padding: 12px; overflow-x: auto; }
+.android-app .ar-reader #epub-text { min-width: 0; width: 100%; min-height: 100%; margin: 0 auto; padding: 24px 22px; border-radius: 8px; }
+.android-app .ar-reader #txt-content { min-width: 0; width: 100%; max-width: 800px; margin: 0 auto; padding: 24px 22px; font-size: 18px; line-height: 1.8; }
+.android-app .ar-reader #reader-pdf-pages { gap: 14px; }
+.android-app .ar-reader .reader-statusbar { display: flex; flex: 0 0 auto; align-items: center; gap: 9px; min-height: 30px; margin: 0; padding: 6px 14px; font-size: 10px; background: var(--ar-panel); }
+.android-app .ar-reader #reader-location-label { flex: 0 1 auto; max-width: 70%; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.android-app .ar-reader .reader-statusbar .reader-saved-status { display: none; }
+.android-app .ar-reader .reader-progress-track { flex: 1; min-width: 24px; max-width: 250px; }
+.android-app .ar-reader #reader-progress-label { flex: 0 0 auto; margin-left: auto; }
+.android-app .ar-reader .ar-reader-dock { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); flex: 0 0 auto; gap: 3px; min-height: 66px; padding: 5px max(8px, env(safe-area-inset-right)) max(5px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); border-top: 1px solid var(--ar-line); background: var(--ar-panel); }
+.android-app .ar-reader .ar-reader-dock > button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; width: 100%; min-width: 0; min-height: 54px; height: auto; margin: 0; padding: 6px 2px; border: 1px solid transparent; border-radius: 12px; color: var(--ar-muted); background: transparent; }
+.android-app .ar-reader .ar-reader-dock .ar-dock-label { font-size: 10px; font-weight: 600; line-height: 1.2; }
+.android-app .ar-reader .ar-reader-dock > button:is([aria-pressed=true], [aria-expanded=true]) { border-color: #66588a; background: #39334f; color: #e3d9ff; }
+.android-app .ar-reader .ar-reader-dock > .reader-save-selection { color: var(--ar-accent); background: var(--am-raised, #273349); }
+.android-app .ar-reader .ar-display-panel { flex: 0 0 auto; min-height: 0; max-height: 42dvh; padding: 8px 14px 12px; overflow: auto; border-bottom: 1px solid var(--ar-line); background: var(--am-raised, #273349); }
+.android-app .ar-reader .ar-display-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.android-app .ar-reader .ar-display-heading h2 { margin: 0; font: 600 14px/1.5 "Segoe UI", system-ui, sans-serif; }
+.android-app .ar-reader .ar-display-heading > button { display: grid; place-items: center; width: 44px; height: 44px; min-width: 44px; padding: 0; border: 0; background: transparent; color: var(--ar-muted); }
+.android-app .ar-reader .reader-view-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; width: 100%; min-width: 0; gap: 10px; padding: 0; overflow: visible; }
+.android-app .ar-reader .reader-view-controls > * { flex: 0 0 auto; }
+.android-app .ar-reader .reader-view-controls :is(button, summary, select) { min-height: 44px; height: 44px; border: 1px solid var(--ar-line); border-radius: 9px; padding: 8px 12px; background: var(--ar-panel); color: var(--ar-ink); font-size: 14px; }
+.android-app .ar-reader .reader-zoom { gap: 3px; height: 48px; border-color: #4d4d67; padding: 1px; }
+.android-app .ar-reader .reader-zoom > button { width: 46px; min-width: 46px; padding: 6px; border-color: transparent; font-size: 21px; }
+.android-app .ar-reader .reader-zoom > button[data-reader-command="zoom-reset"] { width: 62px; min-width: 62px; font-size: 13px; }
+.android-app .ar-reader .reader-control-label { display: flex; flex-direction: column; align-items: stretch; gap: 4px; color: var(--ar-muted); font-size: 11px; }
+.android-app .ar-reader .reader-control-label select { max-width: none; }
+.android-app .ar-reader :is(.ar-text-size-row, .ar-zoom-row) { display: flex; align-items: center; justify-content: space-between; flex: 1 0 100%; gap: 16px; max-width: 460px; min-height: 48px; color: #d6dfee; }
+.android-app .ar-reader :is(.ar-text-size-row, .ar-zoom-row) > span { font-size: 14px; font-weight: 600; }
+.android-app .ar-reader .ar-text-size-row .reader-font-controls { display: flex; align-items: center; gap: 6px; }
+.android-app .ar-reader .ar-text-size-row .reader-font-controls button { min-width: 48px; padding: 6px; font-size: 18px; }
+.android-app .ar-reader .ar-text-size-row output { min-width: 48px; color: #e3d5ff; font-size: 14px; text-align: center; }
+.android-app .ar-reader .ar-tap-setting { display: flex; align-items: flex-start; gap: 12px; margin: 14px 0 0; padding-top: 12px; border-top: 1px solid #42485d; cursor: pointer; }
+.android-app .ar-reader .ar-tap-setting input { flex: 0 0 22px; width: 22px; height: 22px; margin: 2px 0 0; accent-color: #b69bf7; }
+.android-app .ar-reader .ar-tap-setting span { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.android-app .ar-reader .ar-tap-setting b { color: #e1e7f3; font-size: 14px; font-weight: 600; }
+.android-app .ar-reader :is(.ar-tap-setting small, .ar-reading-help) { color: #b0bed5; font-size: 12px; line-height: 1.6; }
+.android-app .ar-reader .ar-reading-help { margin: 10px 0 2px; }
+.android-app .ar-reader .ar-appearance { position: static; }
+.android-app .ar-reader .ar-appearance > summary { display: flex; align-items: center; justify-content: center; list-style: none; min-width: 120px; }
+.android-app .ar-reader .ar-appearance[open] { flex: 1 0 100%; }
+.android-app .ar-reader .ar-appearance[open] > summary { border-color: #9f88cf; background: #39334d; }
+.android-app .ar-reader .ar-appearance .reader-appearance-panel { position: static; width: 100%; max-height: none; margin-top: 10px; padding: 12px; border-radius: 12px; background: #1a2332; box-shadow: none; }
+.android-app .ar-reader .reader-appearance-panel h3 { margin-bottom: 10px; font-size: 14px; }
+.android-app .ar-reader .reader-appearance-panel label { flex-wrap: wrap; gap: 8px; color: #c3cbda; font-size: 14px; }
+.android-app .ar-reader .reader-appearance-panel select { min-width: 130px; max-width: none; font-size: 14px; }
+.android-app .ar-reader .reader-findbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; flex: 0 0 auto; gap: 6px 10px; min-width: 0; margin: 0; padding: 8px 12px; background: var(--am-raised, #273349); }
+.android-app .ar-reader .reader-find-input { grid-column: 1; grid-row: 1; width: 100%; max-width: none; min-width: 0; height: 44px; min-height: 44px; margin: 0; }
+.android-app .ar-reader .reader-find-input input { width: 100%; min-width: 0; font-size: 16px; }
+.android-app .ar-reader .reader-find-input > kbd { display: none; }
+.android-app .ar-reader .reader-find-status { grid-column: 1 / -1; grid-row: 2; min-width: 0; max-width: none; font-size: 11px; }
+.android-app .ar-reader .reader-find-controls { grid-column: 2; grid-row: 1; gap: 3px; margin: 0; }
+.android-app .ar-reader .reader-find-controls button { width: 44px; min-width: 44px; height: 44px; min-height: 44px; font-size: 18px; }
+.android-app .ar-reader :is(.reader-navigation, .reader-side) { min-height: 0; margin: 0; background: var(--ar-panel); }
+.android-app .ar-reader .reader-side { padding: 0; }
+.android-app .ar-reader .reader-tools-heading,
+.android-app .ar-reader .ar-panel-heading { position: sticky; top: 0; z-index: 2; display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: 10px; min-height: 64px; margin: 0; padding: 10px 14px; border-bottom: 1px solid var(--ar-line); background: var(--ar-panel); }
+.android-app .ar-reader .reader-tools-heading h2,
+.android-app .ar-reader .ar-panel-heading h2 { margin: 0; font: 600 17px/1.35 "Segoe UI", system-ui, sans-serif; }
+.android-app .ar-reader .reader-tools-heading small { margin-bottom: 4px; font-size: 9px; }
+.android-app .ar-reader .reader-tools-heading > button,
+.android-app .ar-reader .ar-panel-heading > button { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; min-width: 44px; min-height: 44px; padding: 0; border: 1px solid #465066; background: #283245; font-size: 23px; }
+.android-app .ar-reader .reader-side-content { min-width: 0; padding: 18px 16px 28px; }
+.android-app .ar-reader .reader-side-content :is(p, label) { font-size: 14px; line-height: 1.6; }
+.android-app .ar-reader .reader-side-content :is(button, select) { min-height: 44px; height: auto; font-size: 13px; }
+.android-app .ar-reader .reader-side-content :is(input:not([type=checkbox]):not([type=radio]), textarea) { min-height: 44px; font-size: 16px; }
+.android-app .ar-reader .reader-side-content .clip-shortcut { display: none; }
+.android-app .ar-reader .reader-side-content .clip-list-tools { display: grid; grid-template-columns: 1fr; }
+.android-app .ar-reader .reader-nav-tabs { margin: 12px; }
+.android-app .ar-reader .reader-nav-tabs button { min-height: 46px; padding: 9px 6px; font-size: 12px; }
+.android-app .ar-reader .ar-bookmark-help { flex: 0 0 auto; margin: 0 12px 12px; padding: 10px; border: 1px solid #514767; border-radius: 12px; background: #2b293e; }
+.android-app .ar-reader .ar-bookmark-help button { width: 100%; min-height: 48px; padding: 10px; border: 1px solid #8b73b8; background: #493961; color: #f2e7ff; font-size: 14px; font-weight: 600; }
+.android-app .ar-reader .ar-bookmark-help p { margin: 9px 2px 0; color: #c1cbe0; font-size: 12px; line-height: 1.6; }
+.android-app .ar-reader .reader-navigation-filter { height: 44px; min-height: 44px; }
+.android-app .ar-reader .reader-navigation-filter input { min-height: 40px; font-size: 16px; }
+.android-app .ar-reader .reader-nav-panel button { min-height: 48px; font-size: 14px; }
+.android-app .ar-reader .reader-nav-bookmark b { font-size: 14px; white-space: normal; }
+.android-app .ar-reader .reader-nav-bookmark small { font-size: 12px; }
+.android-app .ar-reader .reader-nav-bookmark > div button { width: 44px; min-width: 44px; min-height: 44px; font-size: 19px; }
+.android-app .ar-reader .reader-navigation-empty { font-size: 14px; }
+.android-app .ar-reader .ar-panel-scrim { display: none; }
+.android-app .ar-reader.ar-composing .reader-side-content { padding-top: 14px; }
+.android-app .ar-reader.ar-composing .reader-clips > :not(.clip-composer) { display: none; }
+.android-app .ar-reader.ar-composing .clip-composer { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; border: 0; background: transparent; }
+.android-app .ar-reader.ar-composing .clip-composer h4 { margin: 0; font-size: 19px; }
+.android-app .ar-reader.ar-composing .clip-composer > label { display: flex; flex-direction: column; gap: 6px; margin: 0; }
+.android-app .ar-reader.ar-composing .clip-composer textarea { min-height: 120px; resize: vertical; }
+.android-app .ar-reader.ar-composing .clip-quote-preview { max-height: 20dvh; margin: 0; overflow: auto; font-size: 14px; }
+.android-app .ar-reader.ar-composing .clip-source-chip { font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.android-app .ar-reader.ar-composing .clip-color-choice { display: grid; place-items: center; width: 44px; height: 44px; }
+.android-app .ar-reader.ar-composing .clip-composer > .clip-board-option { flex-direction: row; align-items: center; }
+.android-app .ar-reader.ar-composing .clip-composer-actions { position: sticky; bottom: -28px; display: flex; flex: 0 0 auto; gap: 8px; margin-top: 4px; padding: 12px 0 max(16px, env(safe-area-inset-bottom)); border-top: 1px solid var(--ar-line); background: var(--ar-panel); }
+.android-app .ar-reader.ar-composing .clip-composer-actions button { flex: 1; min-height: 48px; height: auto; }
+
+@media (max-width: 959px) {
+  .android-app .reader-workspace .ar-reader .reader-workspace-body { grid-template-columns: 0 minmax(0, 1fr) 0; }
+  .android-app .ar-reader :is(.reader-navigation, .reader-side) { position: fixed; z-index: 180; inset: 0 0 0 auto; grid-column: auto; width: min(420px, 94vw); max-width: none; height: 100dvh; border: 0; border-left: 1px solid #4b5369; border-radius: 20px 0 0 20px; box-shadow: -12px 0 40px #0007; }
+  .android-app .ar-reader .reader-navigation { overflow: hidden; }
+  .android-app .ar-reader .reader-side { overflow: auto; }
+  .android-app .ar-reader:is(.nav-open, .tools-open, .assistant-open) .ar-panel-scrim { position: fixed; display: block; z-index: 170; inset: 0; width: 100%; height: 100%; padding: 0; margin: 0; border: 0; border-radius: 0; background: #070c16b8; }
+  .android-app .ar-reader.ar-composing .reader-side { width: 100%; border-radius: 0; }
+  .android-app.am-keyboard-open .ar-reader .ar-reader-dock { display: none; }
+  .android-app.am-keyboard-open .ar-reader .reader-statusbar { display: none; }
+  .android-app .reader-note-overlay { padding: 0; }
+  .android-app .reader-note-dialog { width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; }
+  .android-app .reader-note-dialog .reader-note-dismiss { width: 44px; height: 44px; }
+  .android-app .reader-note-body { flex: 1; min-height: 0; font-size: 16px; }
+}
+@media (min-width: 960px) {
+  .android-app .ar-reader .reader-header { padding-left: 20px; padding-right: 20px; }
+  .android-app .ar-reader .reader-document-identity h1 { font-size: 18px; }
+  .android-app .ar-reader #reader-author { display: inline; }
+  .android-app .ar-reader .reader-content { padding: 24px; }
+  .android-app .ar-reader .reader-content:has(#epub-text) { padding: 24px; }
+  .android-app .ar-reader #epub-text { padding: 42px 48px; }
+  .android-app .ar-reader.nav-open .reader-workspace-body { grid-template-columns: 290px minmax(0, 1fr) 0; }
+  .android-app .ar-reader:is(.tools-open, .assistant-open) .reader-workspace-body { grid-template-columns: 0 minmax(0, 1fr) 360px; }
+  .android-app .ar-reader.nav-open:is(.tools-open, .assistant-open) .reader-workspace-body { grid-template-columns: 270px minmax(0, 1fr) 340px; }
+  .android-app .ar-reader .reader-navigation { position: relative; inset: auto; width: auto; height: 100%; grid-column: 1; }
+  .android-app .ar-reader .reader-side { position: relative; inset: auto; width: auto; height: 100%; grid-column: 3; }
+  .android-app .ar-reader .ar-reader-dock { display: flex; justify-content: center; gap: 12px; }
+  .android-app .ar-reader .ar-reader-dock > button { flex: 0 0 108px; width: 108px; }
+  .android-app .ar-reader .reader-view-controls { justify-content: flex-start; }
+  .android-app .ar-reader .ar-display-panel { padding-left: 24px; padding-right: 24px; }
+  .android-app .ar-reader .ar-appearance[open] { flex-basis: 100%; max-width: 700px; }
+}
+@media (max-width: 959px) and (max-height: 500px) {
+  .android-app .ar-reader .ar-bookmark-help { padding: 6px; margin-bottom: 8px; }
+  .android-app .ar-reader .ar-bookmark-help p { display: none; }
+  .android-app .ar-reader .reader-header { min-height: 50px; padding-top: 3px; padding-bottom: 3px; }
+  .android-app .ar-reader .reader-document-identity > small { display: none; }
+  .android-app .ar-reader .reader-commandbar { min-height: 49px; padding-top: 2px; padding-bottom: 2px; }
+  .android-app .ar-reader .ar-reader-dock { min-height: 52px; padding-top: 3px; padding-bottom: 3px; }
+  .android-app .ar-reader .ar-reader-dock > button { flex-direction: row; gap: 8px; min-height: 44px; padding: 5px; }
+  .android-app .ar-reader .reader-statusbar { min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
+  .android-app .ar-reader .reader-findbar { grid-template-columns: minmax(0, 1fr) auto auto; }
+  .android-app .ar-reader .reader-find-status { grid-column: 2; grid-row: 1; }
+  .android-app .ar-reader .reader-find-controls { grid-column: 3; }
+}
+
+/* This contract mirrors NativeReaderActivity for MuPDF and DjVuLibre. The
+   decoder may differ; the navigation and Noteject surfaces stay consistent. */
+.android-app .ar-reader .reader-header { min-height: 64px; padding: 8px 4px; gap: 0; }
+.android-app .ar-reader .reader-document-identity { padding: 0 6px; }
+.android-app .ar-reader .reader-document-identity > small { color: var(--ar-accent); font-weight: 700; }
+.android-app .ar-reader :is(.ar-header-find,.ar-bookmark,.reader-document-menu > summary) { display: grid; place-items: center; flex: 0 0 44px; width: 44px; min-width: 44px; height: 48px; min-height: 48px; border: 0; padding: 0; background: transparent; color: var(--ar-ink); border-radius: 12px; }
+.android-app .ar-reader .ar-bookmark { display: flex; align-items: center; justify-content: center; flex: 0 0 44px !important; width: 44px !important; min-width: 44px !important; height: 48px; gap: 0; padding: 0; }
+.android-app .ar-reader :is(.ar-header-find,.ar-bookmark,.reader-back,.reader-document-menu > summary) svg { width: 24px; height: 24px; }
+.android-app .ar-reader .reader-document-menu > summary::marker { content: ''; }
+.android-app .ar-reader .reader-document-menu > summary::-webkit-details-marker { display: none; }
+.android-app .ar-reader .reader-commandbar { min-height: 54px; border: 0; border-top: 1px solid var(--ar-line); }
+.android-app .ar-reader .reader-nav-controls > button { display: grid; place-items: center; }
+.android-app .ar-reader .reader-statusbar { height: 4px; min-height: 4px; padding: 0; border: 0; gap: 0; }
+.android-app .ar-reader .reader-statusbar > :not(.reader-progress-track) { display: none; }
+.android-app .ar-reader .reader-progress-track { width: 100%; max-width: none; height: 4px; margin: 0; border-radius: 0; }
+.android-app .ar-reader .reader-progress-fill { height: 100%; border-radius: 0; background: var(--ar-accent); }
+.android-app .ar-reader .reader-nav-controls > #reader-progress-label { flex: 0 0 auto; font-size: 12px; }
+.android-app .ar-reader .ar-reader-dock { min-height: 64px; padding-top: 3px; }
+.android-app .ar-reader .ar-landscape-actions { display: none; }
+.android-app .ar-reader dialog.ar-reader-sheet {
+  position: fixed; inset: auto 12px max(12px, env(safe-area-inset-bottom)) 12px;
+  box-sizing: border-box; width: min(520px, calc(100% - 24px)); min-width: 0;
+  max-width: calc(100% - 24px); max-height: calc(86dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: 0 auto; padding: 12px 16px 20px; overflow: auto; overscroll-behavior: contain;
+  border: 1px solid var(--ar-line); border-radius: 23px; background: var(--ar-panel); color: var(--ar-ink);
+  box-shadow: 0 16px 60px #0007; font-family: inherit; text-align: left; color-scheme: var(--am-color-scheme, dark);
+}
+.android-app .ar-reader dialog.ar-reader-sheet:not([open]) { display: none !important; }
+.android-app .ar-reader dialog.ar-reader-sheet[open] { display: block; }
+.android-app .ar-reader dialog.ar-reader-sheet::backdrop { background: #080d17b3; }
+.android-app .ar-reader .ar-sheet-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.android-app .ar-reader .ar-sheet-heading > div { flex: 1; min-width: 0; }
+.android-app .ar-reader .ar-sheet-heading small { color: var(--ar-accent); font-size: 9px; letter-spacing: 1px; font-weight: 700; }
+.android-app .ar-reader .ar-sheet-heading h2 { margin: 3px 0 0; font: 700 18px/1.4 var(--font-ui, Roboto, system-ui, sans-serif); }
+.android-app .ar-reader .ar-sheet-close { display: grid; place-items: center; flex: 0 0 48px; width: 48px; min-height: 48px; padding: 0; border: 0; border-radius: 12px; background: transparent; color: var(--ar-ink); }
+.android-app .ar-reader .ar-sheet-document { margin: 4px 0 12px; color: var(--ar-muted); font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.android-app .ar-reader .ar-sheet-actions,
+.android-app .ar-reader .ar-reader-menu-shortcuts { display: flex; flex-direction: column; gap: 8px; }
+.android-app .ar-reader .ar-reader-menu-shortcuts { margin: 0 0 4px; padding-bottom: 12px; border-bottom: 1px solid var(--ar-line); }
+.android-app .ar-reader .ar-sheet-actions button { display: flex; align-items: center; gap: 14px; width: 100%; min-height: 52px; height: auto; margin: 0; padding: 12px 14px; border: 1px solid var(--ar-line); border-radius: 12px; background: var(--am-raised, #273349); color: var(--ar-ink); font-size: 15px; line-height: 1.5; text-align: left; white-space: normal; }
+.android-app .ar-reader .ar-sheet-actions button svg { flex: 0 0 24px; color: var(--ar-accent); }
+.android-app .ar-reader .reader-view-controls { justify-content: center; }
+.android-app .ar-reader .reader-view-controls > :is(.ar-text-size-row,.ar-zoom-row) { color: var(--ar-ink); max-width: none; }
+.android-app .ar-reader .ar-appearance { width: 100%; }
+.android-app .ar-reader .ar-appearance .reader-appearance-panel { box-sizing: border-box; background: var(--am-raised, #273349); color: var(--ar-ink); }
+.android-app .ar-reader .ar-appearance label { color: var(--ar-muted); }
+.android-app .ar-reader .ar-tap-setting { border-color: var(--ar-line); }
+.android-app .ar-reader .ar-tap-setting b { color: var(--ar-ink); }
+.android-app .ar-reader :is(.ar-tap-setting small,.ar-reading-help) { color: var(--ar-muted); }
+.android-app .ar-reader #txt-content[data-reader-theme] { box-sizing: border-box; max-width: var(--reader-max-width, 760px); font-size: var(--reader-font-size, 18px); line-height: var(--reader-line-height, 1.8); border-radius: 8px; background: #fbfaf6; color: #343943; font-family: Georgia, 'Times New Roman', serif; }
+.android-app .ar-reader #txt-content[data-reader-font="sans"] { font-family: Roboto, system-ui, sans-serif; }
+.android-app .ar-reader #txt-content[data-reader-theme="sepia"] { background: #f2e6d1; color: #453a2c; }
+.android-app .ar-reader #txt-content[data-reader-theme="night"] { background: #202732; color: #dce1e9; }
+@media (orientation: landscape) and (max-height: 599px) {
+  .android-app .ar-reader .reader-header { min-height: 56px; padding-top: 4px; padding-bottom: 4px; }
+  .android-app .ar-reader .reader-document-identity > small { display: none; }
+  .android-app .ar-reader .reader-document-identity h1 { font-size: 14px; }
+  .android-app .ar-reader .reader-commandbar { min-height: 54px; }
+  .android-app .ar-reader .ar-reader-dock { display: none; }
+  .android-app .ar-reader .reader-statusbar { min-height: 4px; height: 4px; padding: 0; }
+  .android-app .ar-reader .reader-nav-controls { width: 100%; }
+}
+@media (orientation: landscape) and (max-height: 599px) and (min-width: 560px) {
+  .android-app .ar-reader .ar-landscape-actions { display: flex; gap: 3px; margin-left: auto; }
+  .android-app .ar-reader .ar-landscape-actions button { display: grid; place-items: center; min-width: 44px; width: 44px; height: 44px; min-height: 44px; border: 0; padding: 0; color: var(--ar-ink); background: transparent; }
+}
+
+.android-app .ar-reader :is(#epub-text,#txt-content),.android-app .ar-reader :is(#epub-text,#txt-content) * { -webkit-user-select:text!important;user-select:text!important; }
+.android-app .ar-reader .reader-content:has(#epub-text) { touch-action:pan-x pan-y; }
+
+.android-app .ar-reader .ar-hidden-command { display:none!important; }
+.reader-workflow-help { box-sizing:border-box;width:min(520px,calc(100vw - 24px));max-height:calc(100dvh - 24px);overflow:auto; }
+.reader-workflow-help ol { padding-left:22px;line-height:1.65; }
+.reader-workflow-help li { margin:10px 0; }
+.reader-workflow-help button { min-height:48px;width:100%; }

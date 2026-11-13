@@ -1,0 +1,8 @@
+{
+  "appId": "com.noteject.app",
+  "appName": "Noteject",
+  "webDir": "apple/www",
+  "ios": {
+    "contentInset": "automatic"
+  }
+}

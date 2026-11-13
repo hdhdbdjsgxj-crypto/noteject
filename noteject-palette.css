@@ -1,0 +1,1251 @@
+/* One shared Noteject palette for Android, Windows, and the hosted workspace. */
+:root,
+.android-app,
+body.windows-app,
+html.noteject-web {
+  --nx-bg: #101114;
+  --nx-sidebar: #15161a;
+  --nx-panel: #191a1e;
+  --nx-raised: #222328;
+  --nx-input: #141519;
+  --nx-line: #2b2c31;
+  --nx-line-soft: #24252a;
+  --nx-ink: #e9e9ec;
+  --nx-muted: #a0a0a8;
+  --nx-subtle: #85858d;
+  --nx-accent: #b8a5ff;
+  --nx-accent-ink: #201a2c;
+  --nx-accent-soft: #292630;
+  --nx-accent-border: #625878;
+  --nx-danger-bg: #36242a;
+  --nx-danger-border: #754b55;
+  --nx-danger-ink: #e7adb6;
+  --am-bg: var(--nx-bg);
+  --am-panel: var(--nx-panel);
+  --am-raised: var(--nx-raised);
+  --am-line: var(--nx-line);
+  --am-accent: var(--nx-accent);
+  --am-accent-ink: var(--nx-accent-ink);
+  --am-ink: var(--nx-ink);
+  --am-muted: var(--nx-muted);
+  --nw-bg: var(--nx-bg);
+  --nw-sidebar: var(--nx-sidebar);
+  --nw-panel: var(--nx-panel);
+  --nw-panel-raised: var(--nx-raised);
+  --nw-line: var(--nx-line);
+  --nw-line-soft: var(--nx-line-soft);
+  --nw-ink: var(--nx-ink);
+  --nw-muted: var(--nx-muted);
+  --nw-subtle: var(--nx-subtle);
+  --nw-accent: var(--nx-accent);
+  --nw-accent-ink: var(--nx-accent-ink);
+  --accent: var(--nx-accent);
+  --surface: var(--nx-panel);
+  --surface-raised: var(--nx-raised);
+  --surface-2: var(--nx-raised);
+  --panel: var(--nx-panel);
+  --raised: var(--nx-raised);
+  --raised-hover: #2a2b31;
+  --background: var(--nx-input);
+  --line: var(--nx-line);
+  --border: var(--nx-line);
+  --muted: var(--nx-muted);
+  --text: var(--nx-ink);
+  --ink: var(--nx-ink);
+  color-scheme: dark;
+}
+
+body,
+body.windows-app,
+body.android-app,
+html.noteject-web body {
+  background: var(--nx-bg) !important;
+  color: var(--nx-ink);
+}
+
+:is(.app, .main, #view) { color: var(--nx-ink); }
+:is(.app, .main) { background-color: var(--nx-bg); }
+:is(.sidebar, .app > .sidebar) { background: var(--nx-sidebar); border-color: var(--nx-line); }
+:is(.sidebar .brand, .sidebar-bottom, .sidebar .saved) { border-color: var(--nx-line); }
+:is(.brand-home, .sidebar .brand-home, .gear, .sidebar .gear) { color: var(--nx-muted); }
+:is(.nav-label, .nw-nav-section) { color: var(--nx-subtle); }
+:is(.nav-item, .sidebar .nav-item, .sidebar .board-link) { color: var(--nx-muted); }
+:is(.nav-item:hover, .sidebar .nav-item:hover, .board-link:hover) { background: var(--nx-raised); color: var(--nx-ink); }
+:is(.nav-item.active, .sidebar .nav-item.active) { background: var(--nx-accent-soft); color: #eee5ff; }
+:is(.nav-item > span:first-child, .nw-project-open i) { color: var(--nx-accent); }
+:is(.topbar, .main > .topbar, .am-header, .nw-statusbar) {
+  background: var(--nx-panel);
+  border-color: var(--nx-line);
+  color: var(--nx-muted);
+}
+:is(.topbar b, .page-head h1, .page-heading h1, .nw-home h1, .nw-home-section h2,
+  .am-home-intro h1, .settings-card h2, .settings-card h3) { color: var(--nx-ink); }
+:is(.topbar .slash, .page-head p, .page-heading p, .eyebrow, .nw-eyebrow,
+  .workspace-eyebrow, .nw-empty-copy, .am-home-intro > p:last-child) { color: var(--nx-muted); }
+
+:is(.nw-home-hero, .nw-home-items, .nw-home-boards > button, .nw-home-stats button,
+  .settings-card, .settings-section, .project-card, .project-row, .collection-card,
+  .note-card, .document-grid .doc-list, .document-table-mode .doc-list,
+  .document-selection-bar, .workspace-card, .workspace-panel, .inbox-review-card,
+  .inbox-management-panel, .graph-toolbar, .graph-details, .reader-navigation,
+  .reader-side, .reader-backlinks, .trash-row) {
+  background-color: var(--nx-panel);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+:is(.nw-home-item, .project-row, .collection-row, .inbox-review-row, .inbox-item) {
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+:is(.nw-home-item:hover, .nw-home-boards > button:hover, .project-row:hover,
+  .collection-row:hover, .inbox-item:hover, .inbox-review-row:hover) { background: var(--nx-raised); }
+:is(.nw-home-item small, .nw-home-boards small, .inbox-item-copy p,
+  .inbox-item-copy small, .inbox-item-title small, .inbox-item-date,
+  .inbox-total, .ib-sort, .settings-note, .reader-find-status) { color: var(--nx-muted); }
+
+:is(button.primary, .primary, .nw-toolbar-new, .nw-sidebar-new, .am-fab) {
+  background: #a68cf5 !important;
+  border-color: #b69fff !important;
+  color: var(--nx-accent-ink) !important;
+}
+:is(button.primary, .primary, .nw-toolbar-new, .nw-sidebar-new, .am-fab):hover { background: #b39cff !important; }
+:is(button.secondary, .secondary, .workspace-small-button, .nw-icon-button,
+  .nw-home-actions > button, .board-view-menu, .board-asset-browser,
+  .inbox-open, .ib-row-actions > button, .inbox-heading-actions > button) {
+  background: var(--nx-raised);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+:is(button.secondary, .secondary, .workspace-small-button, .nw-icon-button,
+  .nw-home-actions > button, .board-view-menu, .board-asset-browser,
+  .inbox-open, .ib-row-actions > button, .inbox-heading-actions > button):hover { background: #303846; }
+:is(input:not([type=checkbox]):not([type=radio]), select, textarea, .topbar .search,
+  .board-search-tools, .inbox-search, .inbox-bulk-actions select, .ib-sort select) {
+  background-color: var(--nx-input);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+  color-scheme: dark;
+}
+:is(input, textarea, select)::placeholder { color: var(--nx-muted); opacity: .82; }
+:is(input[type=checkbox], input[type=radio]) { accent-color: var(--nx-accent); }
+:is(button, a, input, textarea, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--nx-accent) !important;
+  outline-offset: 2px;
+}
+
+:is(.command-menu, .toast, .nw-text-dialog, .dialog-overlay > dialog, .move-dialog,
+  .connection-editor, .reader-note-dialog, .reader-popover > *, .note-folder-menu > div,
+  .note-more-tools, .board-view-options-menu, .board-document-panel, .board-note-tray,
+  .inbox-management-popover, .ib-picker) {
+  background: #211f26;
+  border-color: #494450;
+  color: var(--nx-ink);
+}
+:is(.command-menu-option:hover, .command-menu-option.is-active) {
+  background: var(--nx-accent-soft);
+  color: #eee5ff;
+}
+:is(.doc-delete, .note-board-remove, .document-delete, .board-delete,
+  .am-danger-action, .an-delete-note, .delete) {
+  background: var(--nx-danger-bg) !important;
+  border-color: var(--nx-danger-border) !important;
+  color: var(--nx-danger-ink) !important;
+}
+
+/* Board canvas, menus, and color-coded cards share one appearance everywhere. */
+.is-board-view { color: var(--nx-ink); }
+.is-board-view .canvas { background-color: var(--nx-bg); border-color: var(--nx-line); }
+.is-board-view .board-toolstrip { background: var(--nx-panel); border-color: var(--nx-line); }
+.is-board-view :is(.board-navigation-strip, .board-document-panel, .board-note-tray,
+  .board-view-options-menu, .board-selection-tools) {
+  background: #211f26;
+  border-color: #494450;
+  color: var(--nx-ink);
+}
+.is-board-view :is(.canvas-controls, .canvas-controls button, .board-toolstrip button,
+  .board-navigation-strip button, .board-search-tools button, .board-view-options > summary,
+  .board-asset-browser, .board-view-menu) {
+  background: var(--nx-raised);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+.is-board-view .canvas-card:not([data-tint]) { background: #222328; border-color: #36373e; }
+.is-board-view .canvas-card[data-tint="violet"] { --board-card-color:#b8a5ff; --board-card-fill:#292630; }
+.is-board-view .canvas-card[data-tint="teal"] { --board-card-color:#9bd5c6; --board-card-fill:#222b2b; }
+.is-board-view .canvas-card[data-tint="amber"] { --board-card-color:#e7b565; --board-card-fill:#302a25; }
+.is-board-view .canvas-card[data-tint="blue"] { --board-card-color:#b7d4ff; --board-card-fill:#242a32; }
+.is-board-view .canvas-card[data-tint] {
+  background: linear-gradient(145deg, var(--board-card-fill), #202630) !important;
+  border-color: color-mix(in srgb, var(--board-card-color) 62%, #384151) !important;
+  color: var(--nx-ink);
+}
+.is-board-view .canvas-card[data-tint] .node-color { color: var(--board-card-color) !important; }
+
+/* Inbox management keeps readable list surfaces, calm controls, and matching icons. */
+:is(.ib-page, .android-app .ib-page, body.windows-app .ib-page) {
+  --ink: var(--nx-ink);
+  --text: var(--nx-ink);
+  --muted: var(--nx-muted);
+  --surface: var(--nx-panel);
+  --surface-raised: var(--nx-raised);
+  --line: var(--nx-line);
+  --border: var(--nx-line);
+  --hover: var(--nx-raised);
+  color: var(--nx-ink);
+}
+.ib-page :is(.inbox-manager, .inbox-management-popover, .ib-picker) {
+  background: var(--nx-panel);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+.ib-page :is(.inbox-manager-toolbar, .inbox-bulkbar) { background: #1b1c20; border-color: var(--nx-line); }
+.ib-page .inbox-filters { background: var(--nx-raised); }
+.ib-page .inbox-filters button { color: var(--nx-muted); }
+.ib-page .inbox-filters button.active,
+.ib-page .ib-favorites[aria-pressed="true"] { background: var(--nx-accent-soft); color: #eee5ff; }
+.ib-page .inbox-item { background: transparent; border-color: var(--nx-line); color: var(--nx-ink); }
+.ib-page .inbox-item.ats-selected,
+.ib-page .inbox-item[aria-selected="true"] { background: var(--nx-accent-soft); }
+.ib-page :is(.inbox-item-title b, .inbox-total b, .inbox-empty-state h2) { color: var(--nx-ink); }
+.ib-page .inbox-item-icon { background: var(--nx-accent-soft); color: var(--nx-accent); }
+.ib-page .inbox-item-icon.file-icon { background: #242a32; color: #b7d4ff; }
+.ib-page .inbox-empty-state > span { background: #222b2b; color: #9bd5c6; }
+
+/* Reader chrome changes color; the rendered document page remains untouched. */
+.reader-workspace {
+  --reader-chrome: var(--nx-panel);
+  --reader-panel: var(--nx-panel);
+  --reader-line: var(--nx-line);
+  --reader-ink: var(--nx-ink);
+  --reader-muted: var(--nx-muted);
+  --reader-accent: var(--nx-accent);
+}
+.reader-workspace :is(.reader-shell, .reader-content) { background: var(--nx-bg); }
+.reader-workspace :is(.reader-header, .reader-commandbar, .reader-statusbar,
+  .reader-navigation, .reader-side, .reader-findbar) {
+  background: var(--nx-panel);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+
+/* Windows uses its own desktop layout, while these surfaces follow the Web palette. */
+body.windows-app .nw-home-hero {
+  border-color: #34313e !important;
+  background: radial-gradient(ellipse at 78% 46%, #57477855 0, transparent 34%),
+    linear-gradient(120deg, #211f28, #1d1c21 64%, #25212b) !important;
+}
+body.windows-app .nw-home-hero :is(h1, p) { color: var(--nx-ink) !important; }
+body.windows-app .nw-home-hero p,
+body.windows-app .nw-home-item small,
+body.windows-app .nw-home-boards small,
+body.windows-app .nw-home-stats span { color: var(--nx-muted) !important; }
+body.windows-app .nw-home-actions > button {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-home-actions > button:first-child {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-accent-soft) !important;
+}
+body.windows-app .nw-home-actions > button:hover,
+body.windows-app .nw-home-actions > button:first-child:hover,
+body.windows-app .nw-home-stats button:hover,
+body.windows-app .nw-home-boards > button:hover { background: var(--nx-raised) !important; }
+body.windows-app .nw-home-stats button,
+body.windows-app .nw-home-items,
+body.windows-app .nw-home-boards > button {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-home-stats strong,
+body.windows-app .nw-home-section > header button,
+body.windows-app .nw-home-boards svg,
+body.windows-app .nw-home-item .nw-item-arrow { color: var(--nx-accent) !important; }
+body.windows-app .nw-home-item {
+  border-color: var(--nx-line-soft) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-home-item:hover { background: var(--nx-raised) !important; }
+body.windows-app .nw-item-glyph {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-accent-soft) !important;
+  color: var(--nx-accent) !important;
+}
+body.windows-app .nw-home-boards strong,
+body.windows-app .nw-home-section h2 { color: var(--nx-ink) !important; }
+
+body.windows-app .nw-notes-master,
+body.windows-app .nw-notes-view > .detail-panel,
+body.windows-app .nw-notes-empty,
+body.windows-app .nw-notes-view .edit-actions {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-notes-master .note-smart-folder {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-muted) !important;
+}
+body.windows-app .nw-notes-master .note-smart-folder:hover,
+body.windows-app .nw-notes-master .note-smart-folder.active {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-accent-soft) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-notes-master .note-list-card {
+  border-top-color: var(--nx-line) !important;
+  border-right-color: var(--nx-line) !important;
+  border-bottom-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-notes-master .note-list-card:hover {
+  border-top-color: var(--nx-line) !important;
+  border-right-color: var(--nx-line) !important;
+  border-bottom-color: var(--nx-line) !important;
+  background: var(--nx-raised) !important;
+}
+body.windows-app .nw-notes-master .note-list-card.nw-note-current,
+body.windows-app .nw-notes-master .note-list-card.is-selected {
+  border-top-color: var(--nx-accent-border) !important;
+  border-right-color: var(--nx-accent-border) !important;
+  border-bottom-color: var(--nx-accent-border) !important;
+  background: var(--nx-accent-soft) !important;
+}
+body.windows-app .nw-notes-master .note-list-card :is(h3, p, small),
+body.windows-app .nw-notes-view .detail-panel :is(h2, .markdown),
+body.windows-app .nw-notes-view .note-editor-stats { color: var(--nx-ink) !important; }
+body.windows-app .nw-notes-master .note-list-card p,
+body.windows-app .nw-notes-master .note-list-card > small,
+body.windows-app .nw-notes-view .note-editor-stats { color: var(--nx-muted) !important; }
+body.windows-app .nw-notes-view .note-format-toolbar {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-raised) !important;
+}
+body.windows-app .nw-notes-view .editor {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-input) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-notes-view .note-meta-edit :is(input, select) {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-input) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app .nw-notes-view .nw-note-return { color: var(--nx-accent) !important; }
+body.windows-app .nw-notes-view .note-list-card[data-color] { border-left-color: var(--nx-accent) !important; }
+body.windows-app .document-move-project { display: none !important; }
+.reader-workspace :is(.reader-back, .reader-header-actions > button, .reader-commandbar button,
+  .reader-popover > summary, .reader-focus-controls button) {
+  background: var(--nx-raised);
+  border-color: var(--nx-line);
+  color: var(--nx-ink);
+}
+.reader-workspace :is(.reader-header-actions > button[aria-pressed="true"],
+  .reader-commandbar button[aria-pressed="true"], .reader-popover[open] > summary,
+  .reader-nav-tabs button[aria-selected="true"]) { background: var(--nx-accent-soft); color: #eee5ff; }
+.reader-workspace :is(.reader-document-identity h1, .reader-outline-item.is-active) { color: var(--nx-ink); }
+.reader-workspace :is(.reader-document-identity > small, .reader-tools-heading small,
+  .reader-find-status, .reader-outline-item) { color: var(--nx-muted); }
+.reader-workspace .reader-progress-fill { background: var(--nx-accent); }
+.reader-workspace .reader-save-selection { background: var(--nx-accent-soft); color: #eee5ff; }
+
+/* Finish after platform sheets so their older page and submenu colors cannot leak through. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.app, .main, #view, .workspace-nav-scroll) {
+  background-color: var(--nx-bg) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.sidebar, .app > .sidebar) {
+  background: var(--nx-sidebar) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.topbar, .main > .topbar, .nw-statusbar, .am-header) {
+  background: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-muted) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.nav-item, .sidebar .nav-item, .board-link) {
+  color: var(--nx-muted) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.nav-item:hover, .sidebar .nav-item:hover, .board-link:hover) {
+  background: var(--nx-raised) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.nav-item.active, .sidebar .nav-item.active) {
+  background: var(--nx-accent-soft) !important;
+  color: #eee9ff !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.settings-menu-nav, .settings-menu-content,
+  .settings-section-title, .settings-tab, .settings-card, .settings-section, .settings-note,
+  .project-card, .project-row, .collection-card, .note-card, .document-selection-bar,
+  .workspace-card, .workspace-panel, .graph-toolbar, .graph-details, .graph-tools,
+  .reader-navigation, .reader-side, .inbox-review-card, .trash-row) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.settings-tab:hover, .settings-card:hover,
+  .project-row:hover, .collection-card:hover, .note-card:hover, .reader-outline-item:hover) {
+  background-color: var(--nx-raised) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.settings-tab.active, .settings-tab[aria-selected="true"],
+  .reader-nav-tabs button[aria-selected="true"], .reader-outline-item.is-active) {
+  background-color: var(--nx-accent-soft) !important;
+  border-color: var(--nx-accent-border) !important;
+  color: #eee9ff !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.command-menu, .command-menu-option,
+  .note-folder-menu > div, .note-folder-menu > div button, .note-more-tools, .note-more-tools button,
+  .reader-popover > *, .reader-document-options, .reader-document-options button,
+  .reader-reading-popover, .board-view-options-menu, .board-view-options-menu label,
+  .board-document-panel, .board-note-tray, .board-selection-tools,
+  .inbox-management-popover, .ib-picker, .ux-dialog, .cloud-dialog) {
+  background-color: #211f26 !important;
+  border-color: #494450 !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.command-menu-option:hover,
+  .command-menu-option.is-active, .note-folder-menu > div button:hover, .note-more-tools button:hover,
+  .reader-document-options button:hover, .board-view-options-menu label:hover,
+  .inbox-management-popover > button:hover) {
+  background-color: var(--nx-accent-soft) !important;
+  color: #eee9ff !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.secondary, .workspace-small-button,
+  .nw-icon-button, .board-view-menu, .board-asset-browser, .board-search-tools button,
+  .inbox-open, .ib-row-actions > button, .inbox-heading-actions > button,
+  .reader-header-actions > button, .reader-commandbar button, .reader-focus-controls button,
+  .reader-popover > summary, .settings-actions button:not(.primary)) {
+  background-color: var(--nx-raised) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(input:not([type=checkbox]):not([type=radio]),
+  textarea, select, .search, .inbox-search) {
+  background-color: var(--nx-input) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.board-toolstrip, .board-navigation-strip) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .is-board-view .canvas {
+  background-color: var(--nx-bg) !important;
+  border-color: var(--nx-line) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .is-board-view .canvas-card[data-tint="violet"] {
+  --board-card-color: #b8a5ff !important; --board-card-fill: #292630 !important;
+  background: linear-gradient(145deg, #292630, #24232a) !important;
+  border-color: #625878 !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .is-board-view .canvas-card[data-tint="teal"] {
+  --board-card-color: #9bd5c6 !important; --board-card-fill: #222b2b !important;
+  background: linear-gradient(145deg, #222b2b, #24232a) !important;
+  border-color: #416d67 !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .is-board-view .canvas-card[data-tint="amber"] {
+  --board-card-color: #e7b565 !important; --board-card-fill: #302a25 !important;
+  background: linear-gradient(145deg, #302a25, #24232a) !important;
+  border-color: #80664b !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .is-board-view .canvas-card[data-tint="blue"] {
+  --board-card-color: #b7d4ff !important; --board-card-fill: #242a32 !important;
+  background: linear-gradient(145deg, #242a32, #24232a) !important;
+  border-color: #4b6784 !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .ib-page :is(.inbox-manager,
+  .inbox-manager-toolbar, .inbox-bulkbar, .inbox-filters, .inbox-search, .inbox-management-popover,
+  .ib-picker, .ib-sort select, .inbox-bulk-actions select) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .ib-page :is(.inbox-item, .inbox-open,
+  .inbox-heading-actions > button, .ib-row-actions > button, .inbox-filters button.active,
+  .ib-favorites[aria-pressed="true"]) {
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .ib-page :is(.inbox-item-title small,
+  .inbox-item-copy small, .inbox-item-copy p, .inbox-item-date, .inbox-total, .ib-sort,
+  .inbox-selected-count, .inbox-select-all) { color: var(--nx-muted) !important; }
+:is(html.noteject-web, body.windows-app, body.android-app) .reader-workspace :is(.reader-shell,
+  .reader-content, .reader-header, .reader-commandbar, .reader-statusbar, .reader-navigation,
+  .reader-side, .reader-findbar) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .reader-workspace :is(.reader-back,
+  .reader-header-actions > button, .reader-commandbar button, .reader-popover > summary,
+  .reader-focus-controls button) {
+  background-color: var(--nx-raised) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) .reader-workspace .reader-document-page,
+:is(html.noteject-web, body.windows-app, body.android-app) .reader-workspace .reader-page-canvas { background-color: #fff !important; }
+:is(html.noteject-web, body.windows-app, body.android-app) .reader-workspace :is(.reader-document-identity h1,
+  .reader-tools-heading, .reader-outline-item, .reader-find-status) { color: var(--nx-muted) !important; }
+:is(html.noteject-web, body.windows-app, body.android-app) .saved { color: var(--nx-muted) !important; }
+::selection { background: #574778; color: #fff; }
+
+body::-webkit-scrollbar,
+.main::-webkit-scrollbar,
+.sidebar::-webkit-scrollbar { width: 10px; height: 10px; }
+body::-webkit-scrollbar-thumb,
+.main::-webkit-scrollbar-thumb,
+.sidebar::-webkit-scrollbar-thumb { background: #393540; border: 2px solid var(--nx-bg); border-radius: 10px; }
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.nav-item, .sidebar, .nw-home-item, .button, button) { scroll-behavior: auto; transition-duration: .01ms !important; }
+}
+
+/* Keep every workspace page and its nested menus on the Home palette. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-page, .workspace-organizer,
+  .workspace-reading, .board-gallery, .document-library, .smart-engine) {
+  --ws-line: var(--nx-line) !important;
+  --ws-panel: var(--nx-panel) !important;
+  --ws-muted: var(--nx-muted) !important;
+  --ws-text: var(--nx-ink) !important;
+  --line: var(--nx-line) !important;
+  --panel: var(--nx-panel) !important;
+  --surface: var(--nx-panel) !important;
+  --surface-raised: var(--nx-raised) !important;
+  --muted: var(--nx-muted) !important;
+  --text: var(--nx-ink) !important;
+  --accent: var(--nx-accent) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-filterbar,
+  .workspace-stat, .workspace-card, .workspace-row, .workspace-empty, .workspace-form,
+  .note-smart-folder, .document-library-controls, .document-selection-bar,
+  .document-view-switch, .document-library .doc-list, .document-smart-views button,
+  .board-gallery-tools, .board-gallery-card, .board-gallery-management-popover,
+  .workspace-organizer .wo-collection-management-popover,
+  .graph-tools, .graph-legend, .graph-zoom-tools,
+  .smart-layout, .smart-model-badge, .smart-prompts .smart-prompt,
+  .smart-message-user, .smart-results, .smart-citation-list button,
+  .smart-mode-tabs > button, .smart-ai-status button, .smart-filter-row select,
+  .smart-source-actions button, .smart-tag-list span, .smart-tag-list button) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-filterbar,
+  .document-library-controls, .board-gallery-tools, .graph-tools, .graph-legend,
+  .graph-zoom-tools, .smart-layout, .smart-results) {
+  background-color: var(--nx-panel) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-page input:not([type=checkbox]):not([type=radio]):not([type=color]),
+  .workspace-page textarea, .workspace-page select, .board-gallery-search,
+  .board-gallery-sort select, .document-library-controls input, .document-library-controls select,
+  .document-view-switch button, .smart-composer-row input, .smart-filter-row select) {
+  background-color: var(--nx-input) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+  color-scheme: dark;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-small-button,
+  .board-gallery-management > summary, .document-view-switch button,
+  .document-library .document-card-actions button, .graph-tools button, .graph-zoom-tools button,
+  .smart-prompt, .smart-mode-tabs > button, .smart-tool-tabs button,
+  .smart-citation-list button, .smart-save-answer, .smart-ai-status button,
+  .smart-source-actions button, .smart-tag-list button) {
+  background-color: var(--nx-raised) !important;
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-page .primary,
+  .workspace-small-button:hover, .workspace-small-button:focus-visible,
+  .note-smart-folder.active, .note-smart-folder[aria-selected="true"],
+  .document-smart-views button[aria-pressed="true"], .document-view-switch button[aria-pressed="true"],
+  .board-gallery-management[open] > summary, .graph-tools button[aria-pressed="true"],
+  .smart-prompt:hover, .smart-mode-tabs > button.active, .smart-tool-tabs button.active,
+  .smart-source-actions button:hover, .smart-tag-list button:hover) {
+  background-color: var(--nx-accent-soft) !important;
+  border-color: var(--nx-accent-border) !important;
+  color: #eee9ff !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-empty,
+  .board-gallery-empty, .smart-source-empty, .smart-welcome > p,
+  .workspace-page-heading p, .workspace-page .workspace-eyebrow,
+  .board-gallery-heading p, .board-gallery-stats, .board-gallery-result-summary,
+  .board-gallery-counts, .board-gallery-items p, .board-gallery-more-items,
+  .smart-engine-heading p, .smart-index-status, .smart-source-hint,
+  .smart-source-copy small, .smart-source-preview, .smart-source-footer,
+  .smart-composer-foot, .smart-filter-row label, .workspace-result-count) {
+  color: var(--nx-muted) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-page-heading h1,
+  .workspace-card h2, .workspace-card h3, .workspace-row h3, .workspace-empty h2,
+  .workspace-empty h3, .board-gallery-heading h1, .board-gallery-title b,
+  .board-gallery-empty h2, .smart-engine-heading h1, .smart-welcome h2,
+  .smart-results h2, .smart-source-copy b, .smart-source-empty b) {
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.workspace-pill,
+  .smart-source-count, .smart-source-index, .smart-model-badge > span,
+  .smart-mark, .smart-message-label, .smart-prompt span, .smart-source-empty > span) {
+  background-color: var(--nx-accent-soft) !important;
+  border-color: var(--nx-accent-border) !important;
+  color: var(--nx-accent) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.board-gallery-search:focus-within,
+  .document-library-controls :focus, .smart-composer-row input:focus,
+  .workspace-page input:focus, .workspace-page select:focus, .workspace-page textarea:focus) {
+  border-color: var(--nx-accent-border) !important;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--nx-accent) 16%, transparent) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.board-gallery-preview,
+  .graph-canvas-wrap, .smart-main, .smart-conversation-wrap, .smart-source-list) {
+  background-color: var(--nx-bg) !important;
+  border-color: var(--nx-line) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.board-gallery-management-popover,
+  .workspace-organizer .wo-collection-management-popover, .board-view-options-menu,
+  .board-document-panel, .board-note-tray, .board-selection-tools, .reader-document-options,
+  .note-more-tools, .note-folder-menu > div, .cloud-dialog, .ux-dialog) {
+  background-color: #211f26 !important;
+  border-color: #494450 !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.board-gallery-management-popover button,
+  .workspace-organizer .wo-collection-management-popover button,
+  .board-view-options-menu label, .reader-document-options button,
+  .note-more-tools button, .note-folder-menu > div button) {
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.board-gallery-management-popover button:hover,
+  .workspace-organizer .wo-collection-management-popover button:hover,
+  .board-view-options-menu label:hover, .reader-document-options button:hover,
+  .note-more-tools button:hover, .note-folder-menu > div button:hover) {
+  background-color: var(--nx-accent-soft) !important;
+  color: #eee9ff !important;
+}
+
+/* One menu and workflow system across Web, Windows, and Android. Platform
+   styles still control placement, touch targets, and desktop density. */
+:is(html.noteject-web, body.windows-app, body.android-app) {
+  --nx-menu-surface: #191a1e;
+  --nx-menu-raised: #222328;
+  --nx-menu-border: #34353b;
+  --nx-menu-hover: #2a2931;
+  --nx-menu-selected: #292630;
+  --nx-menu-shadow: 0 16px 48px #0008;
+  --nx-overlay: #0c0b0fa8;
+  --ps-surface: var(--nx-panel);
+  --ps-panel: var(--nx-raised);
+  --ps-text: var(--nx-ink);
+  --ps-muted: var(--nx-muted);
+  --ps-line: var(--nx-line);
+  --ps-accent: var(--nx-accent);
+}
+
+/* Context menus, option sheets, popovers, and dialogs use the same surface. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .command-menu, .nw-workspace-menu, .nw-text-dialog, .nw-workspace-dialog,
+  .ap-dialog, .am-options-menu, .am-gallery-board-actions, .ar-reader-sheet,
+  .reader-surface-dialog,
+  .dialog-overlay > dialog, .move-dialog, .reader-note-dialog, .selection-dialog,
+  .connection-editor, .connection-editor-dialog, .reader-workflow-help,
+  .reader-popover > :not(summary), .reader-reading-popover, .reader-document-options,
+  .note-folder-menu > div, .note-more-tools, .board-view-options-menu,
+  .board-document-panel, .board-note-tray, .board-selection-tools,
+  .board-gallery-management-popover, .workspace-organizer .wo-collection-management-popover,
+  .inbox-management-popover, .ib-picker, .inbox-manager, .cloud-dialog, .ux-dialog,
+  .workspace-menu, .workspace-context-menu, .document-context-menu,
+  .am-board-manage-dialog, .am-document-move-dialog
+) {
+  background-color: var(--nx-menu-surface) !important;
+  border-color: var(--nx-menu-border) !important;
+  color: var(--nx-ink) !important;
+  box-shadow: var(--nx-menu-shadow);
+  color-scheme: dark;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .command-menu-overlay, .dialog-overlay, .move-dialog-overlay, .reader-note-overlay,
+  .command-menu-scrim, .am-options-scrim
+) { background-color: var(--nx-overlay) !important; }
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-text-dialog, .nw-workspace-dialog, .ap-dialog, .reader-note-dialog,
+  .move-dialog, .selection-dialog, .connection-editor-dialog, .am-board-manage-dialog,
+  .reader-surface-dialog, .ar-reader-sheet, .cloud-dialog, .ux-dialog
+)::backdrop { background: var(--nx-overlay) !important; }
+
+/* Menu rows stay quiet at rest and use the same lavender focus/hover state. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-workspace-menu button, .am-options-menu > button, .am-gallery-board-actions button,
+  .ap-menu-actions button, .am-board-manage-dialog > button,
+  .am-install-actions button, .ar-sheet-actions button,
+  .board-gallery-management-popover button,
+  .workspace-organizer .wo-collection-management-popover button,
+  .command-menu-option, .reader-document-options button, .note-more-tools button,
+  .note-folder-menu > div button, .inbox-management-popover button,
+  [role="menu"] > [role="menuitem"], [role="menu"] button[role="menuitem"]
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-workspace-menu button:hover, .nw-workspace-menu button:focus-visible,
+  .am-options-menu > button:hover, .am-gallery-board-actions button:hover,
+  .ap-menu-actions button:hover, .am-board-manage-dialog > button:hover,
+  .am-install-actions button:hover, .ar-sheet-actions button:hover,
+  .board-gallery-management-popover button:hover,
+  .workspace-organizer .wo-collection-management-popover button:hover,
+  .command-menu-option:hover, .command-menu-option.is-active,
+  .reader-document-options button:hover, .note-more-tools button:hover,
+  .note-folder-menu > div button:hover, .inbox-management-popover button:hover,
+  [role="menu"] > [role="menuitem"]:hover,
+  [role="menu"] button[role="menuitem"]:hover
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-menu-hover) !important;
+  color: #eee9ff !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .command-menu-option[aria-selected="true"], .command-menu-option[aria-current="true"],
+  [role="menuitem"][aria-checked="true"], [role="menuitem"][aria-current="true"],
+  [role="menuitem"][aria-pressed="true"],
+  .am-options-menu button[aria-pressed="true"], .ar-sheet-actions button[aria-pressed="true"],
+  .board-gallery-management[open] > summary, .am-options[open] > :is(summary,.am-options-trigger),
+  .note-more-menu[open] > summary, .reader-popover[open] > summary,
+  .reader-reading-menu[open] > summary
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-menu-selected) !important;
+  color: #eee9ff !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-workspace-menu hr, .nw-workspace-dialog header, .nw-workspace-dialog footer,
+  .am-options-menu > header, .ap-dialog-head, .reader-note-dialog header,
+  .reader-note-dialog footer, .dialog-section-divider
+) { border-color: var(--nx-line) !important; }
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-workspace-menu kbd, .nw-dialog-description, .nw-dialog-field,
+  .nw-dialog-body > label, .nw-dialog-body p, .nw-dialog-body legend,
+  .ap-description, .ap-field, .ap-linked-boards legend,
+  .am-document-move-dialog > label, .reader-workflow-help,
+  .settings-note, .settings-menu-nav button, .ar-sheet-document,
+  .clip-source-hint
+) { color: var(--nx-muted) !important; }
+
+/* Android's nested Board options remain nested while taking the shared colors. */
+body.android-app .am-options-menu :is(.board-view-options, .board-view-options-menu) {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+body.android-app .am-options-menu .board-view-options-menu label {
+  background: transparent !important;
+  color: var(--nx-ink) !important;
+}
+body.android-app .am-options-menu .board-view-options-menu label:hover {
+  background: var(--nx-menu-hover) !important;
+}
+body.android-app .am-options-menu .board-view-options > summary,
+body.android-app .am-options > :is(summary,.am-options-trigger),
+body.android-app .ap-close,
+body.android-app .am-gallery-manage > summary {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+
+/* Settings tabs and guided project setup keep a single active-step language. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .settings-menu-nav, .settings-menu-content, .settings-section-title,
+  .settings-card, .settings-section, .project-setup, .wo-project-form,
+  .ap-project-form, .am-install-setup, .ps-review, .ps-preset, .ps-check,
+  .ps-metrics > div, .ap-linked-boards, .am-install-actions [data-am-setup-start]
+) {
+  border-color: var(--nx-line) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup, .wo-project-form, .ap-dialog, .settings-card, .settings-section,
+  .am-install-setup
+) { background-color: var(--nx-panel) !important; }
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup .ps-step-tabs, .project-setup .ps-metrics > div,
+  .project-setup .ps-preset, .project-setup .ps-check,
+  .project-setup .ps-storage-info, .project-setup .ps-empty,
+  .wo-project-form .wo-form-grid, .ap-linked-boards
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-raised) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup .ps-step-tabs button, .settings-menu-nav button,
+  .settings-tab, .settings-menu-nav .settings-tab
+) {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  color: var(--nx-muted) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup .ps-step-tabs button[aria-current="step"],
+  .project-setup .ps-step-tabs button[aria-selected="true"],
+  .settings-menu-nav button.active, .settings-menu-nav button[aria-selected="true"],
+  .settings-tab.active, .settings-tab[aria-selected="true"]
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-accent-soft) !important;
+  color: #eee9ff !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup .ps-step-tabs button:hover, .settings-menu-nav button:hover,
+  .settings-tab:hover, .project-setup .ps-preset:hover,
+  .project-setup .ps-check:hover
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-menu-hover) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup .ps-review, .project-setup .ps-preset:has(input:checked),
+  .project-setup .ps-check:has(input:checked),
+  .project-setup .ps-color-label:has(input:checked),
+  .ap-project-form input:focus, .ap-project-form select:focus,
+  .ap-project-form textarea:focus
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-accent-soft) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup input:not([type=checkbox]):not([type=radio]),
+  .project-setup textarea, .project-setup select, .ap-project-form input,
+  .ap-project-form select, .ap-project-form textarea,
+  .am-document-move-dialog select, .nw-dialog-body input,
+  .nw-dialog-body textarea, .nw-dialog-body select
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-input) !important;
+  color: var(--nx-ink) !important;
+  color-scheme: dark;
+}
+
+/* Keep destructive actions recognizable inside menus without changing order. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .is-destructive, .is-danger, .danger-button, .document-delete, .board-delete,
+  .doc-delete, .note-board-remove, .am-danger-action, .ap-danger, .delete,
+  .nw-delete-summary, [data-gallery-action="delete"], [data-action*="delete"]
+) {
+  border-color: var(--nx-danger-border) !important;
+  background-color: var(--nx-danger-bg) !important;
+  color: var(--nx-danger-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .project-setup .ps-badge, .project-setup .ps-review-title small, .ap-dialog-head small,
+  .am-install-setup .am-kicker
+) { color: var(--nx-accent) !important; }
+
+:is(html.noteject-web, body.windows-app, body.android-app) .project-setup .ps-summary-list li::marker {
+  color: var(--nx-accent) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .ap-field :is(input,select,textarea), .nw-dialog-body :is(input,textarea,select),
+  .am-document-move-dialog select, .project-setup input,
+  .project-setup textarea, .project-setup select
+)::placeholder { color: var(--nx-muted) !important; }
+
+/* Reader passage forms and reader-specific action sheets are sub-workflows. */
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .clip-composer, .reader-surface-dialog, .ar-reader-sheet,
+  .reader-appearance-panel, .reader-clip-composer
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .clip-composer :is(input:not([type=checkbox]):not([type=radio]),textarea,select),
+  .reader-surface-dialog input, .reader-surface-dialog textarea,
+  .reader-surface-dialog select, .reader-appearance-panel select
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-input) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .reader-surface-dialog button, .clip-composer-actions button,
+  .ar-sheet-close, .nw-dialog-close
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .reader-surface-dialog button:hover, .clip-composer-actions button:hover,
+  .ar-sheet-close:hover, .nw-dialog-close:hover
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-menu-hover) !important;
+}
+
+/* Windows workspace surfaces mirror the hosted Web palette. Keep the desktop
+   layout rules in windows-reader-board.css; this block only resets colors. */
+body.windows-app {
+  --nx-menu-surface: #191a1e;
+  --nx-menu-raised: #222328;
+  --nx-menu-border: #34353b;
+  --nx-menu-hover: #2a2931;
+  --nx-menu-selected: #332940;
+  --nx-menu-shadow: 0 14px 36px #0009;
+  --nx-ink: #ebe7f3;
+  --nx-muted: #aaa2b8;
+  --nx-accent: #c1a9ff;
+  --nx-accent-soft: #332940;
+  --nx-accent-border: #695783;
+  --nw-ink: #ebe7f3;
+  --nw-muted: #aaa2b8;
+  --nw-accent: #c1a9ff;
+}
+
+/* Desktop dialogs, command menus, popovers, and nested action menus. */
+body.windows-app :is(
+  .command-menu, .nw-workspace-menu, .nw-text-dialog, .nw-workspace-dialog,
+  .ap-dialog, .am-options-menu, .am-gallery-board-actions, .ar-reader-sheet,
+  .reader-surface-dialog, .move-dialog, .reader-note-dialog, .selection-dialog,
+  .connection-editor, .connection-editor-dialog, .reader-workflow-help,
+  .reader-popover > :not(summary), .reader-reading-popover,
+  .reader-document-options, .note-folder-menu > div, .note-more-tools,
+  .board-view-options-menu, .board-document-panel, .board-note-tray,
+  .board-selection-tools, .board-gallery-management-popover,
+  .workspace-organizer .wo-collection-management-popover,
+  .inbox-management-popover, .ib-picker, .inbox-manager, .cloud-dialog,
+  .ux-dialog, .workspace-menu, .workspace-context-menu,
+  .document-context-menu, .am-board-manage-dialog, .am-document-move-dialog
+) {
+  border-color: var(--nx-menu-border) !important;
+  background-color: var(--nx-menu-surface) !important;
+  color: var(--nx-ink) !important;
+  box-shadow: var(--nx-menu-shadow);
+}
+
+body.windows-app :is(
+  .nw-workspace-menu button, .command-menu-option, .board-view-options-menu label,
+  .reader-document-options button, .note-more-tools button,
+  .note-folder-menu > div button, .inbox-management-popover button,
+  .board-gallery-management-popover button,
+  .workspace-organizer .wo-collection-management-popover button,
+  [role="menu"] > [role="menuitem"], [role="menu"] button[role="menuitem"]
+) {
+  border-color: var(--nx-line) !important;
+  background-color: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+
+body.windows-app :is(
+  .nw-workspace-menu button:hover, .nw-workspace-menu button:focus-visible,
+  .command-menu-option:hover, .command-menu-option:focus-visible,
+  .command-menu-option.is-active, .board-view-options-menu label:hover,
+  .reader-document-options button:hover, .note-more-tools button:hover,
+  .note-folder-menu > div button:hover, .inbox-management-popover button:hover,
+  .board-gallery-management-popover button:hover,
+  .workspace-organizer .wo-collection-management-popover button:hover,
+  [role="menu"] > [role="menuitem"]:hover,
+  [role="menu"] button[role="menuitem"]:hover
+) {
+  border-color: var(--nx-accent-border) !important;
+  background-color: var(--nx-menu-hover) !important;
+  color: #f2eaff !important;
+}
+
+body.windows-app :is(
+  .nw-workspace-dialog header, .nw-workspace-dialog footer,
+  .nw-workspace-menu hr, .nw-workspace-dialog,
+  .command-menu-overlay, .dialog-overlay, .move-dialog-overlay
+) { border-color: var(--nx-menu-border) !important; }
+body.windows-app .nw-workspace-dialog header,
+body.windows-app .nw-workspace-dialog footer { background: var(--nx-menu-surface) !important; }
+body.windows-app .nw-workspace-dialog::backdrop,
+body.windows-app .command-menu-overlay,
+body.windows-app .dialog-overlay { background: #0c0b0fa8 !important; }
+body.windows-app .command-menu-option-description,
+body.windows-app .nw-workspace-menu kbd { color: var(--nx-muted) !important; }
+
+/* Boards: use Web charcoal surfaces while preserving each card's own tint. */
+body.windows-app #view :is(.board-page-head, .board-toolstrip, .board-statusbar) {
+  background: #19181f !important;
+  border-color: #302d38 !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .board-page-head .eyebrow,
+body.windows-app #view .board-head-stats,
+body.windows-app #view .board-toolstrip-count,
+body.windows-app #view .board-back,
+body.windows-app #view .board-statusbar { color: var(--nx-muted) !important; }
+body.windows-app #view .board-page-head .buttons :is(button, select, summary),
+body.windows-app #view .board-toolstrip :is(button, select, summary),
+body.windows-app #view .board-selection-tools :is(button, select),
+body.windows-app #view .board-view-options > summary,
+body.windows-app #view .board-minimap {
+  border-color: var(--nx-menu-border) !important;
+  background: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .board-page-head .buttons button:hover,
+body.windows-app #view .board-toolstrip button:hover,
+body.windows-app #view .board-selection-tools button:hover,
+body.windows-app #view .board-view-options > summary:hover {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-menu-hover) !important;
+  color: #f2eaff !important;
+}
+body.windows-app #view .board-page-head .buttons .primary {
+  border-color: var(--nx-accent) !important;
+  background: var(--nx-accent) !important;
+  color: #201a2c !important;
+}
+body.windows-app #view .board-canvas-frame .canvas {
+  background-color: #131417 !important;
+  background-image: radial-gradient(#303137 .7px, transparent .7px) !important;
+}
+body.windows-app #view .board-toolstrip .board-search-tools input,
+body.windows-app #view .nw-board-add-dock :is(input, select),
+body.windows-app #view .nw-board-add-dock .board-note-tray-search,
+body.windows-app #view .board-view-options-menu {
+  border-color: var(--nx-menu-border) !important;
+  background: var(--nx-menu-surface) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .board-view-options-menu label { color: var(--nx-ink) !important; }
+body.windows-app #view .board-view-options-menu label:hover {
+  background: var(--nx-menu-hover) !important;
+  color: #f2eaff !important;
+}
+body.windows-app #view .board-view-options-menu input { accent-color: var(--nx-accent) !important; }
+body.windows-app #view .board-canvas-frame .canvas-card.selected { outline-color: var(--nx-accent) !important; }
+body.windows-app #view .board-selection-tools {
+  border-color: var(--nx-menu-border) !important;
+  background: var(--nx-menu-surface) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .nw-board-add-dock,
+body.windows-app #view .nw-board-add-dock > :is(.board-document-panel, .board-note-tray) {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .nw-board-add-dock .board-library-document,
+body.windows-app #view .board-note-tray-row {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .nw-board-add-dock :is(.board-note-tray-hint, .board-library-info small, .board-note-tray-copy small) {
+  color: var(--nx-muted) !important;
+}
+body.windows-app #view .board-statusbar,
+body.windows-app #view .nw-graph-status { border-top-color: var(--nx-line) !important; }
+
+/* Graph View: neutral canvas and Web palette for all controls and details. */
+body.windows-app.nw-graph-view #view .graph-heading,
+body.windows-app.nw-graph-view #view .graph-tools,
+body.windows-app.nw-graph-view #view .graph-details,
+body.windows-app.nw-graph-view #view .graph-legend,
+body.windows-app.nw-graph-view #view .graph-zoom-tools {
+  border-color: var(--nx-line) !important;
+  background: #19181f !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app.nw-graph-view #view .graph-heading .eyebrow,
+body.windows-app.nw-graph-view #view .graph-heading p,
+body.windows-app.nw-graph-view #view .graph-stats,
+body.windows-app.nw-graph-view #view .graph-details > small,
+body.windows-app.nw-graph-view #view .graph-details p,
+body.windows-app.nw-graph-view #view .graph-neighbor small,
+body.windows-app.nw-graph-view #view .graph-muted { color: var(--nx-muted) !important; }
+body.windows-app.nw-graph-view #view .graph-stats b { color: var(--nx-accent) !important; }
+body.windows-app.nw-graph-view #view .graph-tools :is(button, select, input, .graph-check) {
+  border-color: var(--nx-menu-border) !important;
+  background: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app.nw-graph-view #view .graph-tools :is(button:hover, select:hover, .graph-check:hover),
+body.windows-app.nw-graph-view #view .graph-neighbor:hover,
+body.windows-app.nw-graph-view #view .graph-zoom-tools button:hover {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-menu-hover) !important;
+  color: #f2eaff !important;
+}
+body.windows-app.nw-graph-view #view .graph-canvas-wrap {
+  background-color: #131417 !important;
+  background-image: radial-gradient(#303137 .7px, transparent .7px) !important;
+}
+body.windows-app.nw-graph-view #view .graph-details { border-left-color: var(--nx-line) !important; }
+body.windows-app.nw-graph-view #view .graph-details h3 { border-color: var(--nx-line) !important; }
+body.windows-app.nw-graph-view #view .graph-neighbor {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app.nw-graph-view #view .graph-zoom-tools button {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app.nw-graph-view #view .graph-zoom-tools span { color: var(--nx-ink) !important; }
+body.windows-app.nw-graph-view #view .graph-empty,
+body.windows-app.nw-graph-view #view .graph-empty-detail {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-menu-surface) !important;
+  color: var(--nx-muted) !important;
+}
+body.windows-app.nw-graph-view #view .graph-node-label { stroke: #131417 !important; }
+body.windows-app.nw-graph-view #view .graph-edge text { stroke: #131417 !important; }
+
+/* Trash and empty states use the same page and card surfaces as Web. */
+body.windows-app #view :is(.page-heading, .empty-list) { color: var(--nx-ink) !important; }
+body.windows-app #view .page-heading :is(p, .eyebrow),
+body.windows-app #view .empty-list p { color: var(--nx-muted) !important; }
+body.windows-app #view .trash-list {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+}
+body.windows-app #view .trash-row {
+  border-color: var(--nx-line) !important;
+  background: var(--nx-panel) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .trash-row:hover { background: var(--nx-raised) !important; }
+body.windows-app #view .trash-row small,
+body.windows-app #view .trash-type { color: var(--nx-muted) !important; }
+body.windows-app #view .trash-row .secondary {
+  border-color: var(--nx-menu-border) !important;
+  background: var(--nx-menu-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view .trash-row .secondary:hover {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-menu-hover) !important;
+}
+body.windows-app #view :is(.trash-row, .page-heading, .empty-list) .danger-button {
+  border-color: var(--nx-danger-border) !important;
+  background: var(--nx-danger-bg) !important;
+  color: var(--nx-danger-ink) !important;
+}
+
+/* Dark workspace foundation. Platform shells define their own layout, but
+   every app backdrop and chrome bar uses the same near-black surfaces. */
+:is(html.noteject-web, body.windows-app, body.android-app) {
+  --nx-bg: #101114 !important;
+  --nx-sidebar: #15161a !important;
+  --nx-panel: #191a1e !important;
+  --nx-raised: #222328 !important;
+  --nx-input: #141519 !important;
+  --nx-line: #2b2c31 !important;
+  --nx-line-soft: #24252a !important;
+  --surface: var(--nx-panel) !important;
+  --surface-raised: var(--nx-raised) !important;
+  --surface-2: var(--nx-raised) !important;
+  --panel: var(--nx-panel) !important;
+  --background: var(--nx-input) !important;
+  --line: var(--nx-line) !important;
+  --border: var(--nx-line) !important;
+  --am-bg: var(--nx-bg) !important;
+  --am-panel: var(--nx-panel) !important;
+  --am-raised: var(--nx-raised) !important;
+  --am-line: var(--nx-line) !important;
+  --nw-bg: var(--nx-bg) !important;
+  --nw-sidebar: var(--nx-sidebar) !important;
+  --nw-panel: var(--nx-panel) !important;
+  --nw-panel-raised: var(--nx-raised) !important;
+  --nw-line: var(--nx-line) !important;
+  color-scheme: dark;
+}
+:is(html.noteject-web body, body.windows-app, body.android-app) {
+  background: var(--nx-bg) !important;
+  color-scheme: dark;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(.app, .main, #view) {
+  background-color: var(--nx-bg) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .sidebar, .app > .sidebar, .topbar, .am-header, .am-bottom-nav, .nw-statusbar
+) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .am-home-counts, .am-recent-list, .am-home-boards > button,
+  .nw-home-items, .nw-home-stats button, .nw-home-boards > button,
+  .nw-home-actions > button, .nw-icon-button
+) {
+  background-color: var(--nx-panel) !important;
+  border-color: var(--nx-line) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-home-item:hover, .nw-home-boards > button:hover, .am-home-boards > button:hover
+) { background-color: var(--nx-raised) !important; }
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .nw-home-hero, .nw-home-items, .nw-home-stats button, .nw-home-boards > button,
+  .am-recent-list, .am-home-boards > button,
+  .nw-notes-master, .nw-note-pane, .nw-note-pane-bar,
+  .nw-notes-view .note-format-toolbar, .nw-notes-view .edit-actions,
+  .document-library-controls, .document-table-mode .nw-document-columns,
+  .document-table-mode .doc-list:not(.is-selected),
+  .document-grid:not(.document-table-mode) .doc-list,
+  .document-results .doc-list, .workspace-card, .workspace-row:not(.is-selected),
+  .workspace-stat, .settings-card, .settings-note, .inbox-manager,
+  .trash-list, .trash-row:not(.is-selected)
+) {
+  background-color: var(--nx-panel) !important;
+  background-image: none !important;
+  border-color: var(--nx-line) !important;
+}
+:is(html.noteject-web, body.windows-app, body.android-app) :is(
+  .document-table-mode .doc-list:not(.is-selected):hover,
+  .document-grid .doc-list:not(.is-selected):hover,
+  .workspace-row:not(.is-selected):hover, .trash-row:not(.is-selected):hover
+) { background-color: var(--nx-raised) !important; }
+
+/* The desktop Home slogan is the visual anchor of the Windows workspace. */
+body.windows-app .nw-home-hero .nw-home-slogan {
+  max-width: 680px !important;
+  color: var(--nx-accent) !important;
+  font-size: clamp(29px, 2.5vw, 38px) !important;
+  line-height: 1.16 !important;
+  letter-spacing: -1.05px !important;
+  text-wrap: balance;
+}

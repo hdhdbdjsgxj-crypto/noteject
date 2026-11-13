@@ -1,0 +1,81 @@
+name: Apple Apps
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_mac:
+        description: Build the Mac disk image
+        type: boolean
+        default: true
+      build_ios:
+        description: Compile the universal iPhone and iPad app
+        type: boolean
+        default: true
+      sign_ios:
+        description: Export an IPA signed for registered iPhones and iPads
+        type: boolean
+        default: false
+      notarize_mac:
+        description: Sign with Developer ID and notarize the Mac app
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  mac:
+    if: inputs.build_mac
+    runs-on: macos-26
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Build Mac disk image
+        run: npm run apple:build-mac
+        env:
+          NOTEJECT_MAC_NOTARIZE: ${{ inputs.notarize_mac && '1' || '0' }}
+          CSC_LINK: ${{ inputs.notarize_mac && secrets.MAC_CERTIFICATE_P12 || '' }}
+          CSC_KEY_PASSWORD: ${{ inputs.notarize_mac && secrets.MAC_CERTIFICATE_PASSWORD || '' }}
+          APPLE_API_KEY_P8: ${{ inputs.notarize_mac && secrets.APPLE_API_KEY_P8 || '' }}
+          APPLE_API_KEY_ID: ${{ inputs.notarize_mac && secrets.APPLE_API_KEY_ID || '' }}
+          APPLE_API_ISSUER: ${{ inputs.notarize_mac && secrets.APPLE_API_ISSUER || '' }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Noteject-Mac
+          path: release/apple/*.dmg
+          if-no-files-found: error
+          retention-days: 1
+
+  iphone-ipad:
+    if: inputs.build_ios
+    runs-on: macos-26
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm run apple:sync-ios
+      - name: Compile unsigned iPhone and iPad IPA
+        if: ${{ !inputs.sign_ios }}
+        run: bash apple/build-ios-unsigned.sh
+      - name: Archive and sign for registered devices
+        if: inputs.sign_ios
+        run: bash apple/build-ios-ci.sh
+        env:
+          IOS_CERTIFICATE_P12: ${{ secrets.IOS_CERTIFICATE_P12 }}
+          IOS_CERTIFICATE_PASSWORD: ${{ secrets.IOS_CERTIFICATE_PASSWORD }}
+          IOS_PROVISIONING_PROFILE: ${{ secrets.IOS_PROVISIONING_PROFILE }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Noteject-iPhone-iPad-${{ inputs.sign_ios && 'signed' || 'unsigned' }}
+          path: |
+            release/apple/Noteject-iPhone-iPad-*.ipa
+            release/apple/Noteject-iPhone-iPad-*.json
+          if-no-files-found: error
+          retention-days: 1

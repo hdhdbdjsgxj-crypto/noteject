@@ -1,0 +1,269 @@
+/* Last Android layer: canvas screens fill the visible phone/tablet window. */
+html.am-canvas-locked, html.am-canvas-locked body { height: 100%; min-height: 0; overflow: hidden; overscroll-behavior: none; }
+.android-app.am-canvas-screen { --am-canvas-toolbar: 54px; }
+.android-app.am-canvas-screen .app { min-height: 0; height: var(--am-canvas-height, 100dvh); }
+.android-app.am-canvas-screen :is(.am-header,.am-bottom-nav,.am-fab),
+.android-app.am-canvas-screen .main > .topbar { display: none !important; }
+.android-app.am-canvas-screen .main,
+.android-app.am-canvas-screen .main:has(#view.is-board-view) {
+  position: fixed; inset: var(--am-canvas-top,0px) auto auto var(--am-canvas-left,0px);
+  display: block; width: var(--am-canvas-width,100vw); max-width: 100%; height: var(--am-canvas-height,100dvh);
+  min-width: 0; min-height: 0; padding: 0; margin: 0; overflow: hidden; background: #111925;
+}
+.android-app.am-canvas-screen #view,
+.android-app.am-canvas-screen #view.is-board-view {
+  position: relative; display: grid; grid-template-columns: minmax(0,1fr);
+  grid-template-rows: var(--am-canvas-toolbar) minmax(0,1fr); gap: 0;
+  width: 100%; max-width: none; height: 100%; min-width: 0; min-height: 0; padding: 0; overflow: hidden;
+}
+.android-app.am-canvas-board.ats-selecting #view.is-board-view {
+  grid-template-rows: calc(var(--am-canvas-toolbar) + var(--am-selection-height,116px)) minmax(0,1fr);
+}
+.android-app.am-canvas-board.ats-selecting .am-canvas-bar { align-self: start; }
+.android-app.am-canvas-screen .am-canvas-bar {
+  display: flex; align-items: center; grid-row: 1; grid-column: 1; min-width: 0; height: var(--am-canvas-toolbar);
+  gap: 4px; padding: 3px max(6px,env(safe-area-inset-right,0px)) 3px max(6px,env(safe-area-inset-left,0px));
+  border-bottom: 1px solid #3c4c64; background: #1b2940; z-index: auto;
+}
+.android-app.am-canvas-screen .am-canvas-bar > button,
+.android-app.am-canvas-screen .am-canvas-options > summary {
+  display: grid; place-items: center; flex: 0 0 auto; width: 44px; height: 46px; min-height: 44px;
+  padding: 5px; border: 0; border-radius: 10px; background: transparent; color: #dbe4f5; font-size: 25px;
+}
+.android-app.am-canvas-screen .am-canvas-bar > button:active,
+.android-app.am-canvas-screen .am-canvas-options[open] > summary { background: #3c3656; }
+.android-app.am-canvas-screen .am-canvas-title { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 650 16px/1.3 var(--font-ui); }
+.android-app.am-canvas-screen .am-canvas-bar > .am-canvas-menu { order: 10; }
+.android-app.am-canvas-screen .am-canvas-options { flex: 0 0 auto; }
+.android-app.am-canvas-screen .am-canvas-options > summary { list-style: none; cursor: pointer; }
+.android-app.am-canvas-screen .am-canvas-options > summary::-webkit-details-marker { display: none; }
+.android-app.am-canvas-screen .am-canvas-options-panel {
+  position: fixed; top: calc(var(--am-canvas-top,0px) + var(--am-canvas-toolbar) + 6px); right: max(8px,env(safe-area-inset-right,0px));
+  display: flex; flex-direction: column; width: min(420px,calc(100vw - 16px)); max-height: calc(var(--am-canvas-height,100dvh) - var(--am-canvas-toolbar) - 18px);
+  gap: 14px; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y;
+  padding: 13px; border: 1px solid #596482; border-radius: 18px; background: #202e44; box-shadow: 0 16px 60px #0009; z-index: 1900;
+}
+.android-app.am-canvas-screen .am-canvas-options-panel > header,
+.android-app.am-canvas-screen .am-graph-details-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; border-bottom: 1px solid #42516a; padding-bottom: 7px; }
+.android-app.am-canvas-screen .am-canvas-options-panel > header button,
+.android-app.am-canvas-screen .am-graph-details-close { flex: 0 0 44px; width: 44px; min-height: 44px; padding: 3px; border: 0; border-radius: 10px; background: #30415c; color: #e6edfa; font-size: 26px; }
+.android-app.am-canvas-screen .am-canvas-options-panel > header strong { font-size: 16px; }
+.android-app.am-canvas-screen .am-canvas-options:not([open]) > .am-canvas-options-panel { display: none; }
+
+/* Keep existing Add/Board handlers and their accessible menus in the single toolbar. */
+.android-app.am-canvas-board .am-canvas-bar > .board-page-head {
+  display: block; flex: 0 0 auto; width: auto; min-width: 0; min-height: 0; height: 46px; margin: 0; padding: 0;
+}
+.android-app.am-canvas-board .board-page-head > :not(.buttons) { display: none; }
+.android-app.am-canvas-board .board-page-head .buttons { display: flex; flex-wrap: nowrap; gap: 4px; width: auto; max-width: none; margin: 0; padding: 0; overflow: visible; }
+.android-app.am-canvas-board .board-page-head .buttons > .am-options > :is(summary,.am-options-trigger) { min-width: 46px; height: 46px; min-height: 44px; padding: 8px 10px; font-size: 13px; background: #30405b; border: 1px solid #455875; }
+.android-app.am-canvas-board .am-options-menu { max-height: calc(var(--am-canvas-height,100dvh) - 16px); inset-block: auto 8px; }
+.android-app.am-canvas-board .board-workspace,
+.android-app.am-canvas-board .board-workspace.with-documents {
+  display: block; grid-row: 2; grid-column: 1; position: relative; width: 100%; height: 100%; min-width: 0; min-height: 0; gap: 0; overflow: hidden;
+}
+.android-app.am-canvas-board .board-canvas-frame { position: relative; display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; overflow: hidden; }
+.android-app.am-canvas-board .board-canvas-frame > .canvas {
+  display: block; position: relative; flex: none; width: 100%; height: 100%; min-width: 0; min-height: 0;
+  max-width: none; max-height: none; margin: 0; border: 0; border-radius: 0; overflow: auto; touch-action: none; overscroll-behavior: contain;
+}
+.android-app.am-canvas-board :is(.board-statusbar,.board-navigation-strip) { display: none !important; }
+.android-app.am-canvas-board .board-toolstrip { display: block !important; height: 0; min-height: 0; overflow: visible; padding: 0; border: 0; }
+.android-app.am-canvas-board .am-canvas-options-panel .am-board-tools { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin: 0; padding: 0; overflow: visible; }
+.android-app.am-canvas-board .am-board-tools button { min-height: 48px; width: 100%; padding: 8px 5px; font-size: 13px; white-space: normal; }
+.android-app.am-canvas-board .am-options-menu [data-board-asset-browser] { display:block;align-self:start;flex:0 0 auto;width:100%;height:48px;min-height:48px;max-height:48px;padding:10px 12px;font-size:14px; }
+.android-app.am-canvas-board .am-options-menu [data-board-view-menu] { display:block;width:100%;min-width:0;max-width:100%;height:48px;min-height:48px;padding:10px 12px;border:1px solid #526080;border-radius:10px;background:#26354e;color:#edf1ff;font-size:14px; }
+.android-app.am-canvas-board .am-board-tools [data-am-board=open] { grid-column: 2 / 4; }
+.android-app.am-canvas-board .am-board-tools .am-board-count { grid-column: 1; align-self: center; min-width: 0; white-space: normal; font-size: 12px; }
+.android-app.am-canvas-board .am-canvas-options-panel .am-history-status { color: #b7c3d9; font-size: 12px; }
+.android-app.am-canvas-board .am-canvas-options-panel .am-danger-action { grid-column: 1 / -1; border-color: #80505e; background: #472e39; color: #ffc1cb; }
+.android-app.am-canvas-board .am-canvas-options-panel .board-search-tools { position: static; display: flex; flex-wrap: wrap; width: 100%; min-width: 0; max-width: none; padding: 0; border: 0; background: transparent; box-shadow: none; gap: 7px; }
+.android-app.am-canvas-board .board-search-tools input { width: 100%; min-width: 0; min-height: 48px; padding: 11px; border: 1px solid #526080; border-radius: 11px; background: #162236; color: #edf1ff; font-size: 16px; }
+.android-app.am-canvas-board .board-search-tools > span { flex: 1; align-self: center; color: #b3c1d9; font-size: 12px; }
+.android-app.am-canvas-board .board-search-tools > button { min-height: 44px; border: 1px solid #526080; border-radius: 10px; padding: 8px; background: #30415d; }
+.android-app.am-canvas-board #view > .canvas-controls.am-canvas-zoom {
+  position: absolute; display: flex; align-items: center; z-index: 10; top: auto; right: max(10px,env(safe-area-inset-right,0px)); bottom: max(10px,env(safe-area-inset-bottom,0px));
+  width: auto; height: 46px; min-height: 44px; gap: 0; margin: 0; padding: 0 3px; border: 1px solid #56627e; border-radius: 13px; background: #1e2c43ef; box-shadow: 0 3px 18px #0005;
+}
+.android-app.am-canvas-board #view > .canvas-controls.am-canvas-zoom button { min-width: 44px; min-height: 44px; height: 44px; padding: 4px 6px; font-size: 19px; }
+.android-app.am-canvas-board #view > .canvas-controls.am-canvas-zoom button[data-action=zoom-reset] { display: none; }
+.android-app.am-canvas-board #view > .canvas-controls.am-canvas-zoom button:is([data-action=zoom-fit],[data-action=zoom-overview]) { font-size: 13px; }
+.android-app.am-canvas-board #view > .canvas-controls.am-canvas-zoom button[data-action=zoom-center] { min-width: 56px; font-size: 12px; }
+.android-app.am-canvas-board #view > .canvas-controls.am-canvas-zoom span { min-width: 46px; text-align: center; font-size: 12px; }
+.android-app.am-canvas-board .board-minimap { position: absolute; top: 10px; right: 10px; bottom: auto; max-width: 110px; max-height: 76px; opacity: .85; }
+.android-app.am-canvas-board .board-selection-tools { display: none !important; }
+.android-app.am-canvas-board .board-selection-tools :is(button,select) { min-height: 44px; padding: 7px 9px; font-size: 13px; }
+.android-app.am-canvas-board .canvas .welcome { max-width: min(380px,90%); margin-inline: auto; padding: 14px; }
+.android-app.am-canvas-board .canvas .welcome h3 { font-size: 19px; }
+.android-app.am-canvas-board .canvas .welcome p { font-size: 13px; line-height: 1.5; }
+.android-app.am-canvas-board .canvas .welcome button { min-height: 48px; }
+
+/* Drawers and content pickers remain mobile sheets even on wide landscape phones. */
+.android-app.am-canvas-screen .sidebar { display: flex; position: fixed; inset: 0 auto 0 0; z-index: 1500; width: min(340px,88vw); height: var(--am-canvas-height,100dvh); max-height: none; overflow: hidden; padding: 20px 14px; margin: 0; border: 0; border-right: 1px solid #414658; border-radius: 0 24px 24px 0; background: #1b202a; box-shadow: 16px 0 60px #0005; transform: translateX(-110%); visibility: hidden; }
+.android-app.am-canvas-screen.am-menu-open .sidebar { transform: translateX(0); visibility: visible; }
+.android-app.am-canvas-screen .am-drawer-close { display: grid; position: absolute; top: 12px; right: 10px; }
+.android-app.am-canvas-screen .workspace-nav-scroll { min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; touch-action: pan-y; }
+.android-app.am-canvas-screen .sidebar .nav-item { min-height: 48px; height: auto; }
+.android-app.am-canvas-board .board-document-panel,
+.android-app.am-canvas-board .board-note-tray { position: fixed; z-index: 125; inset: calc(var(--am-canvas-top,0px) + 8px) max(8px,env(safe-area-inset-right,0px)) auto auto; display: flex; flex-direction: column; width: min(440px,calc(100vw - 16px)); height: calc(var(--am-canvas-height,100dvh) - 16px); max-height: none; min-height: 0; padding: 14px; gap: 8px; overflow: hidden; border: 1px solid #58627d; border-radius: 18px; background: #202c40; box-shadow: 0 16px 50px #0009; }
+.android-app.am-canvas-board :is(.board-document-list,.board-note-tray-list) { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; }
+.android-app.am-canvas-board .board-document-filters { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 8px; }
+.android-app.am-canvas-board .board-document-panel :is(input,select) { min-width: 0; width: 100%; min-height: 44px; font-size: 14px; }
+.android-app.am-canvas-board :is(.board-document-help,.board-note-tray-hint) { display: none; }
+
+/* Graph has one fixed canvas and an independent details scroller, never a page scroller. */
+.android-app.am-canvas-graph #view > .graph-heading { display: none; }
+.android-app.am-canvas-graph .graph-layout { display: block; position: relative; grid-column: 1; grid-row: 2; width: 100%; height: 100%; min-width: 0; min-height: 0; gap: 0; margin: 0; overflow: hidden; }
+.android-app.am-canvas-graph .graph-canvas-wrap { display: block; position: absolute; inset: 0; width: 100%; height: 100%; min-width: 0; min-height: 0; max-height: none; margin: 0; border: 0; border-radius: 0; overflow: hidden; touch-action: none; }
+.android-app.am-canvas-graph .graph-canvas { display: block; width: 100%; height: 100%; min-width: 0; min-height: 0; max-width: none; max-height: none; }
+.android-app.am-canvas-graph .graph-tools {
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  grid-template-areas:"search search" "type layout" "connected connected" "connect reset";
+  gap:10px;margin:0;padding:0;min-width:0;border:0;background:transparent;
+}
+.android-app.am-canvas-graph .graph-tools > .ux-graph-browse { display:none; }
+.android-app.am-canvas-graph .graph-tools > .nw-graph-details-toggle { display:none; }
+.android-app.am-canvas-graph .graph-tools #graph-search { grid-area:search; width:100%; min-width:0; min-height:48px; font-size:16px; }
+.android-app.am-canvas-graph .graph-tools #graph-type { grid-area:type; }
+.android-app.am-canvas-graph .graph-tools #graph-layout { grid-area:layout; }
+.android-app.am-canvas-graph .graph-tools .graph-check { grid-area:connected; justify-content:flex-start; }
+.android-app.am-canvas-graph .graph-tools [data-graph-action="connect"] { grid-area:connect; white-space:normal; line-height:1.3; }
+.android-app.am-canvas-graph .graph-tools [data-graph-action="reset"] { grid-area:reset; }
+.android-app.am-canvas-graph .graph-tools :is(select,button,.graph-check) { min-width: 0; width: 100%; min-height: 48px; height: auto; padding: 9px; font-size: 13px; }
+.android-app.am-canvas-graph .graph-check { white-space: normal; }
+.android-app.am-canvas-graph .graph-stats { flex-wrap: wrap; font-size: 12px; }
+.android-app.am-canvas-graph .graph-legend { top: 7px; left: 7px; right: 7px; max-width: calc(100% - 14px); max-height: 30px; overflow: hidden; flex-wrap: nowrap; gap: 8px; padding: 7px; font-size: 9px; }
+.android-app.am-canvas-graph .graph-legend span:last-child { display: none; }
+.android-app.am-canvas-graph .graph-zoom-tools { bottom: max(10px,env(safe-area-inset-bottom,0px)); right: max(10px,env(safe-area-inset-right,0px)); display: flex; gap: 0; padding: 2px; border-color: #56627e; border-radius: 13px; background: #1e2c43ef; }
+.android-app.am-canvas-graph .graph-zoom-tools button { min-width: 44px; min-height: 44px; height: 44px; padding: 4px 6px; font-size: 19px; }
+.android-app.am-canvas-graph .graph-zoom-tools button[data-graph-action=fit] { font-size: 13px; }
+.android-app.am-canvas-graph .graph-zoom-tools button[data-graph-action=reset-zoom] { display: none; }
+.android-app.am-canvas-graph .graph-zoom-tools span { min-width: 46px; text-align: center; font-size: 12px; }
+.android-app.am-canvas-graph .graph-details { display: none; position: absolute; z-index: 30; inset: auto 8px 8px; width: auto; height: min(58%,460px); min-height: 0; max-height: calc(100% - 16px); margin: 0; padding: 0 14px 20px; border: 1px solid #677293; border-radius: 17px; background: #202e44; box-shadow: 0 -6px 45px #0008; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; -webkit-overflow-scrolling: touch; }
+.android-app.am-canvas-graph.am-graph-details-open .graph-details { display: block; }
+.android-app.am-canvas-graph .am-graph-details-heading { position: sticky; top: 0; z-index: 1; min-height: 56px; margin-bottom: 14px; padding-top: 5px; background: #202e44; }
+.android-app.am-canvas-graph .graph-details h2 { font-size: 19px; line-height: 1.4; }
+.android-app.am-canvas-graph .graph-details p { font-size: 14px; line-height: 1.6; }
+.android-app.am-canvas-graph .graph-details > small { font-size: 12px; }
+.android-app.am-canvas-graph .graph-details h3 { font-size: 15px; }
+.android-app.am-canvas-graph .graph-neighbor { min-height: 64px; font-size: 14px; padding-block: 12px; }
+.android-app.am-canvas-graph .graph-neighbor small { font-size: 11px; line-height: 1.5; }
+.android-app.am-canvas-graph .graph-empty-detail { min-height: 100px; }
+
+@media (orientation:landscape) {
+  .android-app.am-canvas-screen { --am-canvas-toolbar: 50px; }
+  .android-app.am-canvas-screen .am-canvas-bar { padding-block: 1px; }
+  .android-app.am-canvas-board .canvas .welcome > span,
+  .android-app.am-canvas-board .canvas .welcome p { display: none; }
+  .android-app.am-canvas-board .canvas .welcome h3 { margin: 0 0 10px; font-size: 17px; }
+  .android-app.am-canvas-board .board-minimap { max-width: 90px; max-height: 62px; }
+  .android-app.am-canvas-board .board-document-panel,
+  .android-app.am-canvas-board .board-note-tray { top: calc(var(--am-canvas-top,0px) + var(--am-canvas-toolbar) + 5px); right: max(6px,env(safe-area-inset-right,0px)); width: min(480px,54vw); height: calc(var(--am-canvas-height,100dvh) - var(--am-canvas-toolbar) - 12px); padding: 9px; gap: 5px; }
+  .android-app.am-canvas-board .board-document-heading,
+  .android-app.am-canvas-board .board-note-tray > header { min-height: 40px; }
+  .android-app.am-canvas-board .board-document-heading :is(button,select),
+  .android-app.am-canvas-board .board-note-tray :is(button,input,select) { min-height: 40px; }
+  .android-app.am-canvas-board .board-note-tray-list { overscroll-behavior: contain; touch-action: pan-y; }
+  .android-app.am-canvas-graph .graph-details { inset: 7px 7px 7px auto; width: min(38%,380px); min-width: min(260px,48%); height: auto; max-height: none; }
+  .android-app.am-canvas-graph.am-graph-details-open .graph-canvas-wrap { width: calc(100% - min(38%,380px) - 14px); }
+  .android-app.am-canvas-board .am-canvas-options-panel { max-height: calc(var(--am-canvas-height,100dvh) - var(--am-canvas-toolbar) - 12px); }
+}
+@media (max-width:380px) {
+  .android-app.am-canvas-screen .am-canvas-bar { gap: 1px; padding-inline: 3px; }
+  .android-app.am-canvas-screen .am-canvas-title { font-size: 14px; }
+  .android-app.am-canvas-board .board-page-head .buttons > .am-options > :is(summary,.am-options-trigger) { padding-inline: 7px; font-size: 12px; }
+}
+
+/* Keep the color swatch small while exposing a full touch target. */
+.android-app.am-canvas-board .canvas-world [data-color-item] { width: 48px !important; min-width: 48px !important; height: 48px !important; min-height: 48px !important; padding: 0 !important; box-sizing: border-box; background: transparent !important; border: 0 !important; border-radius: 50%; transform: scale(var(--board-control-scale,1)); transform-origin: top right; }
+@media (pointer: coarse) { .android-app .canvas-world [data-color-item]::before { content: ''; position: absolute; inset: -6px; } }
+
+.android-app .canvas-world.board-controls-distant [data-color-item] { display: none !important; }
+
+/* Explicit More actions opens a reachable sheet in either orientation. */
+.android-app .am-board-context { position: fixed; inset: auto 12px max(12px,env(safe-area-inset-bottom,0px)); margin: 0 auto; width: min(480px,calc(100vw - 24px)); max-height: calc(var(--am-canvas-height,100dvh) - 24px); box-sizing: border-box; overflow-y: auto; overscroll-behavior: contain; touch-action: pan-y; padding: 16px; border: 1px solid #596482; border-radius: 20px; background: #202e44; color: #e3eafa; box-shadow: 0 18px 65px #0009; }
+.android-app .am-board-context::backdrop { background: #070c18b8; }
+.android-app .am-board-context > header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.android-app .am-board-context h2 { flex: 1; min-width: 0; margin: 0; font: 650 17px/1.4 var(--font-ui); overflow-wrap: anywhere; }
+.android-app .am-board-context > header button { flex: 0 0 44px; width: 44px; font-size: 26px; }
+.android-app .am-board-context button { min-height: 48px; padding: 10px; border: 1px solid #53617c; border-radius: 12px; background: #2d3e59; color: #e9edfa; white-space: normal; }
+.android-app .am-board-context button:disabled { opacity: .4; }
+.android-app .am-board-context button:focus-visible { outline: 2px solid #cab1ff; outline-offset: 2px; }
+.android-app .am-board-context-actions { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.android-app .am-card-action-section { margin-block: 14px; padding-top: 10px; border-top: 1px solid #45536c; }
+.android-app .am-card-action-section > h3 { margin: 0 0 9px; color: #c3cfe3; font-size: 12px; font-weight: 600; }
+.android-app .am-board-context .am-board-context-remove { color: #ffc9d2; border-color: #85536b; background: #503347; }
+.android-app .am-board-context fieldset { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin: 14px 0 0; padding: 10px; border: 1px solid #526079; border-radius: 14px; }
+.android-app .am-board-context legend { padding: 0 6px; color: #bfcce3; font-size: 12px; }
+.android-app .am-board-context fieldset [data-tint=violet] { background: #473761; }
+.android-app .am-board-context fieldset [data-tint=teal] { background: #244d4c; }
+.android-app .am-board-context fieldset [data-tint=amber] { background: #604c30; }
+.android-app .am-board-context fieldset [data-tint=blue] { background: #2c426d; }
+.android-app .am-board-context > p { margin: 12px 0 0; color: #b5c2da; font-size: 12px; line-height: 1.5; }
+@media (orientation: landscape) and (max-height:560px) { .android-app .am-board-context { width: min(620px,calc(100vw - 24px)); } .android-app .am-board-context-actions { grid-template-columns: repeat(3,minmax(0,1fr)); } .android-app .am-board-context fieldset { grid-template-columns: repeat(4,minmax(0,1fr)); } }
+.android-app .am-board-menu-section { grid-column: 1/-1; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; min-width: 0; padding: 8px 0; border-top: 1px solid #45536c; }
+.android-app .am-board-menu-section > h3 { grid-column: 1/-1; margin: 0 0 3px; color: #bfcbe1; font-size: 12px; }
+.android-app .am-board-menu-section > :is(button,select) { min-width: 0; width: 100%; min-height: 48px; height: auto; padding: 9px; white-space: normal; border: 1px solid #556480; border-radius: 11px; background: #30415c; color: #e9edfa; font-size: 13px; }
+.android-app .am-board-menu-section > :is(.am-board-tools,.board-search-tools,.am-history-status) { grid-column: 1/-1; }
+.android-app .am-board-menu-section .am-danger-action { grid-column: 1/-1; background: #503347; }
+.android-app .am-board-menu-section button:disabled { opacity: .4; }
+.android-app .am-group-row { display: grid; gap: 8px; padding: 12px 0; border-top: 1px solid #526079; }
+.android-app .am-group-row > button { text-align: left; }
+.android-app .am-group-row small { display: block; margin-top: 4px; color: #c1cce0; }
+.android-app .am-group-row > div { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 7px; }
+.android-app .am-board-groups > button { width: 100%; }
+.android-app .am-canvas-screen .connection-editor-overlay { z-index: 2000; padding: 8px; }
+.android-app .connection-editor { max-height: calc(var(--am-canvas-height,100dvh) - 16px); }
+.android-app .connection-editor :is(input,select,button) { min-height: 44px; font-size: 16px; }
+.android-app .mindmap-edge-hit { stroke-width: 32 !important; }
+.android-app .mindmap-edge text { pointer-events: all; cursor: pointer; }
+
+.android-app.am-canvas-board button[data-board-asset-browser] { flex:0 0 48px!important;box-sizing:border-box!important;display:block!important;height:48px!important;min-height:48px!important;max-height:48px!important;align-self:start!important; }
+.android-app.am-canvas-board select[data-board-view-menu] { flex:0 0 48px;box-sizing:border-box;height:48px;max-height:48px; }
+
+/* Graph navigation and its three actions have separate space on narrow screens. */
+.android-app.am-canvas-graph.am-canvas-screen { --am-canvas-toolbar:110px; }
+.android-app.am-canvas-graph.am-canvas-screen .am-canvas-bar {
+  display:grid;grid-template-columns:44px minmax(0,1fr) 44px;grid-template-rows:44px 44px;
+  box-sizing:border-box;height:var(--am-canvas-toolbar);gap:6px 8px;
+  padding:6px max(10px,env(safe-area-inset-right,0px)) 9px max(10px,env(safe-area-inset-left,0px));
+}
+.android-app.am-canvas-graph.am-canvas-screen .am-canvas-bar > button {
+  width:44px;min-width:44px;height:44px;min-height:44px;box-sizing:border-box;margin:0;
+}
+.android-app.am-canvas-graph .am-canvas-bar > button:first-child { grid-column:1;grid-row:1; }
+.android-app.am-canvas-graph .am-canvas-bar > .am-canvas-menu { grid-column:3;grid-row:1; }
+.android-app.am-canvas-graph.am-canvas-screen .am-canvas-title { grid-column:2;grid-row:1;min-width:0;font-size:17px; }
+.android-app.am-canvas-graph .am-graph-actions {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-column:1/-1;grid-row:2;gap:8px;min-width:0;
+}
+.android-app.am-canvas-graph .am-graph-actions > .am-canvas-options { min-width:0;margin:0; }
+.android-app.am-canvas-graph .am-graph-actions > button,
+.android-app.am-canvas-graph .am-graph-actions > .am-canvas-options > summary {
+  display:flex;align-items:center;justify-content:center;gap:5px;box-sizing:border-box;
+  width:100%;min-width:0;min-height:44px;height:44px;margin:0;padding:6px;
+  border:1px solid #465670;border-radius:10px;background:#26364e;color:#e4ebf8;
+  font:600 12px/1.2 var(--font-ui,system-ui,sans-serif);white-space:nowrap;cursor:pointer;
+}
+.android-app.am-canvas-graph .am-graph-actions svg {
+  flex:0 0 16px;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+}
+.android-app.am-canvas-graph .am-graph-actions > button:active,
+.android-app.am-canvas-graph .am-graph-actions > button[aria-pressed=true],
+.android-app.am-canvas-graph .am-graph-actions > .am-canvas-options[open] > summary { border-color:#aa98d5;background:#3c3656;color:#f3ecff; }
+.android-app.am-canvas-graph .am-graph-actions :is(button,summary):focus-visible { outline:2px solid #c5b2ff;outline-offset:2px; }
+.android-app.am-canvas-graph .graph-legend {overflow-x:auto;font-size:11px;max-height:34px;white-space:nowrap;scrollbar-width:none;}
+.android-app.am-canvas-graph.am-graph-details-open:not(.am-canvas-landscape) .graph-canvas-wrap {inset:0 0 auto;height:calc(100% - min(58%,460px) - 16px);min-height:120px;}
+.android-app.am-canvas-graph .graph-details {color:var(--am-ink,#e9edf5);background:var(--am-panel,#202e44);}
+.android-app.am-canvas-graph .am-graph-details-heading {background:var(--am-panel,#202e44);}
+
+.android-app.am-canvas-graph .graph-node-label {font-size:14px;}
+
+@media (orientation:landscape) and (min-width:560px) and (max-height:560px) {
+  .android-app.am-canvas-graph.am-canvas-screen { --am-canvas-toolbar:58px; }
+  .android-app.am-canvas-graph.am-canvas-screen .am-canvas-bar {
+    grid-template-columns:44px minmax(70px,1fr) minmax(280px,400px) 44px;grid-template-rows:44px;padding-block:6px;
+  }
+  .android-app.am-canvas-graph .am-canvas-bar > .am-canvas-menu { grid-column:4; }
+  .android-app.am-canvas-graph .am-graph-actions { grid-column:3;grid-row:1; }
+}

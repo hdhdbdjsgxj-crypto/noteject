@@ -1,0 +1,365 @@
+/* Windows desktop workspaces: fixed command surfaces, flexible content, and docked panes. */
+body.windows-app:is(.nw-board-view,.nw-reader-view,.nw-graph-view) .main,
+body.windows-app .main:has(#view.is-board-view),
+body.windows-app .main:has(#view.reader-workspace) {
+  display: flex; flex-direction: column; min-height: 0; height: 100%; padding: 0; overflow: hidden;
+}
+body.windows-app:is(.nw-board-view,.nw-reader-view,.nw-graph-view) .main > .topbar,
+body.windows-app .main:has(#view.is-board-view) > .topbar,
+body.windows-app .main:has(#view.reader-workspace) > .topbar {
+  display: flex; flex: 0 0 var(--nw-toolbar-height,56px); height: var(--nw-toolbar-height,56px);
+  min-height: var(--nw-toolbar-height,56px); margin: 0; padding: 0 22px;
+}
+body.windows-app #view:is(.is-board-view,.reader-workspace),
+body.windows-app.nw-graph-view #view {
+  display: flex; flex-direction: column; flex: 1 1 0; min-width: 0; min-height: 0;
+  height: auto; padding: 0; margin: 0; overflow: hidden; scrollbar-gutter: auto; color: #e7eef9;
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+}
+body.windows-app #view :is(.board-page-head,.graph-heading) { flex: 0 0 auto; min-height: 76px; padding: 13px 20px; margin: 0; background: #141d28; border-bottom: 1px solid #2c3b4d; gap: 14px; }
+body.windows-app #view :is(.board-page-head,.graph-heading) h1 { max-width: none; margin: 0 0 4px; font: 600 23px/1.25 "Segoe UI Variable","Segoe UI",sans-serif; letter-spacing: -.3px; }
+body.windows-app #view :is(.board-page-head,.graph-heading) .eyebrow { margin-bottom: 5px; font-size: 10px; color: #9babbe; letter-spacing: .8px; }
+body.windows-app #view :is(.board-head-stats,.graph-heading p) { font-size: 12px; color: #9daec4; }
+body.windows-app #view :is(.board-toolstrip,.graph-tools) {
+  display: flex; flex: 0 0 auto; align-items: center; flex-wrap: wrap; gap: 6px;
+  margin: 0; padding: 9px 20px; border: 0; border-bottom: 1px solid #2c3b4d; border-radius: 0; background: #1b2531;
+}
+body.windows-app #view :is(.board-page-head .buttons,.board-toolstrip,.graph-tools) :is(button,select,summary) {
+  height: 32px; min-height: 32px; padding: 5px 10px; font: 400 13px/1.3 "Segoe UI",sans-serif;
+  border: 1px solid #3b4e64; border-radius: 4px; background: #263446; color: #e0eafa; white-space: nowrap;
+}
+body.windows-app #view :is(.board-page-head .buttons,.board-toolstrip,.graph-tools) button:hover { background: #324963; border-color: #698cb8; }
+body.windows-app #view .board-page-head .buttons .primary { background: #91b5ff; border-color: #a8c5ff; color: #101e35; font-weight: 600; }
+body.windows-app #view .board-page-head { align-items: center; flex-direction: row; }
+body.windows-app #view .board-page-head > div:first-child { min-width: 150px; flex: 1 1 220px; }
+body.windows-app #view .board-page-head h1 { max-width: min(45vw,620px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+body.windows-app #view .board-page-head .buttons { display: flex; max-width: 72%; flex-wrap: wrap; gap: 6px; justify-content: flex-end; }
+body.windows-app #view .board-back { color: #9ebeff; font-size: 12px; margin-bottom: 6px; padding: 0; }
+body.windows-app #view .board-workspace { display: grid; flex: 1 1 0; min-height: 0; grid-template-columns: minmax(0,1fr); gap: 0; align-items: stretch; padding: 0; }
+body.windows-app #view .board-workspace.with-documents { grid-template-columns: minmax(0,1fr); }
+body.windows-app #view .board-workspace:has(.nw-board-add-dock > :not([hidden])) { grid-template-columns: minmax(0,1fr) clamp(260px,24vw,330px); }
+body.windows-app #view .board-canvas-frame { display: flex; flex-direction: column; position: relative; min-width: 0; min-height: 0; height: auto; padding: 0; }
+body.windows-app #view .board-canvas-frame .canvas {
+  flex: 1 1 0; min-height: 0; height: auto; margin: 0; border: 0; border-radius: 0;
+  background-color: #111820; background-image: radial-gradient(#3b4b62 .7px,transparent .7px); background-size: 22px 22px;
+}
+body.windows-app #view .board-toolstrip-count { font-size: 12px; padding: 0 7px; color: #a9b7cc; }
+body.windows-app #view .board-toolstrip .board-search-tools { position: static; display: flex; flex: 1 1 150px; max-width: 280px; min-width: 120px; margin: 0; padding: 0; background: transparent; border: 0; box-shadow: none; }
+body.windows-app #view .board-toolstrip .board-search-tools input { width: 100%; height: 32px; min-width: 90px; padding: 5px 9px; font-size: 13px; color: #e7eef9; background: #111a25; border: 1px solid #3b4e64; border-radius: 4px; }
+body.windows-app #view .board-toolstrip .canvas-controls { position: static; display: inline-flex; flex: 0 0 auto; align-items: center; height: 32px; margin: 0 0 0 auto; padding: 0; border: 1px solid #3b4e64; border-radius: 4px; background: #141e2b; box-shadow: none; }
+body.windows-app #view .board-toolstrip .canvas-controls button { min-width: 29px; height: 30px; min-height: 30px; padding: 4px 7px; border: 0; background: transparent; font-size: 13px; }
+body.windows-app #view .board-toolstrip .canvas-controls > span { min-width: 44px; font-size: 12px; color: #c8d8ed; }
+body.windows-app #view .canvas-card { border-radius: 6px; box-shadow: 0 2px 6px #0004; }
+body.windows-app #view .canvas-card h3 { font: 600 14px/1.4 "Segoe UI",sans-serif; }
+body.windows-app #view .canvas-card p { font: 400 12px/1.6 "Segoe UI",sans-serif; }
+body.windows-app #view .canvas-card footer { font-size: 11px; }
+body.windows-app #view .canvas-card.selected { outline-color: #91b5ff; }
+body.windows-app #view .board-statusbar, body.windows-app #view .nw-graph-status { display: flex; flex: 0 0 29px; align-items: center; justify-content: space-between; gap: 12px; min-height: 29px; padding: 5px 14px; margin: 0; background: #182230; border-top: 1px solid #2c3b4d; color: #a5b5ca; font-size: 11px; }
+body.windows-app #view .board-statusbar > span:last-child { max-width: none; font-size: 11px; }
+body.windows-app #view .board-view-options { z-index: 25; }
+body.windows-app #view .board-view-options-menu { width: 220px; padding: 6px; background: #1b2531; border: 1px solid #526987; border-radius: 5px; box-shadow: 0 8px 28px #0007; }
+body.windows-app #view .board-view-options-menu label { min-height: 36px; padding: 7px 9px; font-size: 13px; color: #e0eafa; }
+body.windows-app #view .board-view-options-menu label:hover { background: #2b405a; }
+body.windows-app #view .board-view-options-menu input { accent-color: #91b5ff; }
+body.windows-app #view .board-minimap { border-color: #526987; background-color: #141e2bef; bottom: 42px; border-radius: 4px; }
+body.windows-app #view .board-selection-tools { bottom: 43px; max-width: calc(100% - 28px); flex-wrap: wrap; border-color: #698cb8; background: #20324aef; border-radius: 5px; font-size: 12px; }
+body.windows-app #view .board-selection-tools :is(button,select) { min-height: 30px; height: auto; font-size: 12px; }
+body.windows-app #view .nw-board-add-dock { display: none; grid-column: 2; min-width: 0; min-height: 0; overflow: hidden; background: #1b2531; border-left: 1px solid #34465d; }
+body.windows-app #view .nw-board-add-dock:has(> :not([hidden])) { display: flex; flex-direction: column; }
+body.windows-app #view .nw-board-add-dock > :is(.board-document-panel,.board-note-tray) { position: relative; inset: auto; flex: 1 1 0; width: 100%; min-height: 180px; max-height: none; height: auto; padding: 14px; margin: 0; border: 0; border-radius: 0; background: #1b2531; box-shadow: none; backdrop-filter: none; }
+body.windows-app #view .nw-board-add-dock > [hidden] { display: none; }
+body.windows-app #view .nw-board-add-dock:has(.board-note-tray) .board-document-panel { border-top: 1px solid #34465d; }
+body.windows-app #view .nw-board-add-dock :is(h2,.board-note-tray header b) { font: 600 14px "Segoe UI",sans-serif; }
+body.windows-app #view .nw-board-add-dock :is(input,select,button) { font-family: "Segoe UI",sans-serif; border-radius: 4px; }
+body.windows-app #view .nw-board-add-dock :is(.board-document-search,.board-document-folder,.board-document-filters select,.board-note-tray-search) { min-height: 33px; font-size: 12px; border-color: #40546f; background: #111b29; color: #dce9fb; }
+body.windows-app #view .nw-board-add-dock .board-library-info b, body.windows-app #view .nw-board-add-dock .board-note-tray-copy > b { font-size: 12px; }
+body.windows-app #view .nw-board-add-dock .board-library-info small, body.windows-app #view .nw-board-add-dock .board-note-tray-copy > small { font-size: 11px; }
+body.windows-app #view .nw-board-add-dock .board-library-document { background: #243244; border-color: #3a4e68; border-radius: 4px; }
+body.windows-app #view .nw-board-add-dock .board-note-tray-list { flex: 1; min-height: 0; }
+body.windows-app #view .nw-board-add-dock .board-note-tray-search input { font-size: 12px; }
+body.windows-app #view .nw-board-add-dock .board-note-tray-hint { font-size: 11px; color: #9dafc7; }
+body.windows-app .board-focus-mode > .main { height: 100%; min-height: 0; margin: 0; padding: 0; }
+body.windows-app:has(.board-focus-mode) .app.board-focus-mode { grid-template-columns: minmax(0,1fr); }
+body.windows-app .app.board-focus-mode > .main { grid-column: 1; }
+body.windows-app .app.board-focus-mode > :is(.sidebar,.nw-sidebar-resizer) { display: none; }
+body.windows-app .board-focus-mode > .main:has(#view.is-board-view) > .topbar { display: none; }
+
+/* Graph is a desktop canvas with a separate inspection pane. */
+body.windows-app.nw-graph-view #view .graph-heading { align-items: center; flex-direction: row; }
+body.windows-app #view .graph-stats { font-size: 12px; gap: 6px; }
+body.windows-app #view .graph-stats b { font-family: "Segoe UI",sans-serif; color: #c8ddff; }
+body.windows-app #view .graph-tools #graph-search { flex: 1 1 220px; min-width: 130px; min-height: 32px; padding: 5px 10px; font-size: 13px; border-radius: 4px; background: #111a25; color: #e7eef9; border-color: #3b4e64; }
+body.windows-app #view .graph-check { min-height: 32px; padding: 5px 9px; border-color: #3b4e64; border-radius: 4px; font-size: 12px; }
+body.windows-app.nw-graph-view #view .graph-tools {
+  display: grid; grid-template-columns: minmax(110px,max-content) minmax(180px,1.4fr) minmax(135px,1fr) minmax(150px,1.1fr) minmax(105px,max-content);
+  grid-template-areas: "browse search search type layout" "connected connect connect reset details";
+  align-items: stretch; gap: 7px 8px;
+}
+body.windows-app.nw-graph-view #view .graph-tools > .ux-graph-browse { grid-area: browse; }
+body.windows-app.nw-graph-view #view .graph-tools > #graph-search { grid-area: search; width: 100%; min-width: 0; box-sizing: border-box; }
+body.windows-app.nw-graph-view #view .graph-tools > #graph-type { grid-area: type; min-width: 0; width: 100%; }
+body.windows-app.nw-graph-view #view .graph-tools > #graph-layout { grid-area: layout; min-width: 0; width: 100%; }
+body.windows-app.nw-graph-view #view .graph-tools > .graph-check { grid-area: connected; justify-content: center; white-space: nowrap; }
+body.windows-app.nw-graph-view #view .graph-tools > [data-graph-action="connect"] { grid-area: connect; min-width: 0; white-space: nowrap; }
+body.windows-app.nw-graph-view #view .graph-tools > [data-graph-action="reset"] { grid-area: reset; }
+body.windows-app.nw-graph-view #view .graph-tools > .nw-graph-details-toggle { grid-area: details; white-space: nowrap; }
+body.windows-app #view .graph-layout { display: grid; flex: 1 1 0; min-height: 0; grid-template-columns: minmax(0,1fr) clamp(250px,24vw,320px); gap: 0; margin: 0; overflow: hidden; }
+body.windows-app #view .graph-layout.nw-graph-details-hidden { grid-template-columns: minmax(0,1fr); }
+body.windows-app #view .graph-layout.nw-graph-details-hidden .graph-details { display: none; }
+body.windows-app #view .graph-canvas-wrap { height: auto; min-height: 0; border: 0; border-radius: 0; background-color: #111820; background-image: radial-gradient(#3b4b62 .7px,transparent .7px); }
+body.windows-app #view .graph-canvas { min-width: 0; min-height: 0; width: 100%; height: 100%; }
+body.windows-app #view .graph-details { height: 100%; min-height: 0; padding: 18px; border: 0; border-left: 1px solid #34465d; border-radius: 0; background: #1b2531; scrollbar-width: thin; }
+body.windows-app #view .graph-details h2 { font: 600 17px/1.4 "Segoe UI",sans-serif; }
+body.windows-app #view .graph-details p { font-size: 13px; line-height: 1.65; color: #b0bfd2; }
+body.windows-app #view .graph-details > small, body.windows-app #view .graph-neighbor { font-size: 12px; }
+body.windows-app #view .graph-details h3 { font: 600 13px "Segoe UI",sans-serif; border-color: #34465d; }
+body.windows-app #view .graph-neighbor { min-height: 54px; border-color: #34465d; }
+body.windows-app #view .graph-neighbor small { font-size: 11px; color: #9dafc7; }
+body.windows-app #view .graph-legend { left: 15px; right: auto; top: 14px; max-width: calc(100% - 30px); padding: 8px 10px; gap: 10px; border: 1px solid #34465d; border-radius: 4px; background: #182230e8; font-size: 11px; }
+body.windows-app #view .graph-legend span:last-child { display: none; }
+body.windows-app #view .graph-zoom-tools { border-radius: 4px; background: #1b293bef; border-color: #4e6686; }
+body.windows-app #view .graph-zoom-tools button { min-width: 31px; height: 30px; font-size: 13px; background: #263b54; border-radius: 3px; }
+body.windows-app #view .graph-zoom-tools span { font-size: 12px; color: #d4e2f7; }
+body.windows-app #view .graph-node-label { font-family: "Segoe UI",sans-serif; font-size: 12px; stroke: #111820; }
+body.windows-app #view .graph-edge text { font-family: "Segoe UI",sans-serif; font-size: 11px; stroke: #111820; }
+
+/* Show the bookmark label in the Windows toolbar. */
+body.windows-app #view.reader-workspace .reader-header-actions > button[data-reader-command="bookmark"] {
+  display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  width: auto; min-width: 82px; padding: 5px 9px;
+}
+body.windows-app #view.reader-workspace .reader-bookmark-icon { display: block; flex: 0 0 17px; width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+body.windows-app #view.reader-workspace .reader-header-actions > button[data-reader-command="bookmark"][aria-pressed="true"] .reader-bookmark-icon { fill: currentColor; }
+body.windows-app #view.reader-workspace .reader-bookmark-label { display: inline; font-size: 12px; line-height: 1.2; white-space: nowrap; }
+
+/* Reader keeps all chrome inside the application's remaining height. */
+body.windows-app #view.reader-workspace { --reader-chrome: #141d28; --reader-panel: #1b2531; --reader-line: #34465d; --reader-ink: #e7eef9; --reader-muted: #9dafc7; --reader-accent: #91b5ff; }
+body.windows-app #view.reader-workspace .reader-shell { container: windows-reader / inline-size; flex: 1 1 0; width: 100%; height: 100%; min-height: 0; background: #111820; }
+body.windows-app #view.reader-workspace .reader-header { min-height: 68px; padding: 11px 20px; gap: 12px; }
+body.windows-app #view.reader-workspace .reader-document-identity > small { font-size: 10px; color: #9abaf1; letter-spacing: .7px; }
+body.windows-app #view.reader-workspace .reader-document-identity h1 { font: 600 18px/1.4 "Segoe UI Variable","Segoe UI",sans-serif; color: #e7eef9; letter-spacing: 0; }
+body.windows-app #view.reader-workspace .reader-back { width: 34px; min-height: 34px; height: 34px; border-radius: 4px; background: #263446; border-color: #40546f; color: #dbe8ff; }
+body.windows-app #view.reader-workspace .reader-header-actions { gap: 5px; }
+body.windows-app #view.reader-workspace .reader-header-actions > button,
+body.windows-app #view.reader-workspace .reader-commandbar button,
+body.windows-app #view.reader-workspace .reader-popover > summary {
+  width: auto; min-width: 32px; min-height: 32px; height: 32px; padding: 5px 9px;
+  font: 400 13px/1.3 "Segoe UI",sans-serif; background: #263446; border: 1px solid #40546f; border-radius: 4px; color: #e0eafa;
+}
+body.windows-app #view.reader-workspace .reader-header-actions > button:hover,
+body.windows-app #view.reader-workspace .reader-commandbar button:hover,
+body.windows-app #view.reader-workspace .reader-popover > summary:hover { background: #324963; border-color: #698cb8; color: #fff; }
+body.windows-app #view.reader-workspace .reader-header-actions > button[aria-pressed="true"],
+body.windows-app #view.reader-workspace .reader-commandbar button[aria-pressed="true"],
+body.windows-app #view.reader-workspace .reader-popover[open] > summary { background: #284775; border-color: #91b5ff; color: #eaf1ff; }
+body.windows-app #view.reader-workspace .reader-commandbar { min-height: 51px; padding: 9px 20px; gap: 8px; flex-wrap: wrap; background: #1b2531; }
+body.windows-app #view.reader-workspace .reader-nav-controls,
+body.windows-app #view.reader-workspace .reader-view-controls { gap: 6px; max-width: 100%; flex-wrap: wrap; }
+body.windows-app #view.reader-workspace .reader-view-controls { margin-left: auto; }
+body.windows-app #view.reader-workspace .reader-commandbar :is(input,select) { height: 32px; min-height: 32px; background: #111b29; border-color: #40546f; border-radius: 4px; font-size: 13px; }
+body.windows-app #view.reader-workspace #epub-toc { width: min(250px,24vw); min-width: 120px; }
+body.windows-app #view.reader-workspace .reader-page-input-label { gap: 6px; }
+body.windows-app #view.reader-workspace .reader-page-input-label > span,
+body.windows-app #view.reader-workspace .reader-page-input-label b,
+body.windows-app #view.reader-workspace .reader-control-label { font-size: 12px; }
+body.windows-app #view.reader-workspace .reader-zoom { gap: 0; padding: 0; border-radius: 4px; background: #111b29; border-color: #40546f; }
+body.windows-app #view.reader-workspace .reader-zoom button { min-height: 30px; height: 30px; min-width: 28px; padding: 4px 7px; border: 0; border-radius: 3px; background: transparent; }
+body.windows-app #view.reader-workspace .reader-zoom button[data-reader-command="zoom-reset"] { color: #c8ddff; font-size: 12px; }
+body.windows-app #view.reader-workspace .nw-reader-control-caption { padding: 0 7px; white-space: nowrap; color: #a8bad1; font-size: 12px; }
+body.windows-app #view.reader-workspace .nw-reader-font-group { display: flex; align-items: center; gap: 3px; }
+body.windows-app #view.reader-workspace .nw-reader-font-group .reader-font-controls { display: inline-flex; align-items: center; gap: 3px; }
+body.windows-app #view.reader-workspace .nw-reader-font-group output { min-width: 35px; text-align: center; font-size: 12px; color: #d7e6ff; }
+body.windows-app #view.reader-workspace .reader-save-selection { border-color: #607fa8; background: #29466e; color: #e1ecff; }
+body.windows-app #view.reader-workspace .reader-shell .reader-workspace-body { grid-template-columns: 0 minmax(0,1fr) 0; grid-template-rows: minmax(0,1fr); }
+body.windows-app #view.reader-workspace .reader-shell.nav-open .reader-workspace-body { grid-template-columns: min(var(--nw-reader-navigation,250px),30%) minmax(0,1fr) 0; }
+body.windows-app #view.reader-workspace .reader-shell:is(.tools-open,.assistant-open) .reader-workspace-body { grid-template-columns: 0 minmax(0,1fr) min(var(--nw-reader-annotations,320px),35%); }
+body.windows-app #view.reader-workspace .reader-shell.nav-open:is(.tools-open,.assistant-open) .reader-workspace-body { grid-template-columns: min(var(--nw-reader-navigation,250px),25%) minmax(0,1fr) min(var(--nw-reader-annotations,320px),32%); }
+body.windows-app #view.reader-workspace .reader-navigation,
+body.windows-app #view.reader-workspace .reader-side { position: relative; inset: auto; width: auto; height: 100%; min-height: 0; box-shadow: none; }
+body.windows-app #view.reader-workspace .reader-navigation { grid-column: 1; grid-row: 1; padding-right: 2px; }
+body.windows-app #view.reader-workspace .reader-side { grid-column: 3; grid-row: 1; padding: 0 0 0 2px; overflow: hidden; }
+body.windows-app #view.reader-workspace .reader-shell:is(.tools-open,.assistant-open) .reader-side { display: flex; flex-direction: column; }
+body.windows-app #view.reader-workspace .reader-navigation[hidden],
+body.windows-app #view.reader-workspace .reader-side[hidden] { display: none; }
+body.windows-app #view.reader-workspace .reader-nav-tabs { margin: 12px 10px 10px; border-color: #40546f; border-radius: 4px; background: #111b29; }
+body.windows-app #view.reader-workspace .reader-nav-tabs button { min-height: 32px; border-radius: 3px; font-size: 12px; color: #afc0d6; }
+body.windows-app #view.reader-workspace .reader-nav-tabs button[aria-selected="true"] { color: #e5efff; background: #29466e; }
+body.windows-app #view.reader-workspace .reader-navigation-filter { margin: 0 10px 12px; height: 33px; background: #111b29; border-color: #40546f; border-radius: 4px; }
+body.windows-app #view.reader-workspace .reader-navigation-filter input { font-size: 12px; }
+body.windows-app #view.reader-workspace .reader-outline-item { min-height: 37px; padding-top: 8px; padding-bottom: 8px; border-radius: 4px; font-size: 13px; line-height: 1.4; color: #c6d5e9; }
+body.windows-app #view.reader-workspace .reader-outline-item:hover { background: #293d58; }
+body.windows-app #view.reader-workspace .reader-outline-item.is-active { border-color: #698cb8; background: #263f63; color: #e6f0ff; }
+body.windows-app #view.reader-workspace .reader-nav-bookmark { border-color: #34465d; }
+body.windows-app #view.reader-workspace .reader-nav-bookmark b { font-size: 13px; }
+body.windows-app #view.reader-workspace .reader-nav-bookmark small { font-size: 11px; }
+body.windows-app #view.reader-workspace .reader-content { grid-column: 2; grid-row: 1; min-width: 0; min-height: 0; padding: 25px; overflow: auto; background: #111820; }
+body.windows-app #view.reader-workspace .reader-content:has(#epub-text) { padding: 30px clamp(18px,3vw,54px); }
+body.windows-app #view.reader-workspace #epub-text { border-radius: 3px; box-shadow: 0 3px 18px #0005; }
+body.windows-app #view.reader-workspace .reader-tools-heading { flex: 0 0 auto; margin: 0; padding: 15px 16px; border-bottom-color: #34465d; }
+body.windows-app #view.reader-workspace .reader-tools-heading h2 { font-size: 15px; }
+body.windows-app #view.reader-workspace .reader-tools-heading small { font-size: 10px; color: #9abaf1; }
+body.windows-app #view.reader-workspace .reader-side-content { flex: 1; min-height: 0; padding: 14px; overflow: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+body.windows-app #view.reader-workspace .reader-side-content :is(button,input,select,textarea) { font-family: "Segoe UI",sans-serif; border-radius: 4px; }
+body.windows-app #view.reader-workspace .reader-side-content :is(p,input,select,textarea) { font-size: 13px; }
+body.windows-app #view.reader-workspace .reader-statusbar { display: flex; flex: 0 0 29px; min-height: 29px; gap: 12px; padding: 5px 16px; background: #182230; color: #a8bad1; font-size: 11px; }
+body.windows-app #view.reader-workspace .reader-progress-track { max-width: 180px; }
+body.windows-app #view.reader-workspace .reader-progress-fill { background: #91b5ff; }
+body.windows-app #view.reader-workspace .reader-saved-status { margin-left: auto; }
+body.windows-app #view.reader-workspace .nw-reader-shortcuts { margin-left: auto; color: #8fa4c0; font-size: 11px; white-space: nowrap; }
+body.windows-app #view.reader-workspace .reader-findbar { padding: 9px 20px; background: #20324a; border-color: #4e6686; }
+body.windows-app #view.reader-workspace .reader-find-input { height: 33px; border-radius: 4px; border-color: #607fa8; background: #111b29; }
+body.windows-app #view.reader-workspace .reader-find-input input { font-size: 13px; }
+body.windows-app #view.reader-workspace .reader-find-status { font-size: 12px; color: #c0d3ef; }
+body.windows-app #view.reader-workspace .reader-popover > :is(.reader-appearance-panel,.reader-document-options) { border-radius: 5px; border-color: #526987; background: #1b2531; }
+body.windows-app #view.reader-workspace .reader-popover label,
+body.windows-app #view.reader-workspace .reader-document-options button { font-size: 13px; }
+body.windows-app #view.reader-workspace .reader-document-options button { min-height: 36px; border-radius: 4px; }
+body.windows-app #view.reader-workspace .nw-reader-pane-grip { position: absolute; top: 0; bottom: 0; z-index: 15; width: 6px; padding: 0; border: 0; background: transparent; cursor: col-resize; touch-action: none; outline-offset: -2px; }
+body.windows-app #view.reader-workspace .nw-reader-pane-grip-right { right: 0; }
+body.windows-app #view.reader-workspace .nw-reader-pane-grip-left { left: 0; }
+body.windows-app #view.reader-workspace .nw-reader-pane-grip:hover,
+body.windows-app #view.reader-workspace .nw-reader-pane-grip:focus-visible { background: #91b5ff80; }
+body.windows-app.nw-reading-resizing { cursor: col-resize; user-select: none; }
+body.windows-app #view.reader-workspace .reader-shell.is-focused { position: fixed; inset: 0; z-index: 200; height: 100dvh; width: 100vw; }
+body.windows-app #view.reader-workspace .reader-shell.is-focused .reader-workspace-body { grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1fr); }
+body.windows-app #view.reader-workspace .reader-shell.is-focused :is(.reader-navigation,.reader-side) { display: none; }
+body.windows-app #view.reader-workspace .reader-shell.is-focused .reader-content { grid-column: 1; padding-bottom: 16px; }
+body.windows-app .reader-note-overlay { padding: 24px; background: #080f1bbf; backdrop-filter: blur(3px); }
+body.windows-app .reader-note-dialog { width: min(820px,calc(100vw - 48px)); max-height: calc(100dvh - 80px); border-color: #526987; border-top-color: var(--note-accent); border-radius: 6px; background: #1b2531; font-family: "Segoe UI",sans-serif; }
+body.windows-app .reader-note-dialog header { padding: 20px 24px 16px; border-bottom-color: #34465d; }
+body.windows-app .reader-note-dialog h2 { font-size: 22px; }
+body.windows-app .reader-note-dismiss { border-radius: 4px; background: #263b54; border-color: #526987; }
+body.windows-app .reader-note-body { padding: 22px 26px; color: #d4e2f5; font-size: 15px; }
+body.windows-app .reader-note-dialog footer { padding: 12px 20px; border-top-color: #34465d; }
+body.windows-app .reader-note-dialog footer span { font-size: 12px; }
+@container windows-reader (max-width: 1000px) {
+  body.windows-app #view.reader-workspace .reader-header { flex-wrap: wrap; gap: 8px; padding: 10px 14px; }
+  body.windows-app #view.reader-workspace .reader-header-actions { flex-wrap: wrap; }
+  body.windows-app #view.reader-workspace .reader-document-identity { flex-basis: 210px; }
+  body.windows-app #view.reader-workspace .reader-commandbar { padding: 8px 14px; }
+  body.windows-app #view.reader-workspace .reader-view-controls { margin-left: 0; }
+  body.windows-app #view.reader-workspace .nw-reader-shortcuts { display: none; }
+  body.windows-app #view.reader-workspace .reader-content { padding: 18px; }
+}
+@container windows-reader (max-width: 760px) {
+  body.windows-app #view.reader-workspace .reader-header-actions { flex: 1 0 100%; justify-content: flex-end; }
+  body.windows-app #view.reader-workspace .reader-header-actions > button { padding-right: 8px; padding-left: 8px; font-size: 12px; }
+  body.windows-app #view.reader-workspace .reader-shell:is(.tools-open,.assistant-open) .reader-workspace-body { grid-template-columns: 0 minmax(0,1fr) 0; grid-template-rows: minmax(0,1fr) min(34%,230px); }
+  body.windows-app #view.reader-workspace .reader-shell.nav-open:is(.tools-open,.assistant-open) .reader-workspace-body { grid-template-columns: min(var(--nw-reader-navigation,250px),30%) minmax(0,1fr) 0; grid-template-rows: minmax(0,1fr) min(34%,230px); }
+  body.windows-app #view.reader-workspace .reader-shell:is(.tools-open,.assistant-open) .reader-side { grid-column: 1 / -1; grid-row: 2; border-left: 0; border-top: 1px solid #40546f; }
+  body.windows-app #view.reader-workspace .reader-side .nw-reader-pane-grip { display: none; }
+  body.windows-app #view.reader-workspace .reader-tools-heading { padding: 8px 14px; }
+  body.windows-app #view.reader-workspace .reader-side-content { padding: 10px 14px; }
+  body.windows-app #view.reader-workspace .reader-saved-status { display: none; }
+  body.windows-app #view.reader-workspace .reader-progress-track { max-width: 90px; }
+}
+@media (max-width: 1100px) {
+  body.windows-app #view .board-page-head .buttons { max-width: 66%; }
+  body.windows-app #view .board-page-head h1 { max-width: 30vw; }
+  body.windows-app #view .board-statusbar > span:last-child,
+  body.windows-app #view .nw-graph-status > span:last-child { display: none; }
+  body.windows-app.nw-graph-view #view .graph-tools {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-areas: "browse search" "type layout" "connected connect" "reset details";
+  }
+  body.windows-app.nw-graph-view #view .graph-tools > [data-graph-action="connect"] { white-space: normal; }
+  body.windows-app #view .graph-tools #graph-search { flex-basis: auto; }
+  body.windows-app #view .graph-layout { grid-template-columns: minmax(0,1fr) 245px; }
+}
+@media (max-height: 650px) {
+  body.windows-app #view :is(.board-page-head,.graph-heading) { min-height: 64px; padding-top: 9px; padding-bottom: 9px; }
+  body.windows-app #view.reader-workspace .reader-header { min-height: 56px; padding-top: 7px; padding-bottom: 7px; }
+  body.windows-app #view.reader-workspace .reader-commandbar { padding-top: 7px; padding-bottom: 7px; }
+}
+/* A focused reader always has a single column, including a narrow Windows window. */
+body.windows-app #view.reader-workspace .reader-shell.is-focused .reader-workspace-body,
+body.windows-app #view.reader-workspace .reader-shell.is-focused:is(.nav-open,.tools-open,.assistant-open) .reader-workspace-body,
+body.windows-app #view.reader-workspace .reader-shell.is-focused.nav-open:is(.tools-open,.assistant-open) .reader-workspace-body {
+  grid-template-columns: minmax(0,1fr); grid-template-rows: minmax(0,1fr);
+}
+
+/* Keep Reader navigation on Noteject's shared charcoal and violet palette. */
+body.windows-app #view.reader-workspace {
+  --reader-chrome: var(--nx-panel);
+  --reader-panel: var(--nx-panel);
+  --reader-line: var(--nx-line);
+  --reader-ink: var(--nx-ink);
+  --reader-muted: var(--nx-muted);
+  --reader-accent: var(--nx-accent);
+}
+body.windows-app #view.reader-workspace .reader-navigation {
+  font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  background: var(--nx-panel) !important;
+  border-color: var(--nx-line);
+}
+body.windows-app #view.reader-workspace .reader-nav-tabs {
+  gap: 4px;
+  margin: 12px 12px 10px;
+  padding: 4px;
+  border: 1px solid var(--nx-line);
+  border-radius: 10px;
+  background: var(--nx-bg) !important;
+}
+body.windows-app #view.reader-workspace .reader-nav-tabs button {
+  min-height: 38px;
+  border-radius: 7px;
+  color: var(--nx-muted);
+  font: 500 13px/1.3 "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+}
+body.windows-app #view.reader-workspace .reader-nav-tabs button:hover { background: var(--nx-raised); color: var(--nx-ink); }
+body.windows-app #view.reader-workspace .reader-nav-tabs button[aria-selected="true"] {
+  background: var(--nx-accent-soft) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view.reader-workspace .reader-navigation-filter {
+  box-sizing: border-box;
+  width: calc(100% - 24px);
+  height: 40px;
+  margin: 0 auto 12px;
+  padding: 0 11px;
+  gap: 9px;
+  border: 1px solid var(--nx-line);
+  border-radius: 10px;
+  background: var(--nx-input);
+  color: var(--nx-accent);
+}
+body.windows-app #view.reader-workspace .reader-navigation-filter:focus-within {
+  border-color: var(--nx-accent-border);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--nx-accent) 20%, transparent);
+}
+body.windows-app #view.reader-workspace .reader-navigation-filter > span { color: var(--nx-accent); }
+body.windows-app #view.reader-workspace .reader-navigation-filter input {
+  box-sizing: border-box;
+  width: 0;
+  min-width: 0;
+  flex: 1 1 auto;
+  height: 100%;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 0;
+  outline: 0;
+  box-shadow: none;
+  background: transparent !important;
+  color: var(--nx-ink) !important;
+  font: 13px/1.4 "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+}
+body.windows-app #view.reader-workspace .reader-navigation-filter input::placeholder { color: var(--nx-muted); opacity: .82; }
+body.windows-app #view.reader-workspace #reader-outline-list { font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif; }
+body.windows-app #view.reader-workspace .reader-outline-item {
+  min-height: 38px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: var(--nx-muted) !important;
+  font: 400 13px/1.55 "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  letter-spacing: 0;
+}
+body.windows-app #view.reader-workspace .reader-outline-item > span:first-child { color: var(--nx-accent); }
+body.windows-app #view.reader-workspace .reader-outline-item:hover {
+  background: var(--nx-raised) !important;
+  color: var(--nx-ink) !important;
+}
+body.windows-app #view.reader-workspace .reader-outline-item.is-active {
+  border-color: var(--nx-accent-border) !important;
+  background: var(--nx-accent-soft) !important;
+  color: var(--nx-ink) !important;
+}

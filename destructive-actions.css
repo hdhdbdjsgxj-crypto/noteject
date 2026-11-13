@@ -1,0 +1,96 @@
+/* A single destructive-action palette for shared, desktop and Android controls.
+   Keep these explicit: Favorites, Clear selection, and opening Trash do not delete data. */
+:root {
+  /* Original danger-button colors from the 1.1.0 release. */
+  --destructive-background: #302126;
+  --destructive-hover: #482a32;
+  --destructive-active: #3c252c;
+  --destructive-border: #69434b;
+  --destructive-ink: #e6a1aa;
+}
+
+/* These tokens are consumed only by destructive controls below. */
+:root body :is(button, [role="option"]):is(:disabled, [aria-disabled="true"]) {
+  --destructive-background: #46323b;
+  --destructive-border: #71515e;
+  --destructive-ink: #c5a4af;
+}
+
+:root body :is(button, [role="option"]):is(
+  .destructive-action, .danger, .danger-button, .delete,
+  .doc-delete, .document-delete, .board-delete, .note-board-remove,
+  .clip-delete, .reader-bookmark-delete, .reader-bookmark-remove,
+  .am-danger-action, .am-board-context-remove, .an-delete-note, .ap-danger,
+  .aa-danger-text, .wp-danger, .is-danger, .nw-note-delete,
+  [data-ps-action="delete-workflow"], [data-ps-action="clear-defaults"],
+  [data-reader-command="bookmark"][aria-pressed="true"],
+  [data-ar-action="add-bookmark"][aria-pressed="true"],
+  [data-delete-doc], [data-remove-board-note], [data-remove-board-doc],
+  [data-am-board-delete], [data-am-delete-board], [data-action="clear-links"],
+  [data-action="delete"], [data-action="bulk-delete-notes"],
+  [data-action="empty-trash"], [data-action="board-delete-selection"],
+  [data-trash-discard], [data-note-folder-delete], [data-delete-board],
+  [data-library-delete], [data-library-action="bulk-delete"],
+  [data-library-action="delete-folder"], [data-reader-bookmark-remove],
+  [data-wo-action="delete-asset"], [data-wo-action="delete-project"],
+  [data-wo-action="delete-collection"], [data-wp-action="delete-template"]
+) {
+  background: var(--destructive-background) !important;
+  border-color: var(--destructive-border) !important;
+  color: var(--destructive-ink) !important;
+}
+
+:root body :is(button, [role="option"]):is(
+  .destructive-action, .danger, .danger-button, .delete,
+  .doc-delete, .document-delete, .board-delete, .note-board-remove,
+  .clip-delete, .reader-bookmark-delete, .reader-bookmark-remove,
+  .am-danger-action, .am-board-context-remove, .an-delete-note, .ap-danger,
+  .aa-danger-text, .wp-danger, .is-danger, .nw-note-delete,
+  [data-ps-action="delete-workflow"], [data-ps-action="clear-defaults"],
+  [data-reader-command="bookmark"][aria-pressed="true"],
+  [data-ar-action="add-bookmark"][aria-pressed="true"],
+  [data-delete-doc], [data-remove-board-note], [data-remove-board-doc],
+  [data-am-board-delete], [data-am-delete-board], [data-action="clear-links"],
+  [data-action="delete"], [data-action="bulk-delete-notes"],
+  [data-action="empty-trash"], [data-action="board-delete-selection"],
+  [data-trash-discard], [data-note-folder-delete], [data-delete-board],
+  [data-library-delete], [data-library-action="bulk-delete"],
+  [data-library-action="delete-folder"], [data-reader-bookmark-remove],
+  [data-wo-action="delete-asset"], [data-wo-action="delete-project"],
+  [data-wo-action="delete-collection"], [data-wp-action="delete-template"]
+):not(:disabled):not([aria-disabled="true"]):hover {
+  background: var(--destructive-hover) !important;
+}
+
+:root body :is(button, [role="option"]):is(
+  .destructive-action, .danger, .danger-button, .delete,
+  .doc-delete, .document-delete, .board-delete, .note-board-remove,
+  .clip-delete, .reader-bookmark-delete, .reader-bookmark-remove,
+  .am-danger-action, .am-board-context-remove, .an-delete-note, .ap-danger,
+  .aa-danger-text, .wp-danger, .is-danger, .nw-note-delete,
+  [data-ps-action="delete-workflow"], [data-ps-action="clear-defaults"],
+  [data-reader-command="bookmark"][aria-pressed="true"],
+  [data-ar-action="add-bookmark"][aria-pressed="true"],
+  [data-delete-doc], [data-remove-board-note], [data-remove-board-doc],
+  [data-am-board-delete], [data-am-delete-board], [data-action="clear-links"],
+  [data-action="delete"], [data-action="bulk-delete-notes"],
+  [data-action="empty-trash"], [data-action="board-delete-selection"],
+  [data-trash-discard], [data-note-folder-delete], [data-delete-board],
+  [data-library-delete], [data-library-action="bulk-delete"],
+  [data-library-action="delete-folder"], [data-reader-bookmark-remove],
+  [data-wo-action="delete-asset"], [data-wo-action="delete-project"],
+  [data-wo-action="delete-collection"], [data-wp-action="delete-template"]
+):not(:disabled):not([aria-disabled="true"]):active {
+  background: var(--destructive-active) !important;
+}
+
+.command-menu-option.destructive-action :is(.command-menu-option-label, .command-menu-option-description, .command-menu-shortcut) {
+  color: inherit;
+  border-color: currentColor;
+}
+.command-menu-option.destructive-action .command-menu-option-description { opacity: .85; }
+:root body .command-menu-option.destructive-action[aria-selected="true"] {
+  background: var(--destructive-hover) !important;
+  outline: 2px solid var(--destructive-border);
+  outline-offset: -3px;
+}

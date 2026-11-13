@@ -1,0 +1,77 @@
+.note-insert-tools { display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:8px 0; min-width:0; }
+.note-insert-tools[hidden] { display:none!important; }
+.note-more-menu { position:relative; }
+.note-more-menu > summary { cursor:pointer; display:flex; align-items:center; justify-content:center; min-height:44px; padding:0 12px; border:1px solid var(--line,#48434f); border-radius:8px; list-style:none; }
+.note-more-tools { position:absolute; z-index:20; top:calc(100% + 6px); right:0; min-width:170px; padding:8px; background:var(--panel,#25232b); border:1px solid var(--line,#48434f); border-radius:10px; box-shadow:0 10px 30px #0006; }
+.note-more-tools button { min-height:44px; width:100%; text-align:left; }
+.note-visual-editor { box-sizing:border-box; min-height:240px; padding:16px 4px; line-height:1.75; outline:none; overflow-wrap:anywhere; white-space:pre-wrap; }
+.note-visual-editor:empty::before { content:attr(data-placeholder); color:var(--muted,#b4b0bd); pointer-events:none; }
+.markdown a.note-hyperlink { display:inline; padding:0; margin:0; border:0; background:transparent; font:inherit; color:var(--accent,#c8afff); text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; cursor:pointer; }
+.markdown a.note-hyperlink:focus-visible { outline:2px solid var(--accent,#c8afff); outline-offset:3px; border-radius:3px; }
+.note-link-dialog { width:min(520px,calc(100vw - 24px)); }
+.note-link-dialog label { display:grid; gap:6px; margin:14px 0; font-size:13px; }
+.note-link-dialog input { box-sizing:border-box; min-width:0; width:100%; min-height:48px; border:1px solid var(--line,#526078); border-radius:9px; background:var(--background,#141c29); color:inherit; padding:10px 12px; font-family:inherit; font-size:16px; line-height:1.4; }
+.note-link-dialog footer { display:flex; justify-content:flex-end; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.note-link-dialog footer button { flex:1 1 auto; min-height:48px; }
+.note-link-dialog .note-link-error { color:#e6a1aa; overflow-wrap:anywhere; }
+.note-visual-editor [data-note-source] { cursor:pointer; user-select:all; white-space:normal; }
+.note-visual-editor [data-note-source]:focus { outline:2px solid var(--accent,#c8afff); outline-offset:3px; }
+.detail-panel:has(.note-visual-editor) #edit-body,.detail-panel:has(.note-visual-editor) #note-preview,.detail-panel:has(.note-visual-editor) #note-preview-toggle,.detail-panel:has(.note-visual-editor) .an-note-tabs { display:none!important; }
+.android-app .an-writing-pane > .note-visual-editor { width:100%; flex:1; min-height:120px; height:100%; overflow:auto; padding:12px 0; -webkit-user-select:text; user-select:text; }
+.android-app.an-editor-wide-short .an-writing-pane > .note-visual-editor { min-height:0; }
+.note-atom-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.note-atom-actions button { min-height:44px; }
+.note-image-actions,.note-atom-dialog { box-sizing:border-box; width:min(440px,calc(100vw - 24px)); max-height:calc(100dvh - 24px); overflow:auto; }
+.note-image-actions h2,.note-atom-dialog h2 { margin-top:0; }
+.note-image-actions .note-atom-actions,.note-atom-dialog .note-atom-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.note-image-actions .note-atom-actions button,.note-atom-dialog .note-atom-actions button { min-width:0; min-height:48px; white-space:normal; overflow-wrap:anywhere; }
+.note-image-actions [role=status],.note-atom-dialog [role=status] { font-size:13px; color:var(--muted,#b4b0bd); overflow-wrap:anywhere; }
+.detail-panel .note-image[role=button],#reader-note-overlay .note-image[role=button] { cursor:pointer; }
+.note-image[role=button]:focus-visible { outline:2px solid var(--accent,#c8afff); outline-offset:4px; border-radius:8px; }
+.reader-capture-dialog { width:min(680px,calc(100vw - 24px)); }
+.reader-capture-preview { position:relative; display:table; margin:12px auto; touch-action:none; cursor:crosshair; }
+.reader-capture-preview canvas { display:block; width:auto; height:auto; max-width:min(600px,calc(100vw - 72px)); max-height:45dvh; }
+.reader-capture-area { position:absolute; border:2px solid #b79aff; background:#b79aff22; box-sizing:border-box; pointer-events:none; }
+.reader-capture-fields { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
+.reader-capture-dialog label { display:grid; gap:6px; margin-block:10px; font-size:13px; }
+.reader-capture-dialog :is(input,select) { min-width:0; width:100%; box-sizing:border-box; min-height:44px; background:#25232b; border:1px solid #51485e; border-radius:8px; color:inherit; padding:8px; }
+.reader-capture-dialog footer { display:flex; gap:10px; justify-content:flex-end; }
+.reader-capture-dialog button { min-height:44px; }
+.note-insert-tools > button { min-height:44px; padding:7px 12px; white-space:nowrap; }
+.note-media-feedback { flex:1 1 140px; color:var(--muted,#b4b0bd); font-size:12px; overflow-wrap:anywhere; }
+.markdown .note-image { display:block; max-width:100%; margin:16px 0; padding:0; }
+.markdown .note-image img { display:block; width:auto; height:auto; max-width:100%; max-height:70vh; object-fit:contain; border-radius:8px; }
+.markdown .note-image img[hidden], .note-image-status[hidden] { display:none; }
+.note-image figcaption { color:var(--muted,#b4b0bd); font-size:12px; margin-top:6px; overflow-wrap:anywhere; }
+.note-image-status { display:block; padding:16px; border:1px dashed var(--line,#48434f); border-radius:8px; font-size:13px; }
+.canvas-card.note-card .board-note-media { display:flex; align-items:center; justify-content:center; width:100%; height:96px; margin:8px 0; overflow:hidden; border-radius:6px; background:#fff; pointer-events:none; }
+.canvas-card.note-card .board-note-media img { display:block; width:auto; height:auto; max-width:100%; max-height:96px; object-fit:contain; }
+.canvas-card.note-card .board-note-media img[hidden] { display:none; }
+.canvas-card.note-card .board-note-media .note-image-status { padding:8px; border:0; font-size:12px; color:#555; }
+.note-equation { max-width:100%; }
+.note-equation-block { display:block; overflow-x:auto; padding:6px 0; margin:10px 0; overscroll-behavior-x:contain; }
+.note-equation .katex { font-size:1.1em; }
+.note-equation-error { color:#ffacb5; white-space:pre-wrap; overflow-wrap:anywhere; }
+.note-code { max-width:100%; overflow:auto; padding:12px; border-radius:8px; background:#121216; }
+dialog.note-equation-dialog { width:min(620px,calc(100vw - 24px)); max-height:calc(100dvh - 24px); box-sizing:border-box; overflow:auto; }
+.note-equation-dialog > header { display:flex; gap:12px; align-items:center; justify-content:space-between; }
+.note-equation-dialog > header h2 { margin:0; font-size:20px; }
+.note-equation-dialog p { color:var(--muted,#b4b0bd); font-size:13px; line-height:1.5; }
+.note-equation-dialog > label { display:block; margin:12px 0 6px; }
+.note-equation-dialog textarea { box-sizing:border-box; width:100%; min-height:90px; resize:vertical; padding:12px; border:1px solid var(--line,#48434f); border-radius:8px; color:inherit; background:#17171c; font:16px/1.6 monospace; }
+.note-equation-templates { display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
+.note-equation-dialog button, .note-equation-dialog select { min-height:44px; }
+.note-equation-layout select { margin-left:12px; padding:8px; background:#25232b; color:inherit; border:1px solid #51485e; border-radius:6px; }
+.note-equation-live { overflow:auto; min-height:70px; border:1px solid var(--line,#48434f); border-radius:8px; padding:12px; margin-top:12px; }
+.note-equation-message { overflow-wrap:anywhere; }
+.note-equation-dialog > footer { display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin-top:14px; }
+.android-app .an-editor-tools > .note-insert-tools { margin:0; padding:4px 16px 8px; }
+.android-app .note-insert-tools > button { flex:1 1 auto; }
+.android-app .note-media-feedback:empty { display:none; }
+.android-app.an-editor-wide-short .an-editor-tools > .note-insert-tools { padding:4px 8px; }
+.android-app.an-editor-wide-short .note-insert-tools { gap:4px; }
+.android-app.an-editor-wide-short .note-media-feedback { font-size:11px; }
+@media (max-width:480px) {
+  .note-equation-dialog > footer button { flex:1; }
+  .note-media-feedback { flex-basis:100%; }
+}
