@@ -2791,5 +2791,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "适用于 iPhone 和 iPad 的未签名开发版本。需要 iOS 或 iPadOS 15 或更新版本。",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "安装前需要 Apple 签名和预置描述文件。无法直接通过 Safari 安装此文件。",
   "Unsigned build": "未签名版本",
-  "Use the web app on iPhone or iPad": "在 iPhone 或 iPad 上使用网页应用"
+  "Use the web app on iPhone or iPad": "在 iPhone 或 iPad 上使用网页应用",
+  "Download": "下载",
+  "Development builds. Not notarized; macOS may block first launch.": "开发版本，未经 Apple 公证。macOS 可能会阻止首次启动。",
+  "Mac": "Mac"
 }

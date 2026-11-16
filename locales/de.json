@@ -2791,5 +2791,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Unsignierte Entwicklungsversion für iPhone und iPad. Erfordert iOS oder iPadOS 15 oder neuer.",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Vor der Installation sind eine Apple-Signierung und ein Bereitstellungsprofil erforderlich. Diese Datei kann nicht direkt über Safari installiert werden.",
   "Unsigned build": "Unsignierte Version",
-  "Use the web app on iPhone or iPad": "Web-App auf dem iPhone oder iPad nutzen"
+  "Use the web app on iPhone or iPad": "Web-App auf dem iPhone oder iPad nutzen",
+  "Download": "Herunterladen",
+  "Development builds. Not notarized; macOS may block first launch.": "Nicht notarisierte Entwicklungsversionen. macOS kann den ersten Start blockieren.",
+  "Mac": "Mac"
 }

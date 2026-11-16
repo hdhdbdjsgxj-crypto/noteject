@@ -105,7 +105,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Тестова збірка без підпису для iPhone та iPad. Потрібна iOS чи iPadOS 15 або новіша версія.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Перед установленням потрібні підпис Apple та профіль підготовки. Цей файл не можна встановити безпосередньо із Safari.",
     "Unsigned build": "Збірка без підпису",
-    "Use the web app on iPhone or iPad": "Відкрити вебзастосунок на iPhone або iPad"
+    "Use the web app on iPhone or iPad": "Відкрити вебзастосунок на iPhone або iPad",
+    "Download": "Завантажити",
+    "Development builds. Not notarized; macOS may block first launch.": "Тестові збірки без нотаризації Apple. macOS може заблокувати перший запуск.",
+    "Mac": "Mac"
   },
   "es": {
     "Return to Home": "Volver al inicio",
@@ -153,7 +156,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versión de desarrollo sin firmar para iPhone y iPad. Requiere iOS o iPadOS 15 o posterior.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Antes de instalar, se requieren la firma de Apple y un perfil de aprovisionamiento. Este archivo no se puede instalar directamente desde Safari.",
     "Unsigned build": "Versión sin firmar",
-    "Use the web app on iPhone or iPad": "Usar la aplicación web en iPhone o iPad"
+    "Use the web app on iPhone or iPad": "Usar la aplicación web en iPhone o iPad",
+    "Download": "Descargar",
+    "Development builds. Not notarized; macOS may block first launch.": "Versiones de desarrollo sin notarizar. macOS puede bloquear el primer inicio.",
+    "Mac": "Mac"
   },
   "fr": {
     "Return to Home": "Retour à l’accueil",
@@ -201,7 +207,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Version de développement non signée pour iPhone et iPad. Nécessite iOS ou iPadOS 15 ou une version ultérieure.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Une signature Apple et un profil de provisionnement sont nécessaires avant l’installation. Ce fichier ne peut pas être installé directement depuis Safari.",
     "Unsigned build": "Version non signée",
-    "Use the web app on iPhone or iPad": "Utiliser l’application web sur iPhone ou iPad"
+    "Use the web app on iPhone or iPad": "Utiliser l’application web sur iPhone ou iPad",
+    "Download": "Télécharger",
+    "Development builds. Not notarized; macOS may block first launch.": "Versions de développement non notarisées. macOS peut bloquer le premier lancement.",
+    "Mac": "Mac"
   },
   "de": {
     "Return to Home": "Zur Startseite",
@@ -249,7 +258,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Unsignierte Entwicklungsversion für iPhone und iPad. Erfordert iOS oder iPadOS 15 oder neuer.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Vor der Installation sind eine Apple-Signierung und ein Bereitstellungsprofil erforderlich. Diese Datei kann nicht direkt über Safari installiert werden.",
     "Unsigned build": "Unsignierte Version",
-    "Use the web app on iPhone or iPad": "Web-App auf dem iPhone oder iPad nutzen"
+    "Use the web app on iPhone or iPad": "Web-App auf dem iPhone oder iPad nutzen",
+    "Download": "Herunterladen",
+    "Development builds. Not notarized; macOS may block first launch.": "Nicht notarisierte Entwicklungsversionen. macOS kann den ersten Start blockieren.",
+    "Mac": "Mac"
   },
   "it": {
     "Return to Home": "Torna alla home",
@@ -297,7 +309,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versione di sviluppo non firmata per iPhone e iPad. Richiede iOS o iPadOS 15 o versioni successive.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Prima dell’installazione sono necessari la firma Apple e un profilo di provisioning. Questo file non può essere installato direttamente da Safari.",
     "Unsigned build": "Versione non firmata",
-    "Use the web app on iPhone or iPad": "Usa l’app web su iPhone o iPad"
+    "Use the web app on iPhone or iPad": "Usa l’app web su iPhone o iPad",
+    "Download": "Scarica",
+    "Development builds. Not notarized; macOS may block first launch.": "Versioni di sviluppo non autenticate da Apple. macOS potrebbe bloccare il primo avvio.",
+    "Mac": "Mac"
   },
   "pt": {
     "Return to Home": "Voltar ao início",
@@ -345,7 +360,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Versão de desenvolvimento não assinada para iPhone e iPad. Requer iOS ou iPadOS 15 ou posterior.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Antes da instalação, são necessários assinatura Apple e um perfil de provisionamento. Este arquivo não pode ser instalado diretamente pelo Safari.",
     "Unsigned build": "Versão não assinada",
-    "Use the web app on iPhone or iPad": "Usar o aplicativo web no iPhone ou iPad"
+    "Use the web app on iPhone or iPad": "Usar o aplicativo web no iPhone ou iPad",
+    "Download": "Baixar",
+    "Development builds. Not notarized; macOS may block first launch.": "Versões de desenvolvimento sem notarização. O macOS pode bloquear a primeira abertura.",
+    "Mac": "Mac"
   },
   "ru": {
     "The": "Этот",
@@ -394,7 +412,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Тестовая сборка без подписи для iPhone и iPad. Требуется iOS или iPadOS 15 или новее.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Перед установкой нужны подпись Apple и профиль подготовки. Этот файл нельзя установить напрямую из Safari.",
     "Unsigned build": "Сборка без подписи",
-    "Use the web app on iPhone or iPad": "Открыть веб-приложение на iPhone или iPad"
+    "Use the web app on iPhone or iPad": "Открыть веб-приложение на iPhone или iPad",
+    "Download": "Скачать",
+    "Development builds. Not notarized; macOS may block first launch.": "Тестовые сборки без нотарификации Apple. macOS может заблокировать первый запуск.",
+    "Mac": "Mac"
   },
   "zh": {
     "Return to Home": "返回首页",
@@ -451,7 +472,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "适用于 iPhone 和 iPad 的未签名开发版本。需要 iOS 或 iPadOS 15 或更新版本。",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "安装前需要 Apple 签名和预置描述文件。无法直接通过 Safari 安装此文件。",
     "Unsigned build": "未签名版本",
-    "Use the web app on iPhone or iPad": "在 iPhone 或 iPad 上使用网页应用"
+    "Use the web app on iPhone or iPad": "在 iPhone 或 iPad 上使用网页应用",
+    "Download": "下载",
+    "Development builds. Not notarized; macOS may block first launch.": "开发版本，未经 Apple 公证。macOS 可能会阻止首次启动。",
+    "Mac": "Mac"
   },
   "ja": {
     "Return to Home": "ホームに戻る",
@@ -551,7 +575,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhoneとiPad向けの未署名の開発ビルドです。iOSまたはiPadOS 15以降が必要です。",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "インストール前にAppleの署名とプロビジョニングプロファイルが必要です。このファイルをSafariから直接インストールすることはできません。",
     "Unsigned build": "未署名ビルド",
-    "Use the web app on iPhone or iPad": "iPhoneまたはiPadでWebアプリを使う"
+    "Use the web app on iPhone or iPad": "iPhoneまたはiPadでWebアプリを使う",
+    "Download": "ダウンロード",
+    "Development builds. Not notarized; macOS may block first launch.": "Appleの公証を受けていない開発ビルドです。macOSが初回起動をブロックする場合があります。",
+    "Mac": "Mac"
   },
   "ko": {
     "Return to Home": "홈으로 돌아가기",
@@ -599,7 +626,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone 및 iPad용 서명되지 않은 개발 빌드입니다. iOS 또는 iPadOS 15 이상이 필요합니다.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "설치 전에 Apple 서명과 프로비저닝 프로파일이 필요합니다. 이 파일은 Safari에서 직접 설치할 수 없습니다.",
     "Unsigned build": "서명되지 않은 빌드",
-    "Use the web app on iPhone or iPad": "iPhone 또는 iPad에서 웹 앱 사용"
+    "Use the web app on iPhone or iPad": "iPhone 또는 iPad에서 웹 앱 사용",
+    "Download": "다운로드",
+    "Development builds. Not notarized; macOS may block first launch.": "Apple 공증을 받지 않은 개발 빌드입니다. macOS가 첫 실행을 차단할 수 있습니다.",
+    "Mac": "Mac"
   },
   "ar": {
     "Return to Home": "العودة إلى الصفحة الرئيسية",
@@ -656,7 +686,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "نسخة تطوير غير موقّعة لأجهزة iPhone وiPad. تتطلب iOS أو iPadOS 15 أو أحدث.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "يلزم توقيع Apple وملف تعريف التزويد قبل التثبيت. لا يمكن تثبيت هذا الملف مباشرةً من Safari.",
     "Unsigned build": "نسخة غير موقّعة",
-    "Use the web app on iPhone or iPad": "استخدام تطبيق الويب على iPhone أو iPad"
+    "Use the web app on iPhone or iPad": "استخدام تطبيق الويب على iPhone أو iPad",
+    "Download": "تنزيل",
+    "Development builds. Not notarized; macOS may block first launch.": "إصدارات تطوير لم توثّقها Apple. قد يمنع macOS تشغيلها لأول مرة.",
+    "Mac": "Mac"
   },
   "hi": {
     "Return to Home": "होम पर वापस जाएँ",
@@ -704,7 +737,10 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone और iPad के लिए बिना हस्ताक्षर वाला डेवलपमेंट बिल्ड। iOS या iPadOS 15 या बाद का संस्करण आवश्यक है।",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "इंस्टॉल करने से पहले Apple के हस्ताक्षर और प्रोविज़निंग प्रोफ़ाइल आवश्यक हैं। इस फ़ाइल को Safari से सीधे इंस्टॉल नहीं किया जा सकता।",
     "Unsigned build": "बिना हस्ताक्षर वाला बिल्ड",
-    "Use the web app on iPhone or iPad": "iPhone या iPad पर वेब ऐप इस्तेमाल करें"
+    "Use the web app on iPhone or iPad": "iPhone या iPad पर वेब ऐप इस्तेमाल करें",
+    "Download": "डाउनलोड करें",
+    "Development builds. Not notarized; macOS may block first launch.": "डेवलपमेंट बिल्ड, जिन्हें Apple ने नोटराइज़ नहीं किया है। macOS पहली बार इन्हें खोलने से रोक सकता है।",
+    "Mac": "Mac"
   },
   "tr": {
     "The": "Bu",
@@ -754,6 +790,9 @@
     "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone ve iPad için imzalanmamış geliştirme sürümü. iOS veya iPadOS 15 ya da daha yenisi gerekir.",
     "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Kurulumdan önce Apple imzası ve sağlama profili gerekir. Bu dosya Safari üzerinden doğrudan yüklenemez.",
     "Unsigned build": "İmzalanmamış sürüm",
-    "Use the web app on iPhone or iPad": "iPhone veya iPad’de web uygulamasını kullan"
+    "Use the web app on iPhone or iPad": "iPhone veya iPad’de web uygulamasını kullan",
+    "Download": "İndir",
+    "Development builds. Not notarized; macOS may block first launch.": "Apple tarafından noter onayı verilmemiş geliştirme sürümleri. macOS ilk açılışı engelleyebilir.",
+    "Mac": "Mac"
   }
 }

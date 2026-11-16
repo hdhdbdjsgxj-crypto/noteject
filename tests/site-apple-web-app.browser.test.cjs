@@ -8,7 +8,7 @@ const {chromium}=require('playwright');
 const root=path.resolve(__dirname,'..');
 const build=path.join(root,'site-build');
 
-test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Safari web access',{timeout:120000},async t=>{
+test('compact downloads preserve each platform, translated notices, and accessible mobile controls',{timeout:120000},async t=>{
  const manifest=JSON.parse(fs.readFileSync(path.join(build,'manifest.webmanifest'),'utf8'));
  assert.equal(manifest.start_url,'/app/');
  assert.equal(manifest.display,'standalone');
@@ -19,12 +19,14 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
  assert.match(appHtml,/apple-touch-icon\.png/);
 
  const iosURL='https://downloads.noteject.test/Noteject-iPhone-iPad-0.2.57-unsigned.ipa';
+ const downloads={windows:'https://downloads.noteject.test/Noteject-Setup-0.2.57-x64.exe',android:'https://downloads.noteject.test/Noteject-Android-1.10.53.apk',macArm64:'https://downloads.noteject.test/Noteject-Mac-0.2.56-arm64-development.dmg',macX64:'https://downloads.noteject.test/Noteject-Mac-0.2.56-x64-development.dmg',ios:iosURL};
+ const versions={windows:'0.2.57',android:'1.10.53',macArm64:'0.2.56',macX64:'0.2.56',ios:'0.2.57'};
  const description='Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.';
  const warning='Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.';
  const downloadLabel='Download unsigned IPA', unsignedLabel='Unsigned build', webLabel='Use the web app on iPhone or iPad';
  const server=http.createServer((req,res)=>{
   const url=new URL(req.url,'http://localhost');
-  if(url.pathname==='/api/site-config'){res.writeHead(200,{'Content-Type':'application/json'});return res.end(JSON.stringify({downloads:{ios:iosURL},versions:{ios:'0.2.57'},iosBuild:{signedForInstallation:false,minimumIOS:'15.0',architectures:['arm64'],devices:['iPhone','iPad']}}));}
+  if(url.pathname==='/api/site-config'){res.writeHead(200,{'Content-Type':'application/json'});return res.end(JSON.stringify({downloads,versions,iosBuild:{signedForInstallation:false,minimumIOS:'15.0',architectures:['arm64'],devices:['iPhone','iPad']}}));}
   let relative=decodeURIComponent(url.pathname.slice(1))||'index.html';if(relative.endsWith('/'))relative+='index.html';
   const assetRoot=['index.html','site.js','site.css'].includes(relative)?path.join(root,'site'):build;
   const file=path.resolve(assetRoot,relative);
@@ -50,6 +52,25 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
   await page.goto(origin+'/?lang='+language+'&test-width='+viewport.width+'#downloads');
   await page.waitForFunction(()=>document.querySelector('[data-download="ios"]')?.dataset.releaseAvailable==='true');
   assert.equal(await page.locator('.apple-card').count(),1,viewport.name);
+  assert.equal(await page.locator('.download-card').count(),4,'Mac variants share one compact row');
+  assert.equal(await page.locator('.downloads-heading a[href="/app/"]').count(),1,'Web access stays in the heading');
+  for(const [platform,url] of Object.entries(downloads)){
+   const control=page.locator(`[data-download="${platform}"]`),status=page.locator(`[data-download-status="${platform}"]`);
+   assert.equal(await control.count(),1);assert.equal(await status.count(),1);
+   assert.equal(await control.getAttribute('href'),url,platform+' download must keep its own artifact');
+   assert.equal(await control.getAttribute('aria-disabled'),null);
+   assert((await status.textContent()).includes(versions[platform]),platform+' version must remain visible');
+   const rect=await control.boundingBox();assert.ok(rect&&rect.height>=44&&rect.width>=44,platform+' must remain touchable');
+  }
+  assert.match(await page.locator('[data-download="macArm64"]').getAttribute('aria-label'),/Apple silicon/);
+  assert.match(await page.locator('[data-download="macX64"]').getAttribute('aria-label'),/Intel/);
+  const compactLabels=await page.evaluate(()=>({download:NotejectI18n.t('Download'),mac:NotejectI18n.t('Development builds. Not notarized; macOS may block first launch.')}));
+  assert((await page.locator('[data-download="windows"]').textContent()).trim().startsWith(compactLabels.download));
+  assert.equal(await page.locator('#mac-signing-requirement').textContent(),compactLabels.mac);
+  if(language!=='en'){assert.notEqual(compactLabels.download,'Download');assert.notEqual(compactLabels.mac,'Development builds. Not notarized; macOS may block first launch.');}
+  const panelHeight=await page.locator('.download-grid').evaluate(el=>el.getBoundingClientRect().height);
+  if(viewport.width===1440)assert.ok(panelHeight<500,'Desktop download panel should stay compact: '+panelHeight);
+  if(viewport.width===390)assert.ok(panelHeight<900,'Phone download panel should stay compact: '+panelHeight);
   const link=page.locator('[data-download="ios"]');
   assert.equal(await link.getAttribute('href'),iosURL);assert.equal(await link.getAttribute('aria-disabled'),null);
   const labels=await page.evaluate(({downloadLabel,unsignedLabel,warning,webLabel,description})=>({download:NotejectI18n.t(downloadLabel),status:NotejectI18n.t(unsignedLabel),warning:NotejectI18n.t(warning),web:NotejectI18n.t(webLabel),description:NotejectI18n.t(description)}),{downloadLabel,unsignedLabel,warning,webLabel,description});
@@ -60,7 +81,7 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
   assert.equal(await page.locator('.apple-download-copy>p').first().textContent(),labels.description);
   assert.equal(await page.locator('#ios-signing-requirement').isVisible(),true,'Signing requirement must be visible without opening the web instructions');
   assert.equal(await page.locator('.apple-web-options').getAttribute('open'),null);
-  if(process.env.NOTEJECT_SITE_SCREENSHOTS){fs.mkdirSync(process.env.NOTEJECT_SITE_SCREENSHOTS,{recursive:true});await page.locator('.apple-card').screenshot({path:path.join(process.env.NOTEJECT_SITE_SCREENSHOTS,`iphone-ipad-${language}-${viewport.width}.png`)});}
+  if(process.env.NOTEJECT_SITE_SCREENSHOTS){fs.mkdirSync(process.env.NOTEJECT_SITE_SCREENSHOTS,{recursive:true});await page.locator('.downloads').screenshot({path:path.join(process.env.NOTEJECT_SITE_SCREENSHOTS,`downloads-${language}-${viewport.width}.png`)});}
   await page.locator('.apple-web-options>summary').click();
   assert.equal(await page.locator('.apple-web-options>summary').textContent(),labels.web);
   assert.equal(await page.locator('.apple-platform').count(),2);
@@ -87,8 +108,20 @@ test('iPhone/iPad download clearly identifies the unsigned IPA and preserves Saf
   assert.equal(await page.locator('.apple-web-options>summary').textContent(),labels.web,language+' stale web option');
   assert.equal(await page.locator('[data-download="ios"]').getAttribute('href'),iosURL,'Changing language must preserve the actual IPA link');
   assert.ok(await page.locator('.apple-card').evaluate(el=>el.scrollWidth<=el.clientWidth+1),language+' Apple card overflowed');
+  assert.ok(await page.locator('.download-grid').evaluate(el=>el.scrollWidth<=el.clientWidth+1),language+' download panel overflowed');
+  const compactLabels=await page.evaluate(()=>({download:NotejectI18n.t('Download'),mac:NotejectI18n.t('Development builds. Not notarized; macOS may block first launch.')}));
+  assert((await page.locator('[data-download="android"]').textContent()).trim().startsWith(compactLabels.download),language+' compact download label');
+  assert.equal(await page.locator('#mac-signing-requirement').textContent(),compactLabels.mac,language+' compact Mac notice');
+  if(language!=='en'){assert.notEqual(compactLabels.download,'Download',language+' untranslated Download');assert.notEqual(compactLabels.mac,'Development builds. Not notarized; macOS may block first launch.',language+' untranslated Mac notice');}
   if(language!=='en'){assert.notEqual(labels.download,downloadLabel,language+' untranslated download');assert.notEqual(labels.warning,warning,language+' untranslated signing notice');}
  }
+ await page.locator('[data-download="windows"]').focus();
+ for(const platform of ['android','macArm64','macX64','ios']){
+  await page.keyboard.press('Tab');
+  assert.equal(await page.locator(`[data-download="${platform}"]`).evaluate(el=>el===document.activeElement),true,'Keyboard order: '+platform);
+ }
+ await page.keyboard.press('Tab');
+ assert.equal(await page.locator('.apple-web-options>summary').evaluate(el=>el===document.activeElement),true,'Safari instructions must be reachable by keyboard');
  const manifestResponse=await page.request.get(origin+'/manifest.webmanifest');assert.equal(manifestResponse.status(),200);
  const iconResponse=await page.request.get(origin+'/apple-touch-icon.png');assert.equal(iconResponse.status(),200);
  await page.goto(origin+'/app/');assert.equal(await page.locator('link[rel="manifest"]').count(),1);

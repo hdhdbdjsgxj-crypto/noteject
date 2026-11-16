@@ -3,20 +3,30 @@
   const t = source => window.NotejectI18n?.t?.(source) || source;
   let releaseConfig = null;
   const downloadPlatforms = ['windows', 'android', 'macArm64', 'macX64', 'ios'];
+  document.querySelectorAll('[data-download]').forEach(link => {
+    link.addEventListener('click', event => {
+      if (link.getAttribute('aria-disabled') === 'true') event.preventDefault();
+    });
+  });
   const refreshDownloadLabels = () => {
     if (!releaseConfig) return;
     for (const platform of downloadPlatforms) {
       const link = document.querySelector(`[data-download="${platform}"]`), status = document.querySelector(`[data-download-status="${platform}"]`);
       if (!link?.dataset.releaseAvailable) continue;
       const mac = platform.startsWith('mac'), ios = platform === 'ios';
-      const label = ios ? t('Download unsigned IPA') : mac ? t('Download development build') : t(platform === 'windows' ? 'Download for Windows' : 'Download for Android');
-      link.innerHTML = `${label} <span aria-hidden="true">↓</span>`;
+      const fullLabel = ios ? t('Download unsigned IPA') : mac ? `${t('Download development build')} · ${platform === 'macArm64' ? 'Apple silicon' : 'Intel'}` : t(platform === 'windows' ? 'Download for Windows' : 'Download for Android');
+      const label = link.dataset.downloadLabel ? t(link.dataset.downloadLabel) : fullLabel;
+      const arrow = document.createElement('span');
+      arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = '↓';
+      link.replaceChildren(document.createTextNode(label + ' '), arrow);
+      link.setAttribute('aria-label', fullLabel);
+      link.setAttribute('data-i18n-ignore', '');
       if (status) {
         // This compound label is already translated here and refreshed on each
         // locale change. Reprocessing it as English can reinterpret a French
         // "Version non signée" as the "Version {version}" template.
         status.setAttribute('data-i18n-ignore', '');
-        status.textContent = ios || mac
+        status.textContent = ios || (mac && !status.hasAttribute('data-version-only'))
           ? `${t(ios ? 'Unsigned build' : 'Development build')}${releaseConfig.versions?.[platform] ? ` · ${t('Version')} ${releaseConfig.versions[platform]}` : ''}`
           : releaseConfig.versions?.[platform] ? `${t('Version')} ${releaseConfig.versions[platform]}` : t('Latest release');
       }

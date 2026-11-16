@@ -4,30 +4,59 @@
 
 .video-showcase{max-width:var(--max);margin:0 auto;padding:74px 28px 86px}.video-heading{max-width:700px;margin:0 auto 26px;text-align:center}.video-heading .eyebrow{margin-bottom:12px}.video-heading h2{margin:0;color:#f0eef5;font:700 clamp(32px,4vw,46px)/1.16 Manrope,sans-serif;letter-spacing:-.06em}.video-heading>p:last-child{margin:13px 0 0;color:#a6a7b2;font-size:14px;line-height:1.7}.video-frame{overflow:hidden;margin:0;border:1px solid #393143;border-radius:15px;background:#090a0d;box-shadow:0 26px 76px #0006}.video-frame video{display:block;width:100%;aspect-ratio:16/9;background:#090a0d;object-fit:contain}.video-frame figcaption{padding:11px 15px;border-top:1px solid #262630;color:#878995;font-size:10px}@media(max-width:600px){.video-showcase{padding:55px 18px 64px}.video-heading{margin-bottom:19px}.video-heading h2{font-size:32px}.video-heading>p:last-child{font-size:12px}.video-frame{border-radius:11px}.video-frame figcaption{padding:9px 11px;font-size:9px}}
 
-.download-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr))}
+.downloads{padding-block:72px}
+.downloads-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}
+.downloads-heading .section-heading{max-width:680px;margin:0}
+.downloads-heading .eyebrow{margin-bottom:10px}
+.downloads-heading h2{font-size:36px}
+.downloads-heading .section-heading>p:last-child{max-width:none;margin-top:10px}
+.downloads-heading>.button{flex:none;min-height:44px}
+.download-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.download-card{display:grid;grid-template-columns:36px minmax(0,1fr) auto;align-items:center;gap:5px 16px;min-width:0;min-height:0;padding:17px 20px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent}
+.download-card:last-child{border-bottom:0}
+.download-symbol{align-self:start;flex:none;width:36px;height:36px;border-radius:10px}
+.download-copy{min-width:0}
+.download-card h3{margin:0;font-size:16px;line-height:1.4}
+.download-card .download-copy>p{min-height:0;margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.download-card small{margin-top:4px;color:var(--muted);font-size:10px;line-height:1.5}
+.download-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;min-width:0;max-width:360px}
+.download-actions .button-download{min-height:44px;min-width:118px;max-width:100%;height:auto;padding:10px 16px;font-size:12px;line-height:1.4;white-space:normal;text-align:center;overflow-wrap:anywhere}
+.download-actions .button-download>span{flex:none}
+.download-actions .button-download:focus-visible,.downloads-heading>.button:focus-visible{outline:2px solid var(--violet-2);outline-offset:3px}
+.download-release{min-width:0;flex:1;text-align:center}
+.download-release .button-download{width:100%}
+.download-release small{margin-top:5px}
+@media(min-width:761px){.mac-download-actions .button-download{min-width:144px}}
+.download-footnote{margin-top:12px;font-size:11px;color:var(--muted)}
 .apple-symbol{border-color:#47576a;background:#222a36;color:#d9e4f3}
-.apple-card{grid-column:1/-1}
+.apple-card{grid-column:auto}
 .apple-platform-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:14px 0 0}
 .apple-platform{min-width:0;padding:12px;border:1px solid #343540;border-radius:10px;background:#1b1c22}
 .apple-platform>b{display:block;margin-bottom:7px;color:#e6ddf8;font-size:12px}
-.apple-platform p{min-height:72px;margin:0 0 11px;color:#a5a7b2;font-size:10px;line-height:1.55}
+.apple-platform p{min-height:0;margin:0 0 11px;color:#a5a7b2;font-size:11px;line-height:1.55}
 .apple-platform strong{color:#ded6ef;font-weight:650}
-.apple-platform a{display:inline-flex;align-items:center;gap:5px;color:#c6b4f5;font-size:10px;font-weight:650;text-decoration:none}
+.apple-platform a{display:inline-flex;align-items:center;gap:5px;min-height:44px;color:#c6b4f5;font-size:12px;font-weight:650;text-decoration:none}
 .apple-platform a:hover{text-decoration:underline}
-.apple-card small{display:block;color:#92939e;font-size:10px;line-height:1.5}
-.apple-download-copy{flex:1;min-width:0}
-.apple-card>.apple-download-copy>p{min-height:0}
-.apple-native-download{display:flex;flex-wrap:wrap;align-items:center;gap:9px 14px;margin:4px 0 14px}
-.apple-native-download .button-download{min-height:44px;max-width:100%;height:auto;padding:10px 15px;white-space:normal;overflow-wrap:anywhere;text-align:center;line-height:1.4}
-.apple-native-download .button-download>span{flex:none}
-.apple-native-download small{margin:0;font-size:11px;color:#bdb3d0}
-.apple-card .apple-signing-requirement{min-height:0;margin:0;padding:12px 14px;border:1px solid #51465f;border-inline-start:3px solid var(--violet-2);border-radius:9px;background:#24212c;color:#e2dbea;font-size:12px;line-height:1.65;overflow-wrap:anywhere}
-.apple-web-options{margin-top:16px;padding-top:8px;border-top:1px solid var(--line)}
-.apple-web-options>summary{padding:7px 0;min-height:36px;color:var(--violet-2);font-size:12px;font-weight:600;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}
+.apple-card .apple-signing-requirement{grid-column:2/-1;min-height:0;margin:4px 0 0;padding:0;border:0;border-radius:0;background:transparent;color:#c5b8da;font-size:11px;line-height:1.55;overflow-wrap:anywhere}
+.apple-web-options{grid-column:2/-1;min-width:0;margin:0;padding:0;border:0}
+.apple-web-options>summary{display:list-item;padding:12px 0 3px;min-height:44px;color:var(--violet-2);font-size:12px;font-weight:600;line-height:1.5;cursor:pointer;overflow-wrap:anywhere}
 .apple-web-options>summary:focus-visible{outline:2px solid var(--violet-2);outline-offset:3px;border-radius:4px}
 .apple-web-options .apple-platform p{min-height:0}
-.apple-web-options .apple-platform a{min-height:36px;line-height:1.4}
-@media(max-width:760px){.apple-platform-grid{grid-template-columns:1fr}.apple-platform p{min-height:0}.apple-platform{padding:11px 12px}}
+.apple-web-options .apple-platform a{line-height:1.4}
+@media(max-width:760px){
+  .downloads-heading{align-items:flex-start;flex-direction:column;gap:16px}
+  .downloads-heading h2{font-size:32px}
+  .download-card{grid-template-columns:32px minmax(0,1fr);gap:5px 12px;padding:16px}
+  .download-symbol{width:32px;height:32px;border-radius:9px}
+  .download-actions{grid-column:2;justify-content:flex-start;width:100%;max-width:none;margin-top:6px}
+  .download-actions>.button-download{width:100%}
+  .mac-download-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  .download-actions .button-download{min-width:0;padding-inline:10px}
+  .apple-card .apple-signing-requirement,.apple-web-options{grid-column:1/-1}
+  .apple-card .apple-signing-requirement{margin-top:7px}
+  .apple-platform-grid{grid-template-columns:1fr;margin-top:8px}
+  .apple-platform{padding:10px 12px}
+}
 
 /* Floating magnetic site navigation */
 .site-header{position:sticky;top:12px;z-index:50;width:min(calc(100% - 40px),1124px);height:68px;margin:12px auto 0;padding:0 18px;border:1px solid #ffffff1b;border-radius:17px;background:rgba(23,25,30,.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 12px 36px #0005}

@@ -2791,5 +2791,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone ve iPad için imzalanmamış geliştirme sürümü. iOS veya iPadOS 15 ya da daha yenisi gerekir.",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Kurulumdan önce Apple imzası ve sağlama profili gerekir. Bu dosya Safari üzerinden doğrudan yüklenemez.",
   "Unsigned build": "İmzalanmamış sürüm",
-  "Use the web app on iPhone or iPad": "iPhone veya iPad’de web uygulamasını kullan"
+  "Use the web app on iPhone or iPad": "iPhone veya iPad’de web uygulamasını kullan",
+  "Download": "İndir",
+  "Development builds. Not notarized; macOS may block first launch.": "Apple tarafından noter onayı verilmemiş geliştirme sürümleri. macOS ilk açılışı engelleyebilir.",
+  "Mac": "Mac"
 }

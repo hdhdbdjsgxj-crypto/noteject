@@ -275,5 +275,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "Тестова збірка без підпису для iPhone та iPad. Потрібна iOS чи iPadOS 15 або новіша версія.",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "Перед установленням потрібні підпис Apple та профіль підготовки. Цей файл не можна встановити безпосередньо із Safari.",
   "Unsigned build": "Збірка без підпису",
-  "Use the web app on iPhone or iPad": "Відкрити вебзастосунок на iPhone або iPad"
+  "Use the web app on iPhone or iPad": "Відкрити вебзастосунок на iPhone або iPad",
+  "Download": "Завантажити",
+  "Development builds. Not notarized; macOS may block first launch.": "Тестові збірки без нотаризації Apple. macOS може заблокувати перший запуск.",
+  "Mac": "Mac"
 }

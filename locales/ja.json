@@ -2791,5 +2791,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhoneとiPad向けの未署名の開発ビルドです。iOSまたはiPadOS 15以降が必要です。",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "インストール前にAppleの署名とプロビジョニングプロファイルが必要です。このファイルをSafariから直接インストールすることはできません。",
   "Unsigned build": "未署名ビルド",
-  "Use the web app on iPhone or iPad": "iPhoneまたはiPadでWebアプリを使う"
+  "Use the web app on iPhone or iPad": "iPhoneまたはiPadでWebアプリを使う",
+  "Download": "ダウンロード",
+  "Development builds. Not notarized; macOS may block first launch.": "Appleの公証を受けていない開発ビルドです。macOSが初回起動をブロックする場合があります。",
+  "Mac": "Mac"
 }

@@ -2791,5 +2791,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "نسخة تطوير غير موقّعة لأجهزة iPhone وiPad. تتطلب iOS أو iPadOS 15 أو أحدث.",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "يلزم توقيع Apple وملف تعريف التزويد قبل التثبيت. لا يمكن تثبيت هذا الملف مباشرةً من Safari.",
   "Unsigned build": "نسخة غير موقّعة",
-  "Use the web app on iPhone or iPad": "استخدام تطبيق الويب على iPhone أو iPad"
+  "Use the web app on iPhone or iPad": "استخدام تطبيق الويب على iPhone أو iPad",
+  "Download": "تنزيل",
+  "Development builds. Not notarized; macOS may block first launch.": "إصدارات تطوير لم توثّقها Apple. قد يمنع macOS تشغيلها لأول مرة.",
+  "Mac": "Mac"
 }

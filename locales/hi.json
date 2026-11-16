@@ -2791,5 +2791,8 @@
   "Unsigned development build for iPhone and iPad. Requires iOS or iPadOS 15 or later.": "iPhone और iPad के लिए बिना हस्ताक्षर वाला डेवलपमेंट बिल्ड। iOS या iPadOS 15 या बाद का संस्करण आवश्यक है।",
   "Apple signing and provisioning are required before installation. This file cannot be installed directly from Safari.": "इंस्टॉल करने से पहले Apple के हस्ताक्षर और प्रोविज़निंग प्रोफ़ाइल आवश्यक हैं। इस फ़ाइल को Safari से सीधे इंस्टॉल नहीं किया जा सकता।",
   "Unsigned build": "बिना हस्ताक्षर वाला बिल्ड",
-  "Use the web app on iPhone or iPad": "iPhone या iPad पर वेब ऐप इस्तेमाल करें"
+  "Use the web app on iPhone or iPad": "iPhone या iPad पर वेब ऐप इस्तेमाल करें",
+  "Download": "डाउनलोड करें",
+  "Development builds. Not notarized; macOS may block first launch.": "डेवलपमेंट बिल्ड, जिन्हें Apple ने नोटराइज़ नहीं किया है। macOS पहली बार इन्हें खोलने से रोक सकता है।",
+  "Mac": "Mac"
 }
